@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 
 public class PlayerController : MonoBehaviour
 {
-
-
     public float moveSpeed, sprintSpeed, speed, jumpForce, gravityScale, storedGravityScale;
     public float accel = 0.5f;
     public bool grounded = true;
@@ -30,37 +29,46 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsWall;
     public float wallrunForce, wallStickiness, maxWallSpeed;
     bool isWallRight, isWallLeft;
-    bool isWallRunning;
+    [SerializeField] bool isWallRunning;
     public float maxWallRunCameraTilt, wallRunCameraTilt;
     public Transform orientation;
 
-    private void WallRunInput() {
-        if (Input.GetAxis("Horizontal") > 0 && isWallRight && !controller.isGrounded) StartWallRun();
-        if (Input.GetAxis("Horizontal") < 0 && isWallLeft && !controller.isGrounded) StartWallRun();
-    }
+    public float wallRunSpeedIncrease, wallRunSpeedDecrease, wallRunGravity;
+    [SerializeField] bool onLeftWall, onRightWall;
+    RaycastHit leftWallHit, rightWallHit;
+    Vector3 wallNormal;
+    public CinemachineCollider walkingCollider;
+    bool wallRunOnCD = false;
+
     private void StartWallRun() {
         gravityScale = 0f;
-        isWallRunning = true;
+        wallNormal = onLeftWall ? leftWallHit.normal : rightWallHit.normal;
+        moveDirection = Vector3.Cross(wallNormal, Vector3.up);
         grounded = true;
-        if (speed <= maxWallSpeed) {
-            moveDirection += orientation.forward * wallrunForce;
-            if (isWallRight) moveDirection += orientation.right * wallrunForce / 5;
-            else moveDirection -= orientation.right * wallrunForce / 5;
-            moveDirection.y = 0;
-            controller.Move(moveDirection * Time.deltaTime);
-        }
+        isWallRunning = true;
+        Debug.Log("Start");
+        if (Vector3.Dot(moveDirection, playerModel.transform.forward) < 0) moveDirection = -moveDirection;
+        walkingCollider.enabled = false;
     }
     private void StopWallRun() {
         gravityScale = storedGravityScale;
         isWallRunning = false;
+        StartCoroutine(DelayCameraClipthrough());
+        Debug.Log("Stop");
     }
     private void CheckForWall() {
-        isWallRight = Physics.Raycast(transform.position, orientation.right, 0.5f, whatIsWall);
-        isWallLeft = Physics.Raycast(transform.position, -orientation.right, 0.5f, whatIsWall);
-
-        if ((Input.GetAxis("Horizontal") >= 0 && isWallLeft) || (Input.GetAxis("Horizontal") <= 0 && isWallRight)) StopWallRun();
+        onLeftWall = Physics.Raycast(playerModel.transform.position, -playerModel.transform.right, out leftWallHit, 0.55f, whatIsWall);
+        onRightWall = Physics.Raycast(playerModel.transform.position, playerModel.transform.right, out rightWallHit, 0.55f, whatIsWall);
+        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.9f) && !isWallRunning && !wallRunOnCD) StartWallRun();
+        if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
     }
 
+    private IEnumerator DelayCameraClipthrough() {
+        wallRunOnCD = true;
+        yield return new WaitForSeconds(0.3f);
+        walkingCollider.enabled = true;
+        wallRunOnCD = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +90,6 @@ public class PlayerController : MonoBehaviour
         if (hasControl)
         {
             CheckForWall();
-            WallRunInput();
             //Stick Movement
             float yStore = moveDirection.y;
             float vertInput = Input.GetAxis("Vertical");
@@ -115,19 +122,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (isWallRunning && Input.GetButton("Jump")) {
-                if (isWallLeft && !(horizInput > 0) || isWallRight && !(horizInput < 0)) {
-                    moveDirection.y = jumpForce;
-                }
-
-                if (isWallRight || isWallLeft && horizInput != 0) moveDirection.y = -jumpForce;
-                if (isWallRight && horizInput < 0) moveDirection -= orientation.right * jumpForce * 3.2f;
-                if (isWallLeft && horizInput > 0) moveDirection += orientation.right * jumpForce * 3.2f;
-
+            if (isWallRunning && Input.GetButtonDown("Jump")) {
+                if (onLeftWall || onRightWall) moveDirection = transform.up * jumpForce;
+                if (onLeftWall) moveDirection += -playerModel.transform.right * jumpForce * 3.2f;
+                if (onRightWall) moveDirection += playerModel.transform.right * jumpForce * 3.2f;
                 moveDirection += orientation.forward * jumpForce;
+                StopWallRun();
             }
 
-            moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+            Debug.DrawRay(transform.position, moveDirection, Color.blue);
 
             //Extended Grounded Check
             RaycastHit hit = new RaycastHit();
@@ -138,13 +141,15 @@ public class PlayerController : MonoBehaviour
             }
 
             //Move Direction Application
+            moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
+            if(isWallRunning) moveDirection.y = 0f;
+            controller.Move(moveDirection * Time.deltaTime);
             if(!isWallRunning) {
-                controller.Move(moveDirection * Time.deltaTime);
                 grounded = controller.isGrounded || distanceToGround < 1.5f;
-            }
+            } else { grounded = true; }
 
             //Rotation
-            if(aiming) {
+            if(aiming || isWallRunning) {
                 transform.rotation = Quaternion.Euler(0f, pivot.localEulerAngles.y, 0f);
                 pivot.transform.rotation = transform.rotation;
                 playerModel.transform.rotation = Quaternion.Euler(0f, pivot.localEulerAngles.y, 0f);
@@ -152,7 +157,7 @@ public class PlayerController : MonoBehaviour
             else if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
                 Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
-                playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+                if(!isWallRunning) playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
             }
 
         }

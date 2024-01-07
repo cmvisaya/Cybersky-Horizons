@@ -584,7 +584,7 @@ MonoBehaviour:
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_MinimumDistanceFromTarget: 0.1
+  m_MinimumDistanceFromTarget: 0.01
   m_AvoidObstacles: 1
   m_DistanceLimit: 0
   m_MinimumOcclusionTime: 0
@@ -1525,9 +1525,16 @@ MonoBehaviour:
   wallrunForce: 8
   wallStickiness: 0.4
   maxWallSpeed: 8
+  isWallRunning: 0
   maxWallRunCameraTilt: 0
   wallRunCameraTilt: 0
   orientation: {fileID: 963194228}
+  wallRunSpeedIncrease: 0
+  wallRunSpeedDecrease: 0
+  wallRunGravity: 0
+  onLeftWall: 0
+  onRightWall: 0
+  walkingCollider: {fileID: 863365570}
 --- !u!143 &1605355717
 CharacterController:
   m_ObjectHideFlags: 0
