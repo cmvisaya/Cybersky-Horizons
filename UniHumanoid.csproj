@@ -68,8 +68,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\HumanPoseClip.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\HumanPoseTransfer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\IO\BvhAnimationClip.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\PoseModifier\HandPose.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\Humanoid.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\PoseModifier\HandPose.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\PoseModifier\IPoseModifier.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\BoneGizmoDrawer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniHumanoid\IO\Extensions\BvhExtensions.cs" />

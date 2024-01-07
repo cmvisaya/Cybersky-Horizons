@@ -68,11 +68,11 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\ValueNodeType.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\ZipArchiveStorage.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\Format\glTFMaterial.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\TextureIO\GltfPbrTextureImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\UniGLTFVersion.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\NodeImporter.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\TextureIO\GltfPbrTextureImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\BindposeGizmo.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\BlendShapeTargetNameLocationFlags.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\NodeImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\BuiltInRP\Import\Materials\BuiltInGltfUnlitMaterialImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\Extensions\StringExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MeshIO\BlendShapeFilter.cs" />
@@ -111,8 +111,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Json\JsonString.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\Validation\Validation.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Utf8String\Utf8Iterator.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Json\JsonValue.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\ProgressInfo.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Json\JsonValue.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MigrationFlags.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MeshIO\BlendShapeExporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\URP\Import\UrpGltfMaterialDescriptorGenerator.cs" />
@@ -139,10 +139,10 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\TextureIO\GltfTextureImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\MeshIntegrationResult.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\IStore\IStore.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\Extensions\ArrayExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Exceptions.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\ConcreteCast.g.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\Extensions\ArrayExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\IMaterialExporter.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\ConcreteCast.g.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\BoneNormalizer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Extensions\TypeExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\Parser\AutoGltfFileParser.cs" />
@@ -156,8 +156,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Utf8String\Utf8StringBuilder.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\FormatterExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\UShort2.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\Parser\GltfFileWithResourceFilesParser.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\BuiltInRP\Import\Materials\BuiltInGltfDefaultMaterialImporter.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\Parser\GltfFileWithResourceFilesParser.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MeshIO\MeshData.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\gltfExporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\Parser\GlbLowLevelParser.cs" />
@@ -189,9 +189,9 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\MeshExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\BuiltInRP\Export\Materials\BuiltInStandardMaterialExporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\MeshIntegrator.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Utf8String\Utf8StringExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\GltfMaterialExportUtils.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\Byte4.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Utf8String\Utf8StringExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\GltfMeshUtility.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\glTFBlendMode.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\UShort4.cs" />

@@ -84,8 +84,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\ScriptedImporter\RemapEditorAnimation.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\Animation\AnimationValidator.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\JsonSchemaParser.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\Schemas\JsonSchemaBase.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\IndexTargets.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\Schemas\JsonSchemaBase.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\ScriptedImporter\GltfScriptedImporterEditor.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\Generator\DeserializerWriter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\Serialization\SerializerGenerator.cs" />
@@ -134,8 +134,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\ExportDialog\InternalTPose.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\Serialization\DeserializerGenerator.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\ExportDialog\ExportDialogBase.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\Serialization\ObjectSerialization.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\JsonSchemaSource.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\Serialization\ObjectSerialization.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\ExportDialog\ExportDialogState.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\JsonSchema\Schemas\DictionaryJsonSchema.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Editor\UniGLTF\Serialization\ArraySerialization.cs" />

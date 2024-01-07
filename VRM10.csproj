@@ -90,10 +90,10 @@
     <Compile Include="Assets\UniVRM\VRM10\Runtime\ControlRig\AnimatorPoseProvider.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Material\Vrm10MaterialExportUtils.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\Materials\MigrationMToonMaterial.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\Format\MaterialsMToon\Serializer.g.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\VrmAnimationImporter.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Vrm10Importer.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\Format\MaterialsMToon\Serializer.g.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\VrmAnimationUtil.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Vrm10Importer.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Constraint\TransformExtensions.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Format\Animation\Serializer.g.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Constraint\Vrm10AimConstraint.cs" />
@@ -168,8 +168,8 @@
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\MigrationVrmExpression.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Material\BuiltInRP\Export\Materials\BuiltInVrm10MToonMaterialExporter.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\ExpressionExtensions.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\Materials\MigrationPbrMaterial.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\MeshUtility\Vrm10MeshUtility.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\Materials\MigrationPbrMaterial.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Expression\IExpressionValidatorFactory.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Expression\VRM10Expression.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Model\MeshVertexUtility.cs" />
@@ -178,9 +178,9 @@
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\VrmAnimationInstance\IVrm10Animation.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Model\CopyIndicesJob.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\VrmAnimationExporter.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Expression\ExpressionKey.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Vrm10Runtime\Vrm10Runtime.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\Vrm0Meta.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Vrm10Runtime\Vrm10Runtime.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Expression\ExpressionKey.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\LookAt\LookAtEyeDirectionApplicableToExpression.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\ControlRig\Vrm10Retarget.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\Expression\MaterialColorBinding.cs" />
@@ -188,8 +188,8 @@
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\Migrator.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\VrmAnimationInstance\Vrm10AnimationInstance.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\PrefabRelatedScriptableObject.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Model\MeshVertex2.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Migration\MigrationVrmMeta.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Model\MeshVertex2.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\IO\Material\URP\Import\Materials\UrpVrm10MToonMaterialImporter.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Components\SpringBone\VRM10SpringBoneCollider.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Runtime\Format\Animation\Format.g.cs" />

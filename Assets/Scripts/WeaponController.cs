@@ -16,15 +16,16 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         if(Input.GetButton("Fire2")) {
-            if(pc.aiming == false) {
-                pc.SnapAimModel();
-            }
             pc.aiming = true;
+            pc.sprintEnabled = false;
+            pc.jumpEnabled = false;
             SetSeat(activeSeat);
             walkCamera.SetActive(false);
             aimCamera.SetActive(true);
         } else {
             pc.aiming = false;
+            pc.sprintEnabled = true;
+            pc.jumpEnabled = true;
             SetSeat(inactiveSeat);
             aimCamera.SetActive(false);
             walkCamera.SetActive(true);

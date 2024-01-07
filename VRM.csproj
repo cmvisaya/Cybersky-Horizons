@@ -95,8 +95,8 @@
     <Compile Include="Assets\UniVRM\VRM\Runtime\FirstPerson\VRMFirstPersonCameraManager.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\SpringBone\VRMSpringBoneColliderGroup.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\Meta\VRMMetaObject.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Runtime\Format\glTF_VRM_SecondaryAnimation.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\BlendShape\PreviewSceneManager.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Runtime\Format\glTF_VRM_SecondaryAnimation.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\LookAt\LookAtTargetSwitcher.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\Format\glTF_VRM_Meta.cs" />
     <Compile Include="Assets\UniVRM\VRM\Runtime\EnumUtil.cs" />
