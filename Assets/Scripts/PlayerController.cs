@@ -7,21 +7,21 @@ using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed, sprintSpeed, speed, jumpForce, gravityScale, storedGravityScale;
+    public float moveSpeed, sprintSpeed, speed, bulletTimeSpeedMult, jumpForce, gravityScale, storedGravityScale;
     public float accel = 0.5f;
     public bool grounded = true;
 
     public CharacterController controller;
-    private Vector3 moveDirection;
+    public Vector3 moveDirection;
 
     public Animator anim;
 
     public Transform pivot;
-    public float rotateSpeed;
+    public float rotateSpeed, airRotateSpeed, groundRotateSpeed;
 
     public GameObject playerModel;
 
-    public bool hasControl, jumpEnabled, sprintEnabled = true;
+    public bool hasControl, jumpEnabled, sprintEnabled, aimEnabled = true;
 
     public bool aiming = false;
 
@@ -39,27 +39,33 @@ public class PlayerController : MonoBehaviour
     Vector3 wallNormal;
     public CinemachineCollider walkingCollider;
     bool wallRunOnCD = false;
+    public CameraController cc;
 
     private void StartWallRun() {
+        if(!isWallRunning) cc.ActivateCamera(2);
         gravityScale = 0f;
         wallNormal = onLeftWall ? leftWallHit.normal : rightWallHit.normal;
         moveDirection = Vector3.Cross(wallNormal, Vector3.up);
         grounded = true;
         isWallRunning = true;
+        aimEnabled = false;
         Debug.Log("Start");
         if (Vector3.Dot(moveDirection, playerModel.transform.forward) < 0) moveDirection = -moveDirection;
         walkingCollider.enabled = false;
     }
     private void StopWallRun() {
+        if(isWallRunning) if(!isWallRunning) cc.ActivateCamera(0);
         gravityScale = storedGravityScale;
         isWallRunning = false;
+        aimEnabled = true;
         StartCoroutine(DelayCameraClipthrough());
         Debug.Log("Stop");
+        cc.ActivateCamera(0);
     }
     private void CheckForWall() {
-        onLeftWall = Physics.Raycast(playerModel.transform.position, -playerModel.transform.right, out leftWallHit, 0.55f, whatIsWall);
-        onRightWall = Physics.Raycast(playerModel.transform.position, playerModel.transform.right, out rightWallHit, 0.55f, whatIsWall);
-        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.9f) && !isWallRunning && !wallRunOnCD) StartWallRun();
+        onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.55f, whatIsWall);
+        onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.55f, whatIsWall);
+        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.9f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
         if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
     }
 
@@ -81,6 +87,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         storedGravityScale = gravityScale;
+        cc.ActivateCamera(0);
     }
 
 
@@ -94,7 +101,7 @@ public class PlayerController : MonoBehaviour
             float yStore = moveDirection.y;
             float vertInput = Input.GetAxis("Vertical");
             float horizInput = Input.GetAxis("Horizontal");
-            moveDirection = (pivot.forward * vertInput) + (pivot.right * horizInput);
+            if(!wallRunOnCD) moveDirection = (pivot.forward * vertInput) + (pivot.right * horizInput);
             if(Mathf.Abs(vertInput) > 0 || Mathf.Abs(horizInput) > 0) {
                 speed += accel * Time.deltaTime;
                 if (Input.GetButton("Sprint") && sprintEnabled)
@@ -106,10 +113,11 @@ public class PlayerController : MonoBehaviour
                     if(speed > moveSpeed) { speed = moveSpeed; }
                 }
             } else {
-                speed -= accel * Time.deltaTime;
+                if(grounded) speed -= accel * 0.1f * Time.deltaTime;
                 if(speed < 0) { speed = 0; }
             }
-            moveDirection = moveDirection.normalized * speed;
+            float appliedSpeed = (aiming && !grounded) ? speed * bulletTimeSpeedMult : speed * 1f;
+            moveDirection = moveDirection.normalized * appliedSpeed;
             moveDirection.y = yStore;
 
             //Jump/Gravity Control
@@ -118,15 +126,14 @@ public class PlayerController : MonoBehaviour
                 moveDirection.y = -1f;
                 if (Input.GetButton("Jump") && jumpEnabled)
                 {
+                    StopWallRun();
                     moveDirection.y = jumpForce;
                 }
             }
 
             if (isWallRunning && Input.GetButtonDown("Jump")) {
-                if (onLeftWall || onRightWall) moveDirection = transform.up * jumpForce;
-                if (onLeftWall) moveDirection += -playerModel.transform.right * jumpForce * 3.2f;
-                if (onRightWall) moveDirection += playerModel.transform.right * jumpForce * 3.2f;
-                moveDirection += orientation.forward * jumpForce;
+                moveDirection = (orientation.forward + wallNormal) * jumpForce * 40f;
+                moveDirection.y = jumpForce * 0.8f;
                 StopWallRun();
             }
 
@@ -156,6 +163,7 @@ public class PlayerController : MonoBehaviour
             }
             else if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
+                rotateSpeed = grounded ? groundRotateSpeed : airRotateSpeed;
                 Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
                 if(!isWallRunning) playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
             }

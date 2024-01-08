@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class CameraController : MonoBehaviour
 {
 
@@ -21,12 +20,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float zoomLowBound = 2;
     [SerializeField] private float zoomHighBound = 10;
 
-
     public bool invertY;
-
 
     private float dv;
 
+    public GameObject[] cams;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +38,6 @@ public class CameraController : MonoBehaviour
         pivot.transform.position = target.transform.position;
         pivot.transform.parent = null;
     }
-
 
     // Update is called once per frame
     void LateUpdate()
@@ -94,6 +91,13 @@ public class CameraController : MonoBehaviour
         float desiredXAngle = pivot.eulerAngles.x;
         Quaternion rotation = Quaternion.Euler(desiredXAngle, desiredYAngle, 0);
         transform.position = (target.position + new Vector3(0, Mathf.Asin(dv * Mathf.Deg2Rad) * offset.magnitude, 0)) - (rotation * offset);
+    }
+
+    public void ActivateCamera(int camID) {
+        for(int i = 0; i < cams.Length; i++) {
+            if(camID == i) cams[i].SetActive(true);
+            else cams[i].SetActive(false);
+        }
     }
 }
 

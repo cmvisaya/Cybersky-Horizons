@@ -9,26 +9,29 @@ public class WeaponController : MonoBehaviour
 
     public Transform inactiveSeat;
     public Transform activeSeat;
-    public GameObject aimCamera;
-    public GameObject walkCamera;
+    public CameraController cc;
+    public float bulletTimeGravity = 1.2f;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire2")) {
+        if(Input.GetButton("Fire2") && pc.aimEnabled) {
+            if(!pc.aiming) {
+                pc.moveDirection.y = 0f;
+                cc.ActivateCamera(1);
+            }
             pc.aiming = true;
             pc.sprintEnabled = false;
             pc.jumpEnabled = false;
+            pc.gravityScale = bulletTimeGravity;
             SetSeat(activeSeat);
-            walkCamera.SetActive(false);
-            aimCamera.SetActive(true);
         } else {
+            if(pc.aiming) cc.ActivateCamera(0);
             pc.aiming = false;
             pc.sprintEnabled = true;
             pc.jumpEnabled = true;
+            pc.gravityScale = pc.storedGravityScale;
             SetSeat(inactiveSeat);
-            aimCamera.SetActive(false);
-            walkCamera.SetActive(true);
         }
     }
 
