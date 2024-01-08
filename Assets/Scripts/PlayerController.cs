@@ -9,40 +9,46 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed, sprintSpeed, speed, bulletTimeSpeedMult, jumpForce, gravityScale, storedGravityScale;
     public float accel = 0.5f;
-    public bool grounded = true;
+    [HideInInspector] public bool grounded = true;
 
     public CharacterController controller;
-    public Vector3 moveDirection;
+    [HideInInspector] public Vector3 moveDirection;
 
     public Animator anim;
 
     public Transform pivot;
-    public float rotateSpeed, airRotateSpeed, groundRotateSpeed;
+    private float rotateSpeed;
+    public float airRotateSpeed, groundRotateSpeed;
 
     public GameObject playerModel;
 
-    public bool hasControl, jumpEnabled, sprintEnabled, aimEnabled = true;
+    [HideInInspector] public bool hasControl, jumpEnabled, sprintEnabled, aimEnabled = true;
 
-    public bool aiming = false;
+    [HideInInspector] public bool aiming = false;
 
     //Wallrunning declarations
     public LayerMask whatIsWall;
-    public float wallrunForce, wallStickiness, maxWallSpeed;
-    bool isWallRight, isWallLeft;
-    [SerializeField] bool isWallRunning;
+    bool isWallRunning;
     public float maxWallRunCameraTilt, wallRunCameraTilt;
     public Transform orientation;
 
-    public float wallRunSpeedIncrease, wallRunSpeedDecrease, wallRunGravity;
     [SerializeField] bool onLeftWall, onRightWall;
     RaycastHit leftWallHit, rightWallHit;
     Vector3 wallNormal;
     public CinemachineCollider walkingCollider;
     bool wallRunOnCD = false;
     public CameraController cc;
+    [SerializeField] private float wallrunTilt;
 
     private void StartWallRun() {
-        if(!isWallRunning) cc.ActivateCamera(2);
+        if(!isWallRunning) {
+            cc.ActivateCamera(2);
+        }
+        if(onLeftWall) {
+            playerModel.transform.localRotation = Quaternion.Euler(0f, transform.localEulerAngles.y, playerModel.transform.localEulerAngles.z - wallrunTilt);
+        } else {
+            playerModel.transform.localRotation = Quaternion.Euler(0f, transform.localEulerAngles.y, playerModel.transform.localEulerAngles.z + wallrunTilt);
+        }
         gravityScale = 0f;
         wallNormal = onLeftWall ? leftWallHit.normal : rightWallHit.normal;
         moveDirection = Vector3.Cross(wallNormal, Vector3.up);
@@ -50,11 +56,11 @@ public class PlayerController : MonoBehaviour
         isWallRunning = true;
         aimEnabled = false;
         Debug.Log("Start");
-        if (Vector3.Dot(moveDirection, playerModel.transform.forward) < 0) moveDirection = -moveDirection;
+        if (Vector3.Dot(moveDirection, pivot.transform.forward) < 0) moveDirection = -moveDirection;
         walkingCollider.enabled = false;
     }
     private void StopWallRun() {
-        if(isWallRunning) if(!isWallRunning) cc.ActivateCamera(0);
+        if(isWallRunning) cc.ActivateCamera(0);
         gravityScale = storedGravityScale;
         isWallRunning = false;
         aimEnabled = true;
@@ -63,8 +69,8 @@ public class PlayerController : MonoBehaviour
         cc.ActivateCamera(0);
     }
     private void CheckForWall() {
-        onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.55f, whatIsWall);
-        onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.55f, whatIsWall);
+        onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.75f, whatIsWall);
+        onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.75f, whatIsWall);
         if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.9f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
         if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
     }
@@ -157,9 +163,7 @@ public class PlayerController : MonoBehaviour
 
             //Rotation
             if(aiming || isWallRunning) {
-                transform.rotation = Quaternion.Euler(0f, pivot.localEulerAngles.y, 0f);
-                pivot.transform.rotation = transform.rotation;
-                playerModel.transform.rotation = Quaternion.Euler(0f, pivot.localEulerAngles.y, 0f);
+                playerModel.transform.rotation = Quaternion.Euler(0f, pivot.localEulerAngles.y, playerModel.transform.localEulerAngles.z);
             }
             else if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             {
