@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-
-
+    public static CameraController Instance { get; private set; }
     public Transform target;
     public Vector3 offset;
     public bool useOffsetValues;
@@ -25,6 +25,16 @@ public class CameraController : MonoBehaviour
     private float dv;
 
     public GameObject[] cams;
+    [SerializeField] private CinemachineVirtualCamera[] vcams;
+    private float shakeTimer;
+
+    private void Awake() {
+        Instance = this;
+        vcams = new CinemachineVirtualCamera[cams.Length];
+        for (int i = 0; i < cams.Length; i++) {
+            vcams[i] = cams[i].GetComponent<CinemachineVirtualCamera>();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +44,27 @@ public class CameraController : MonoBehaviour
             offset = target.position - transform.position;
         }
 
-
         pivot.transform.position = target.transform.position;
         pivot.transform.parent = null;
+    }
+
+    private void Update() {
+        if (shakeTimer >= 0) {
+            shakeTimer -= Time.deltaTime;
+            if (shakeTimer <= 0f) {
+                foreach(CinemachineVirtualCamera vcam in vcams) {
+                    CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
+                        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+                    cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
+                }
+            }
+        }
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         pivot.transform.position = target.transform.position;
-
 
         float horizontal = Input.GetAxis("Mouse X") * rotateSpeed;
 
@@ -94,11 +115,23 @@ public class CameraController : MonoBehaviour
     }
 
     public void ActivateCamera(int camID) {
+        shakeTimer = 0f;
         for(int i = 0; i < cams.Length; i++) {
             if(camID == i) cams[i].SetActive(true);
             else cams[i].SetActive(false);
         }
     }
+
+    public void ShakeCameras(float intensity, float time) {
+        shakeTimer = time;
+        foreach(CinemachineVirtualCamera vcam in vcams) {
+            CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
+                vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = intensity;
+        }
+    }
+
+
 }
 
 

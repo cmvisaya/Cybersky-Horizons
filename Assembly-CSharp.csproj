@@ -64,7 +64,9 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Shootable.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
@@ -75,6 +77,7 @@
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_uv.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\GLTF\IO\Resources\UniGLTF\NormalMapExporter.shader" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthnormals_fragment.hlsl" />
+    <None Include="Assets\ClassicSpace\Classic Space Skybox Readme.txt" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_lighting_mtoon.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_vertex.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_vertex.hlsl" />
