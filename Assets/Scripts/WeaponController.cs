@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponController : MonoBehaviour
 {
+    [HideInInspector] public static WeaponController Instance { get; private set; }
     public PlayerController pc;
     public GameObject weapon;
 
@@ -30,11 +31,17 @@ public class WeaponController : MonoBehaviour
 
     private AudioManager am;
 
+    public void LoadBullets(int bullets) {
+        am.PlaySoundEffect(reloadSound, 0.5f);
+        bulletsLeft += bullets;
+        if (bulletsLeft > magazineSize) bulletsLeft = magazineSize;
+    }
+
     private void ShotInput() {
         if (allowButtonHold) shooting = Input.GetButton("Fire1");
         else shooting = Input.GetButtonDown("Fire1");
 
-        if ((Input.GetButtonDown("Reload") && bulletsLeft <= magazineSize && !reloading) || (bulletsLeft == 0 && !reloading)) Reload();
+        //if ((Input.GetButtonDown("Reload") && bulletsLeft <= magazineSize && !reloading) || (bulletsLeft == 0 && !reloading)) Reload();
 
         //Shoot
         if (readyToShoot && shooting && !reloading && bulletsLeft > 0) {
@@ -77,7 +84,7 @@ public class WeaponController : MonoBehaviour
     }
 
     private void Reload() {
-        am.PlaySoundEffect(reloadSound, 1f);
+        am.PlaySoundEffect(reloadSound, 0.5f);
         Invoke("ReloadFinished", reloadTime);
         reloading = true;
     }
@@ -88,11 +95,16 @@ public class WeaponController : MonoBehaviour
     }
 
     private void Awake() {
-        bulletsLeft = magazineSize;
+        Instance = this;
+        bulletsLeft = 0;
         readyToShoot = true;
     }
 
     private void Start() {
+        GameObject camera = GameObject.Find("Main Camera");
+        cc = camera.GetComponent<CameraController>();
+        cam = camera.GetComponent<Camera>();
+        crosshairs = GameObject.Find("Crosshairs").GetComponent<RawImage>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         crosshairs.canvasRenderer.SetAlpha(0);
     }

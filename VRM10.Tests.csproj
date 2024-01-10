@@ -59,19 +59,19 @@
     <UnityVersion>2022.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\VRM10\Tests\SerializationTests.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Tests\TestAsset.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Tests\MigrationTests.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Tests\LoadTests.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Tests\MaterialImportTests.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Tests\SerializationTests.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Tests\ExpressionTests.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Tests\ApiSampleTests.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Tests\LoadTests.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Tests\ExpressionKeyTests.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Tests\MaterialImportTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UniVRM\VRM10\Tests\VRM10.Tests.asmdef" />

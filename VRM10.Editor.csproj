@@ -59,53 +59,53 @@
     <UnityVersion>2022.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\VRM10\Editor\EditorTool\VRM10LookAtEditorTool.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\EditorTool\VRM10ExpressionEditorTool.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ReorderableMaterialUVBindingList.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ExpressionEditorHelper.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\ScriptedImporter\RemapEditorVrm.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\SerializedExpressionEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Vrm10ExportDialog.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Settings\MaterialDescriptorGeneratorFactory.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\EnumFlagAttributeDrawer.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ReorderableMorphTargetBindingList.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Settings\Vrm10ProjectEditorSettings.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\VRM10Window.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\MeshUtility\Vrm10MeshIntegrationTab.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\VRM10MaterialValidator.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\VRM10SpringBoneColliderEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\ScriptedImporter\VrmScriptedImporterImpl.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\FirstPerson\RendererFirstPersonFlagsDrawer.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\PackageResource.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\MeshUtility\Vrm10ExpressionUpdater.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\VRM10ExpressionEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\EditorTool\VRM10BoneSelectorEditorTool.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Vrm10SerializerGenerator.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\ScrollView.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ExpressionSlider.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\PreviewFaceRenderer.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Attribute\ReadOnlyDrawer.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\EditorTool\VRM10LookAtEditorTool.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Settings\MaterialDescriptorGeneratorFactory.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\EnumFlagAttributeDrawer.cs" />
+    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\VRM10Window.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\VRM10MetaPropertyValidator.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\ScriptedImporter\VrmScriptedImporterEditorGUI.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\MeshUtility\Vrm10MeshUtilityDialog.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\VRM10MaterialValidator.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\ScriptedImporter\VrmScriptedImporter.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\VRM10SpringBoneColliderEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\ScriptedImporter\VrmScriptedImporterImpl.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\VRM10ObjectEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\FirstPerson\RendererFirstPersonFlagsDrawer.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\PackageResource.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Settings\Vrm10ProjectSettingsProvider.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\VRM10MetaEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\VRM10SpringBoneJointEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Vrm10TopMenu.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\MeshUtility\Vrm10ExpressionUpdater.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\SelectedGUI.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\CustomInspector.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\VRM10ExpressionEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\EditorTool\VRM10BoneSelectorEditorTool.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Vrm10SerializerGenerator.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\VrmAnimationMenu.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\ScrollView.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ExpressionSlider.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\ReorderableMaterialColorBindingList.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\PreviewFaceRenderer.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\VRM10ExportSettings.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Vrm10InstanceEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\SpringBone\SpringBoneTreeView.cs" />
-    <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Attribute\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\UniVRM\VRM10\Editor\Components\Expression\Vrm10InstanceEditorExpression.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +464,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
@@ -492,8 +496,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

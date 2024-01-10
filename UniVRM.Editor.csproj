@@ -59,46 +59,48 @@
     <UnityVersion>2022.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMEditorImporterContext.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\VRMBlendShapeProxyEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMAssetWriter.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\Meta\VRMMetaEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMVersionMenu.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExportSettingsEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\SerializedBlendShapeClipEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneValidator.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\SkinnedMeshUtility\VrmBlendShapeUpdater.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExportOptions.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\vrmAssetPostprocessor.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\VrmTopMenu.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipEditorHelper.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExportSettings.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\VrmPreference.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\RecordDisposer.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneColliderGroupEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExporterWizard.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BuildClass.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\FirstPerson\VRMFirstPersonEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Meta\VRMMetaObjectEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\SkinnedMeshUtility\VrmMeshIntegratorWizard.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\VRMExportUnityPackage.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\PreviewFaceRenderer.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMBlendShapeExportFilter.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipSelector.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMImporterMenu.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\SkinnedMeshUtility\VrmPrefabUtility.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMEditorExporter.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMSampleCopy.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\LookAt\VRMLookAtHeadEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\VRMBlendShapeProxyValidator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\AOT\VRMAOTCodeGenerator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMMaterialValidator.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipDrawer.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMEditorImporterContext.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\VRMBlendShapeProxyEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Meta\VRMMetaEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMVersionMenu.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\SkinnedMeshUtility\VrmBlendShapeUpdater.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExportOptions.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\VrmTopMenu.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipEditorHelper.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExportSettings.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneColliderGroupEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BuildClass.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\PreviewFaceRenderer.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipSelector.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\SkinnedMeshUtility\VrmPrefabUtility.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMSampleCopy.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\LookAt\VRMLookAtHeadEditor.cs" />
+    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\VRMBlendShapeProxyValidator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneUtilityEditor.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\AOT\VRMDeserializerGenerator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMHumanoidNormalizerMenu.cs" />
@@ -108,9 +110,7 @@
     <Compile Include="Assets\UniVRM\VRM\Editor\AOT\VRMSerializerGenerator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\Format\VRMExporterVaildator.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeAvatarEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\BlendShapeClipDrawer.cs" />
     <Compile Include="Assets\UniVRM\VRM\Editor\BlendShape\PreviewEditor.cs" />
-    <Compile Include="Assets\UniVRM\VRM\Editor\SpringBone\VRMSpringBoneEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UniVRM\VRM\Editor\VRM.Editor.asmdef" />
@@ -468,6 +468,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
@@ -496,8 +500,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">

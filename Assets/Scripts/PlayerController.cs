@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector3 moveDirection;
 
     public Animator anim;
+    public Transform lookTarget;
 
     public Transform pivot;
     private float rotateSpeed;
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     public CameraController cc;
     [SerializeField] private float wallrunTilt;
 
+    //Debug vars
+    private bool cursorLocked;
+
     private void StartWallRun() {
         if(!isWallRunning) {
             cc.ActivateCamera(2);
@@ -54,10 +58,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = Vector3.Cross(wallNormal, Vector3.up);
         grounded = true;
         isWallRunning = true;
-        aimEnabled = false;
         Debug.Log("Start");
+        aimEnabled = false;
         if (Vector3.Dot(moveDirection, pivot.transform.forward) < 0) moveDirection = -moveDirection;
         walkingCollider.enabled = false;
+
+        WeaponController.Instance.LoadBullets(1);
     }
     private void StopWallRun() {
         if(isWallRunning) cc.ActivateCamera(0);
@@ -71,7 +77,8 @@ public class PlayerController : MonoBehaviour
     private void CheckForWall() {
         onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.75f, whatIsWall);
         onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.75f, whatIsWall);
-        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.9f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
+        Debug.Log(!isWallRunning + " | " + !wallRunOnCD + " | " + !grounded);
+        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.5f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
         if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
     }
 
@@ -85,12 +92,18 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cc = GameObject.Find("Main Camera").GetComponent<CameraController>();
         controller = GetComponent<CharacterController>();
         if (GameObject.Find("Pivot"))
         {
             pivot = GameObject.Find("Pivot").transform;
         }
+        cc.target = lookTarget;
+        orientation = GameObject.Find("Main Camera").transform;
+        walkingCollider = GameObject.Find("WalkingCamera").GetComponent<CinemachineCollider>();
+
         Cursor.lockState = CursorLockMode.Locked;
+        cursorLocked = true;
 
         storedGravityScale = gravityScale;
         cc.ActivateCamera(0);
@@ -100,6 +113,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K)) {
+            Cursor.lockState = cursorLocked ? CursorLockMode.None : CursorLockMode.Locked;
+            cursorLocked = !cursorLocked;
+        }
+
         if (hasControl)
         {
             CheckForWall();
@@ -132,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 moveDirection.y = -1f;
                 if (Input.GetButton("Jump") && jumpEnabled)
                 {
-                    StopWallRun();
+                    // /StopWallRun();
                     moveDirection.y = jumpForce;
                 }
             }
@@ -158,7 +176,8 @@ public class PlayerController : MonoBehaviour
             if(isWallRunning) moveDirection.y = 0f;
             controller.Move(moveDirection * Time.deltaTime);
             if(!isWallRunning) {
-                grounded = controller.isGrounded || distanceToGround < 1.5f;
+                grounded = controller.isGrounded || (distanceToGround < 1.5f && distanceToGround > 0);
+                Debug.Log(controller.isGrounded + " | " + distanceToGround);
             } else { grounded = true; }
 
             //Rotation

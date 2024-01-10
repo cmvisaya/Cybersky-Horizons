@@ -59,15 +59,15 @@
     <UnityVersion>2022.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\CopyTextureTests.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\MetallicRoughnessConverterTests.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\PathObjectTests.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\TextureBytesTests.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\CopyTextureTests.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\PathObjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UniVRM\VRMShaders\GLTF\IO\Tests\VRMShaders.GLTF.IO.Tests.asmdef" />

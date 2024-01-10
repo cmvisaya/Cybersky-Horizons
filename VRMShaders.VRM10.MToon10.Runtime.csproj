@@ -59,27 +59,20 @@
     <UnityVersion>2022.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\micro\.vscode\extensions\visualstudiotoolsforunity.vstuc-0.9.4\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10OutlineMode.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToon10Context.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10RimMapKeyword.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10ParameterMapKeyword.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToon10Migrator.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToonOutlineRenderFeature.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\ShaderLabDefinedValues\UnityCullMode.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10TransparentWithZWriteMode.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\ShaderLabDefinedValues\UnityZWriteMode.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToonValidator.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10NormalMapKeyword.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\Properties\MToon10Properties.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\Extensions\MaterialExtensions.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10DoubleSidedMode.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\Properties\MToon10Prop.cs" />
-    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToonOutlineRenderPass.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\ShaderLabDefinedValues\UnityAlphaModeKeyword.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10AlphaMode.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10EmissiveMapKeyword.cs" />
@@ -87,6 +80,13 @@
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\Properties\MToon10Meta.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10OutlineModeKeyword.cs" />
     <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\ShaderLabDefinedValues\UnityAlphaToMaskMode.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10OutlineMode.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToon10Context.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\ShaderLabDefinedValues\UnityCullMode.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10TransparentWithZWriteMode.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToonValidator.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\UnityShaderLab\MToonDefinedValues\MToon10DoubleSidedMode.cs" />
+    <Compile Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\MToonOutlineRenderPass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Runtime\VRMShaders.VRM10.MToon10.Runtime.asmdef" />
@@ -440,6 +440,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
       <Private>False</Private>
@@ -468,8 +472,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
