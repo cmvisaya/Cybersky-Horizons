@@ -64,8 +64,8 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\ValueNodeType.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\Format\ExtensionsAndExtras\EmissiveMultiplier\Deserializer.g.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\ValueNodeType.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\NodeImporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\Extensions\StringExtensions.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MeshIO\BlendShapeFilter.cs" />
@@ -154,8 +154,8 @@
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\MaterialIO\BuiltInRP\Export\Materials\BuiltInGenericUnlitMaterialExporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\Format\ExtensionsAndExtras\EmissiveMultiplier\Format.g.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\Json\JsonParser.cs" />
-    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\MeshFreezer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\Format\GltfDeserializer.g.cs" />
+    <Compile Include="Assets\UniVRM\UniGLTF\Runtime\MeshUtility\MeshFreezer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\AnimationIO\IAnimationExporter.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniGLTF\IO\UriByteBuffer.cs" />
     <Compile Include="Assets\UniVRM\UniGLTF\Runtime\UniJSON\IFileSystemAccessor.cs" />
@@ -586,6 +586,10 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Library\PackageCache\com.unity.services.wire@1.2.2\Plugins\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">

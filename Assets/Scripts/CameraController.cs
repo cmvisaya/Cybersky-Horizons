@@ -39,6 +39,14 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioListener al = GetComponent<AudioListener>();
+        if (AudioManager.Instance.al == null) {
+            AudioManager.Instance.al = al;
+            al.enabled = true;
+        } else {
+            al.enabled = false;
+        }
+
         if(target != null) {
             if (!useOffsetValues)
             {

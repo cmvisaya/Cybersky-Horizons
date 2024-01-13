@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using Unity.Netcode;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public float moveSpeed, sprintSpeed, speed, bulletTimeSpeedMult, jumpForce, gravityScale, storedGravityScale;
     public float accel = 0.5f;
@@ -40,6 +41,9 @@ public class PlayerController : MonoBehaviour
     bool wallRunOnCD = false;
     public CameraController cc;
     [SerializeField] private float wallrunTilt;
+    public WeaponController wc;
+
+    private Vector3 respawnLocation;
 
     //Debug vars
     private bool cursorLocked;
@@ -58,12 +62,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = Vector3.Cross(wallNormal, Vector3.up);
         grounded = true;
         isWallRunning = true;
-        Debug.Log("Start");
+        //Debug.Log("Start");
         aimEnabled = false;
         if (Vector3.Dot(moveDirection, pivot.transform.forward) < 0) moveDirection = -moveDirection;
         walkingCollider.enabled = false;
 
-        WeaponController.Instance.LoadBullets(1);
+        wc.LoadBullets(1);
     }
     private void StopWallRun() {
         if(isWallRunning) cc.ActivateCamera(0);
@@ -71,13 +75,13 @@ public class PlayerController : MonoBehaviour
         isWallRunning = false;
         aimEnabled = true;
         StartCoroutine(DelayCameraClipthrough());
-        Debug.Log("Stop");
+        //Debug.Log("Stop");
         cc.ActivateCamera(0);
     }
     private void CheckForWall() {
         onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.75f, whatIsWall);
         onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.75f, whatIsWall);
-        Debug.Log(!isWallRunning + " | " + !wallRunOnCD + " | " + !grounded);
+        //Debug.Log(!isWallRunning + " | " + !wallRunOnCD + " | " + !grounded);
         if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.5f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
         if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
     }
@@ -92,31 +96,38 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cc = GameObject.Find("Main Camera").GetComponent<CameraController>();
-        controller = GetComponent<CharacterController>();
-        if (GameObject.Find("Pivot"))
-        {
-            pivot = GameObject.Find("Pivot").transform;
+        //cc = GameObject.Find("Main Camera").GetComponent<CameraController>();
+
+        // if (GameObject.Find("Pivot"))
+        // {
+        //     pivot = GameObject.Find("Pivot").transform;
+        // }
+
+        //orientation = GameObject.Find("Main Camera").transform;
+        //walkingCollider = GameObject.Find("WalkingCamera").GetComponent<CinemachineCollider>();
+
+        GameObject prePlayerCam = GameObject.Find("Pre-Player Cam");
+        if(prePlayerCam != null) {
+            prePlayerCam.SetActive(false);
         }
+        
+        controller = GetComponent<CharacterController>();
         cc.target = lookTarget;
-        orientation = GameObject.Find("Main Camera").transform;
-        walkingCollider = GameObject.Find("WalkingCamera").GetComponent<CinemachineCollider>();
 
         Cursor.lockState = CursorLockMode.Locked;
         cursorLocked = true;
 
         storedGravityScale = gravityScale;
         cc.ActivateCamera(0);
+
+        respawnLocation = transform.position;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K)) {
-            Cursor.lockState = cursorLocked ? CursorLockMode.None : CursorLockMode.Locked;
-            cursorLocked = !cursorLocked;
-        }
+        if (!IsOwner) return;
 
         if (hasControl)
         {
@@ -156,7 +167,7 @@ public class PlayerController : MonoBehaviour
             }
 
             if (isWallRunning && Input.GetButtonDown("Jump")) {
-                moveDirection = (orientation.forward + wallNormal) * jumpForce * 40f;
+                moveDirection = (orientation.forward + wallNormal) * jumpForce * 10f;
                 moveDirection.y = jumpForce * 0.8f;
                 StopWallRun();
             }
@@ -177,7 +188,7 @@ public class PlayerController : MonoBehaviour
             controller.Move(moveDirection * Time.deltaTime);
             if(!isWallRunning) {
                 grounded = controller.isGrounded || (distanceToGround < 1.5f && distanceToGround > 0);
-                Debug.Log(controller.isGrounded + " | " + distanceToGround);
+                //Debug.Log(controller.isGrounded + " | " + distanceToGround);
             } else { grounded = true; }
 
             //Rotation
@@ -196,6 +207,28 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("aiming", aiming);
         anim.SetBool("isGrounded", grounded);
-        anim.SetFloat("Speed", speed); 
+        anim.SetFloat("Speed", speed);
+
+        //MyServerRpc(transform.position);
     }
+
+    public void Respawn() {
+        controller.enabled = false;
+        transform.position = respawnLocation;
+        controller.enabled = true;
+        Debug.Log("PLEASE JUST HEAR ME OUT!");
+    }
+
+    // [ServerRpc]
+    // private void MyServerRpc(Vector3 positionVector)
+    // {
+    //     // Make sure to only execute on the server
+    //     if (!IsServer) return;
+
+    //     // Use the properties directly, no need for parameters
+    //     Debug.Log("TestServerRPC " + OwnerClientId + " | " + transform.position.x + " | " + transform.position.y + " | " + transform.position.z);
+        
+    //     // Use the transform.position directly in the server RPC
+    //     transform.position = positionVector;
+    // }
 }

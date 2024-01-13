@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
+using TMPro;
 
-public class WeaponController : MonoBehaviour
+public class WeaponController : NetworkBehaviour
 {
-    [HideInInspector] public static WeaponController Instance { get; private set; }
     public PlayerController pc;
     public GameObject weapon;
 
@@ -27,9 +28,12 @@ public class WeaponController : MonoBehaviour
     public LayerMask whatIsEnemy;
     public AudioClip shotSound;
     public AudioClip reloadSound;
+    public AudioClip dryFireSound;
     public RawImage crosshairs;
 
     private AudioManager am;
+
+    public TextMeshProUGUI boulettes;
 
     public void LoadBullets(int bullets) {
         am.PlaySoundEffect(reloadSound, 0.5f);
@@ -44,9 +48,13 @@ public class WeaponController : MonoBehaviour
         //if ((Input.GetButtonDown("Reload") && bulletsLeft <= magazineSize && !reloading) || (bulletsLeft == 0 && !reloading)) Reload();
 
         //Shoot
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0) {
-            bulletsShot = bulletsPerTap;
-            Shoot();
+        if (readyToShoot && shooting && !reloading) {
+            if(bulletsLeft > 0) {
+                bulletsShot = bulletsPerTap;
+                Shoot();
+            } else {
+                am.PlaySoundEffect(dryFireSound, 0.5f);
+            }
         }
     }
 
@@ -63,13 +71,13 @@ public class WeaponController : MonoBehaviour
             Debug.Log(rayHit.collider.name);
 
             //Code for hit enemies to take damage
-            if (rayHit.collider.CompareTag("Enemy")) rayHit.collider.GetComponent<Shootable>().TakeDamage(damage);
+            if (rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Player")) rayHit.collider.GetComponent<Shootable>().TakeDamage(damage);
         }
 
         //Screenshake
         CameraController.Instance.ShakeCameras(2.25f, 0.1f);
 
-        am.PlaySoundEffect(shotSound, 0.5f);
+        am.PlayGlobalSoundEffect(shotSound, transform.position, 0.5f);
         bulletsLeft--;
         bulletsShot--;
 
@@ -95,16 +103,16 @@ public class WeaponController : MonoBehaviour
     }
 
     private void Awake() {
-        Instance = this;
         bulletsLeft = 0;
         readyToShoot = true;
     }
 
     private void Start() {
-        GameObject camera = GameObject.Find("Main Camera");
-        cc = camera.GetComponent<CameraController>();
-        cam = camera.GetComponent<Camera>();
+        //GameObject camera = GameObject.Find("Main Camera");
+        //cc = camera.GetComponent<CameraController>();
+        //cam = camera.GetComponent<Camera>();
         crosshairs = GameObject.Find("Crosshairs").GetComponent<RawImage>();
+        boulettes = GameObject.Find("Bullets").GetComponent<TextMeshProUGUI>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         crosshairs.canvasRenderer.SetAlpha(0);
     }
@@ -112,12 +120,22 @@ public class WeaponController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        ShotInput();
+        if (!IsOwner) return;
 
+        ShotInput();
+        AimInput();
+
+        if(boulettes != null) {
+            boulettes.text = "" + bulletsLeft + "/" + magazineSize;
+        }
+
+    }
+
+    private void AimInput() {
         //Edit the aiming code to tighten spread
         if(Input.GetButton("Fire2") && pc.aimEnabled) {
             if(!pc.aiming) {
-                pc.moveDirection.y = 0f;
+                pc.moveDirection.y *= 0.2f;
                 cc.ActivateCamera(1);
                 crosshairs.CrossFadeAlpha(1.0f, 0.1f, false);
             }
