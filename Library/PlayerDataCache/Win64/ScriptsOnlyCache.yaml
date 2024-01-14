@@ -104,7 +104,6 @@ ScriptsOnlyBuild:
     - UniHumanoid.BoneLimit
     Unity.Netcode.Runtime:
     - Unity.Netcode.NetworkConfig
-    - Unity.Netcode.NetworkPrefab
     - Unity.Netcode.NetworkPrefabs
     - Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData
     - Unity.Netcode.Transports.UTP.UnityTransport/SimulatorParameters
@@ -275,53 +274,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9542}
     - Class: 114
-      Script: {instanceID: 9854}
+      Script: {instanceID: 9688}
     - Class: 114
-      Script: {instanceID: 9932}
+      Script: {instanceID: 9856}
     - Class: 114
-      Script: {instanceID: 10052}
+      Script: {instanceID: 9934}
     - Class: 114
-      Script: {instanceID: 10190}
+      Script: {instanceID: 10054}
     - Class: 114
-      Script: {instanceID: 10628}
+      Script: {instanceID: 10192}
     - Class: 114
-      Script: {instanceID: 10710}
+      Script: {instanceID: 10630}
     - Class: 114
-      Script: {instanceID: 10762}
+      Script: {instanceID: 10712}
     - Class: 114
-      Script: {instanceID: 11376}
+      Script: {instanceID: 10764}
     - Class: 114
-      Script: {instanceID: 11514}
+      Script: {instanceID: 11378}
     - Class: 114
-      Script: {instanceID: 11588}
+      Script: {instanceID: 11516}
     - Class: 114
-      Script: {instanceID: 11762}
+      Script: {instanceID: 11590}
     - Class: 114
-      Script: {instanceID: 11802}
+      Script: {instanceID: 11764}
     - Class: 114
-      Script: {instanceID: 11960}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 12370}
+      Script: {instanceID: 11962}
     - Class: 114
-      Script: {instanceID: 12588}
+      Script: {instanceID: 12372}
     - Class: 114
-      Script: {instanceID: 12746}
+      Script: {instanceID: 12590}
     - Class: 114
-      Script: {instanceID: 13148}
+      Script: {instanceID: 12748}
     - Class: 114
-      Script: {instanceID: 13546}
+      Script: {instanceID: 13150}
     - Class: 114
-      Script: {instanceID: 13714}
+      Script: {instanceID: 13548}
     - Class: 114
-      Script: {instanceID: 14166}
+      Script: {instanceID: 13716}
     - Class: 114
-      Script: {instanceID: 15020}
+      Script: {instanceID: 14168}
     - Class: 114
-      Script: {instanceID: 15100}
+      Script: {instanceID: 15022}
     - Class: 114
-      Script: {instanceID: 15394}
+      Script: {instanceID: 15102}
     - Class: 114
-      Script: {instanceID: 39592}
+      Script: {instanceID: 15396}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1331,6 +1330,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 5f5b53321b18b584c498f8aa9968a303
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NetworkSpawnable
+  - hash:
+      serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
@@ -2079,12 +2084,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 5f5b53321b18b584c498f8aa9968a303
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NetworkSpawnable
   platform: 19
   scenePathNames:
   - Assets/Scenes/LevelDesignsad.unity

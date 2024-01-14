@@ -213,10 +213,30 @@ public class PlayerController : NetworkBehaviour
     }
 
     public void Respawn() {
+        if (OwnerClientId == 0) {
+            RespawnServerRpc();
+        } else {
+            RespawnClientRpc(OwnerClientId);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void RespawnServerRpc() {
         controller.enabled = false;
+        Debug.Log(transform.position);
+        Debug.Log("RL " + respawnLocation);
         transform.position = respawnLocation;
         controller.enabled = true;
-        Debug.Log("PLEASE JUST HEAR ME OUT!");
+    }
+
+    [ClientRpc]
+    public void RespawnClientRpc(ulong ownerId) {
+        if(OwnerClientId != ownerId) return;
+        controller.enabled = false;
+        Debug.Log(transform.position);
+        Debug.Log("RL " + respawnLocation);
+        transform.position = respawnLocation;
+        controller.enabled = true;
     }
 
     // [ServerRpc]
