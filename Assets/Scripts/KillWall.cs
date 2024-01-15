@@ -7,7 +7,7 @@ public class KillWall : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            other.GetComponent<Shootable>().TakeDamage(500);
+            other.GetComponent<Shootable>().TakeDamageServerRpc(1000);
         }
     }
 }

@@ -8,7 +8,8 @@ public class Shootable : NetworkBehaviour
     public int health;
 
     //CHANGE THESE TO USE CLIENTRPC INSTEAD OF SERVER RPCS
-    public void TakeDamage(int damage) {
+    [ServerRpc(RequireOwnership = false)]
+    public void TakeDamageServerRpc(int damage) {
         health -= damage;
         if(health <= 0) {
             string tag = gameObject.GetComponent<Collider>().tag;

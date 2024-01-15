@@ -71,7 +71,7 @@ public class WeaponController : NetworkBehaviour
             Debug.Log(rayHit.collider.name);
 
             //Code for hit enemies to take damage
-            if (rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Player")) rayHit.collider.GetComponent<Shootable>().TakeDamage(damage);
+            if (rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Player")) rayHit.collider.GetComponent<Shootable>().TakeDamageServerRpc(damage);
         }
 
         //Screenshake
