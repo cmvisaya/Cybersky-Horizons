@@ -13,7 +13,7 @@ public class Shootable : NetworkBehaviour
         health -= damage;
         if(health <= 0) {
             string tag = gameObject.GetComponent<Collider>().tag;
-            Debug.Log("Player with tag " + tag + " took damage. Owner: " + OwnerClientId);
+            Debug.Log("Entity with tag " + tag + " took damage. Owner: " + OwnerClientId);
             HandleObjectDeath(tag);
         }
     }

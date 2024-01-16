@@ -48,6 +48,8 @@ public class PlayerController : NetworkBehaviour
     //Debug vars
     private bool cursorLocked;
 
+    public ulong debugid;
+
     private void StartWallRun() {
         if(!isWallRunning) {
             cc.ActivateCamera(2);
@@ -121,6 +123,8 @@ public class PlayerController : NetworkBehaviour
         cc.ActivateCamera(0);
 
         respawnLocation = transform.position;
+
+        debugid = OwnerClientId;
     }
 
 
@@ -222,9 +226,8 @@ public class PlayerController : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void RespawnServerRpc() {
+        if(gameObject.GetComponent<Collider>().tag != "Player") return;
         controller.enabled = false;
-        Debug.Log(transform.position);
-        Debug.Log("RL " + respawnLocation);
         transform.position = respawnLocation;
         controller.enabled = true;
     }
@@ -233,8 +236,6 @@ public class PlayerController : NetworkBehaviour
     public void RespawnClientRpc(ulong ownerId) {
         if(OwnerClientId != ownerId) return;
         controller.enabled = false;
-        Debug.Log(transform.position);
-        Debug.Log("RL " + respawnLocation);
         transform.position = respawnLocation;
         controller.enabled = true;
     }

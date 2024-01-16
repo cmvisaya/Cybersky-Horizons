@@ -113,27 +113,31 @@ public class NetworkManagerUI : MonoBehaviour
     }
 
     private async void HandleLobbyPollForUpdates() {
-        if (joinedLobby != null) {
-            lobbyUpdateTimer -= Time.deltaTime;
-            if (lobbyUpdateTimer < 0f) {
-                float lobbyUpdateTimerMax = 1.1f;
-                lobbyUpdateTimer = lobbyUpdateTimerMax;
+        try {
+            if (joinedLobby != null) {
+                lobbyUpdateTimer -= Time.deltaTime;
+                if (lobbyUpdateTimer < 0f) {
+                    float lobbyUpdateTimerMax = 1.1f;
+                    lobbyUpdateTimer = lobbyUpdateTimerMax;
 
-                Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
-                joinedLobby = lobby;
+                    Lobby lobby = await LobbyService.Instance.GetLobbyAsync(joinedLobby.Id);
+                    joinedLobby = lobby;
 
-                if (joinedLobby.Data[KEY_START_GAME].Value != "0") {
-                    if (!IsLobbyHost()) {
-                        ActivateMenu(3);
-                        TestRelay.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
+                    if (joinedLobby.Data[KEY_START_GAME].Value != "0") {
+                        if (!IsLobbyHost()) {
+                            ActivateMenu(3);
+                            TestRelay.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
+                        }
+                        joinedLobby = null;
+
+                        //OnGameStarted?.Invoke(this, EventArgs.Empty);
                     }
-                    joinedLobby = null;
-
-                    //OnGameStarted?.Invoke(this, EventArgs.Empty);
                 }
+                //PrintPlayers();
+                UpdateLobbyUI();
             }
-            PrintPlayers();
-            UpdateLobbyUI();
+        } catch (LobbyServiceException e) {
+            Debug.Log("Whyyyyyyy is this the way that it is: " + e);
         }
     }
 
@@ -157,7 +161,7 @@ public class NetworkManagerUI : MonoBehaviour
 
                 Debug.Log("Created Lobby! " + lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Id + " " + lobby.LobbyCode);
                 il1.text = "Waiting for other players... (" + lobby.Players.Count + "/" + lobby.MaxPlayers + ")\n" + lobby.Name + " (" + lobby.LobbyCode + ")";
-                PrintPlayers();
+                //PrintPlayers();
                 ActivateMenu(2);
             }
             else {
@@ -206,7 +210,7 @@ public class NetworkManagerUI : MonoBehaviour
                 joinedLobby = lobby;
                 Debug.Log("Joined Lobby with code " + lobbyCode);
                 il1.text = "Waiting for other players... (" + lobby.Players.Count + "/" + lobby.MaxPlayers + ")\n" + lobby.Name + " (" + lobby.LobbyCode + ")";
-                PrintPlayers();
+                //PrintPlayers();
             } else {
                 Debug.Log("Invalid username");
             }

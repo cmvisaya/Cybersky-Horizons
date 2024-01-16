@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelDesignsad.unity
     guid: fa7c2c8239fa62044924eb3cf0f425d2
+  - enabled: 1
+    path: Assets/Scenes/CompMap1.unity
+    guid: a2aead3cb84c9644c89770955ff98639
   m_configObjects: {}

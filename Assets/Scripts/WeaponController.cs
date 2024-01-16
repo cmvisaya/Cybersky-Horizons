@@ -24,6 +24,7 @@ public class WeaponController : NetworkBehaviour
     [SerializeField] bool shooting, readyToShoot, reloading;
     public Camera cam;
     public Transform attackPoint;
+    public GameObject muzzleFlash;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     public AudioClip shotSound;
@@ -61,23 +62,31 @@ public class WeaponController : NetworkBehaviour
     private void Shoot() {
         readyToShoot = false;
 
+        //MAY HAVE TO MAKE ANIMATION POINT GUN FORWARDS
+
         //Spread
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
         Vector3 direction = cam.transform.forward + new Vector3(x, y, 0);
 
         //Raycast for shot - need to edit ray for third person - since its invisible i think we can just do it from the camera to the center... which actually this might be doing
-        if (Physics.Raycast(cam.transform.position, direction, out rayHit, range, whatIsEnemy)) {
-            Debug.Log(rayHit.collider.name);
-
-            //Code for hit enemies to take damage
-            if (rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Player")) rayHit.collider.GetComponent<Shootable>().TakeDamageServerRpc(damage);
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(cam.transform.position, direction, range, whatIsEnemy);
+        if (hits.Length > 0) {
+            foreach (RaycastHit rayHit in hits) {
+                //Code for hit enemies to take damage
+                Shootable hitComponent = rayHit.collider.GetComponent<Shootable>();
+                if (rayHit.collider.CompareTag("Enemy") || (hitComponent.OwnerClientId != OwnerClientId && rayHit.collider.CompareTag("Player")))
+                    hitComponent.TakeDamageServerRpc(damage);
+            }
         }
 
         //Screenshake
         CameraController.Instance.ShakeCameras(2.25f, 0.1f);
 
-        am.PlayGlobalSoundEffect(shotSound, transform.position, 0.5f);
+        Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+
+        am.PlayGlobalSoundEffectServerRpc(0, transform.position, 1f);
         bulletsLeft--;
         bulletsShot--;
 

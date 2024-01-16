@@ -104,6 +104,7 @@ ScriptsOnlyBuild:
     - UniHumanoid.BoneLimit
     Unity.Netcode.Runtime:
     - Unity.Netcode.NetworkConfig
+    - Unity.Netcode.NetworkPrefab
     - Unity.Netcode.NetworkPrefabs
     - Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData
     - Unity.Netcode.Transports.UTP.UnityTransport/SimulatorParameters
@@ -324,6 +325,8 @@ ScriptsOnlyBuild:
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -1492,7 +1495,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 878c3f4c983327ffe6c6bc7d5689068d
+      Hash: efe67f886015bf43102ee0e09e40f66d
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerController
@@ -2038,7 +2041,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpMessageListener
   - hash:
       serializedVersion: 2
-      Hash: a7e00fa689b7752ee71575decfd65134
+      Hash: f4374939b4c3f248214dc84a7dbbb9c4
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: AudioManager
