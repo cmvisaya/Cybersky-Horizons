@@ -3,12 +3,13 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - CameraController
+    - CharacterSelectManager
     - GameManager
     - GlobalAudioListener
-    - KillWall
     - NetworkManagerUI
     - NetworkSpawnable
     - PlayerController
+    - PlayerSpawner
     - Shootable
     - TestRelay
     - WeaponController
@@ -169,7 +170,7 @@ ScriptsOnlyBuild:
     fullTypeName: NetworkManagerUI
     methodName: ReadDisplayName
   sceneClasses:
-    Assets/Scenes/LevelDesignsad.unity:
+    Assets/Scenes/CharacterSelect.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -190,7 +191,164 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
-    - Class: 65
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 814}
+    - Class: 114
+      Script: {instanceID: 816}
+    - Class: 114
+      Script: {instanceID: 838}
+    - Class: 114
+      Script: {instanceID: 1776}
+    - Class: 114
+      Script: {instanceID: 1826}
+    - Class: 114
+      Script: {instanceID: 2276}
+    - Class: 114
+      Script: {instanceID: 2418}
+    - Class: 114
+      Script: {instanceID: 2872}
+    - Class: 114
+      Script: {instanceID: 3014}
+    - Class: 114
+      Script: {instanceID: 3028}
+    - Class: 114
+      Script: {instanceID: 3490}
+    - Class: 114
+      Script: {instanceID: 4602}
+    - Class: 114
+      Script: {instanceID: 4714}
+    - Class: 114
+      Script: {instanceID: 4808}
+    - Class: 114
+      Script: {instanceID: 5540}
+    - Class: 114
+      Script: {instanceID: 5582}
+    - Class: 114
+      Script: {instanceID: 6560}
+    - Class: 114
+      Script: {instanceID: 7508}
+    - Class: 114
+      Script: {instanceID: 8228}
+    - Class: 114
+      Script: {instanceID: 8564}
+    - Class: 114
+      Script: {instanceID: 8624}
+    - Class: 114
+      Script: {instanceID: 9146}
+    - Class: 114
+      Script: {instanceID: 9564}
+    - Class: 114
+      Script: {instanceID: 9706}
+    - Class: 114
+      Script: {instanceID: 10026}
+    - Class: 114
+      Script: {instanceID: 10104}
+    - Class: 114
+      Script: {instanceID: 10226}
+    - Class: 114
+      Script: {instanceID: 10368}
+    - Class: 114
+      Script: {instanceID: 10812}
+    - Class: 114
+      Script: {instanceID: 10896}
+    - Class: 114
+      Script: {instanceID: 11784}
+    - Class: 114
+      Script: {instanceID: 11960}
+    - Class: 114
+      Script: {instanceID: 12000}
+    - Class: 114
+      Script: {instanceID: 12796}
+    - Class: 114
+      Script: {instanceID: 12962}
+    - Class: 114
+      Script: {instanceID: 13366}
+    - Class: 114
+      Script: {instanceID: 13772}
+    - Class: 114
+      Script: {instanceID: 13942}
+    - Class: 114
+      Script: {instanceID: 14400}
+    - Class: 114
+      Script: {instanceID: 16030}
+    - Class: 114
+      Script: {instanceID: 16034}
+    - Class: 114
+      Script: {instanceID: 16038}
+    - Class: 114
+      Script: {instanceID: 16042}
+    - Class: 114
+      Script: {instanceID: 16046}
+    - Class: 114
+      Script: {instanceID: 16054}
+    - Class: 114
+      Script: {instanceID: 16066}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
+      Script: {instanceID: 0}
+    - Class: 143
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/OfflineTester.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -213,115 +371,101 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 758}
+      Script: {instanceID: 1776}
     - Class: 114
-      Script: {instanceID: 760}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 782}
+      Script: {instanceID: 1952}
     - Class: 114
-      Script: {instanceID: 1718}
+      Script: {instanceID: 2276}
     - Class: 114
-      Script: {instanceID: 1768}
+      Script: {instanceID: 2418}
     - Class: 114
-      Script: {instanceID: 1892}
+      Script: {instanceID: 2872}
     - Class: 114
-      Script: {instanceID: 2210}
+      Script: {instanceID: 3014}
     - Class: 114
-      Script: {instanceID: 2352}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 2560}
+      Script: {instanceID: 3490}
     - Class: 114
-      Script: {instanceID: 2800}
+      Script: {instanceID: 4714}
     - Class: 114
-      Script: {instanceID: 2938}
+      Script: {instanceID: 4808}
     - Class: 114
-      Script: {instanceID: 2952}
+      Script: {instanceID: 5540}
     - Class: 114
-      Script: {instanceID: 3406}
+      Script: {instanceID: 5582}
     - Class: 114
-      Script: {instanceID: 4496}
+      Script: {instanceID: 6560}
     - Class: 114
-      Script: {instanceID: 4608}
+      Script: {instanceID: 7508}
     - Class: 114
-      Script: {instanceID: 4702}
+      Script: {instanceID: 7638}
     - Class: 114
-      Script: {instanceID: 5416}
+      Script: {instanceID: 8228}
     - Class: 114
-      Script: {instanceID: 5458}
+      Script: {instanceID: 8564}
     - Class: 114
-      Script: {instanceID: 6296}
+      Script: {instanceID: 8624}
     - Class: 114
-      Script: {instanceID: 6360}
+      Script: {instanceID: 9146}
     - Class: 114
-      Script: {instanceID: 6430}
+      Script: {instanceID: 9618}
     - Class: 114
-      Script: {instanceID: 7374}
+      Script: {instanceID: 9706}
     - Class: 114
-      Script: {instanceID: 7502}
+      Script: {instanceID: 10026}
     - Class: 114
-      Script: {instanceID: 8088}
+      Script: {instanceID: 10104}
     - Class: 114
-      Script: {instanceID: 8416}
+      Script: {instanceID: 10226}
     - Class: 114
-      Script: {instanceID: 8476}
+      Script: {instanceID: 10368}
     - Class: 114
-      Script: {instanceID: 8738}
+      Script: {instanceID: 10896}
     - Class: 114
-      Script: {instanceID: 8988}
+      Script: {instanceID: 11710}
     - Class: 114
-      Script: {instanceID: 9400}
+      Script: {instanceID: 11784}
     - Class: 114
-      Script: {instanceID: 9454}
+      Script: {instanceID: 11960}
     - Class: 114
-      Script: {instanceID: 9542}
+      Script: {instanceID: 12160}
     - Class: 114
-      Script: {instanceID: 9688}
+      Script: {instanceID: 12572}
     - Class: 114
-      Script: {instanceID: 9856}
+      Script: {instanceID: 12796}
     - Class: 114
-      Script: {instanceID: 9934}
+      Script: {instanceID: 12962}
     - Class: 114
-      Script: {instanceID: 10054}
+      Script: {instanceID: 13366}
     - Class: 114
-      Script: {instanceID: 10192}
+      Script: {instanceID: 13772}
     - Class: 114
-      Script: {instanceID: 10630}
+      Script: {instanceID: 13942}
     - Class: 114
-      Script: {instanceID: 10712}
+      Script: {instanceID: 14400}
     - Class: 114
-      Script: {instanceID: 10764}
+      Script: {instanceID: 16026}
     - Class: 114
-      Script: {instanceID: 11378}
+      Script: {instanceID: 16030}
     - Class: 114
-      Script: {instanceID: 11516}
+      Script: {instanceID: 16034}
     - Class: 114
-      Script: {instanceID: 11590}
+      Script: {instanceID: 16038}
     - Class: 114
-      Script: {instanceID: 11764}
+      Script: {instanceID: 16042}
     - Class: 114
-      Script: {instanceID: 11804}
+      Script: {instanceID: 16050}
     - Class: 114
-      Script: {instanceID: 11962}
+      Script: {instanceID: 16054}
     - Class: 114
-      Script: {instanceID: 12372}
+      Script: {instanceID: 16066}
     - Class: 114
-      Script: {instanceID: 12590}
+      Script: {instanceID: 16070}
     - Class: 114
-      Script: {instanceID: 12748}
-    - Class: 114
-      Script: {instanceID: 13150}
-    - Class: 114
-      Script: {instanceID: 13548}
-    - Class: 114
-      Script: {instanceID: 13716}
-    - Class: 114
-      Script: {instanceID: 14168}
-    - Class: 114
-      Script: {instanceID: 15022}
-    - Class: 114
-      Script: {instanceID: 15102}
-    - Class: 114
-      Script: {instanceID: 15396}
+      Script: {instanceID: 16074}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -338,6 +482,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -345,6 +493,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -421,12 +571,6 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: e47d77dff9f7fd0f54480d10a98b411f
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameManager
-  - hash:
-      serializedVersion: 2
       Hash: 4b2325a6cb73414b1cdf7fa93aa1a8af
     assemblyName: Unity.Multiplayer.Samples.Utilities.RNSM
     namespaceName: Unity.Multiplayer.Samples.Utilities
@@ -455,6 +599,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine
     namespaceName: Cinemachine
     className: CinemachineVirtualCamera
+  - hash:
+      serializedVersion: 2
+      Hash: 161a62664f39fa8e8e5d0fe1aeca49fa
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DecalDestroyer
   - hash:
       serializedVersion: 2
       Hash: 04b6685b6f724c0d6024e6b6f96c8202
@@ -497,6 +647,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: CoroutineRunner
+  - hash:
+      serializedVersion: 2
+      Hash: fe111e830148f07e5735ebe7620f752e
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ChromaticAberration
   - hash:
       serializedVersion: 2
       Hash: fddc1d0815370c41972670aaf78cbc9a
@@ -727,6 +883,12 @@ ScriptsOnlyBuild:
     className: VRMMetaInformation
   - hash:
       serializedVersion: 2
+      Hash: 9f92e751d2286296361a1d06b9e90c1e
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: MotionBlur
+  - hash:
+      serializedVersion: 2
       Hash: 85e3d629b123e8af52345a899d698903
     assemblyName: VRM
     namespaceName: VRM
@@ -751,6 +913,12 @@ ScriptsOnlyBuild:
     className: TaskSchedulerWebGL
   - hash:
       serializedVersion: 2
+      Hash: ffaaa6b08bc8a8928411e8e402432358
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessVolume
+  - hash:
+      serializedVersion: 2
       Hash: 81c1ae8a097b2ae92f03307a9a3d2771
     assemblyName: Cinemachine
     namespaceName: Cinemachine
@@ -773,6 +941,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine
     namespaceName: Cinemachine
     className: CinemachineBlendListCamera
+  - hash:
+      serializedVersion: 2
+      Hash: b6792907b61f32faaf3e23f55e750107
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessResources
   - hash:
       serializedVersion: 2
       Hash: db9b308769d19e1f9e161df0392c23ca
@@ -853,6 +1027,12 @@ ScriptsOnlyBuild:
     className: SceneObjectGuid
   - hash:
       serializedVersion: 2
+      Hash: c65fb8f721cc4462e7a642974c37d3c0
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: DepthOfField
+  - hash:
+      serializedVersion: 2
       Hash: 5874b789cd9832847c61ebfa803213af
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
@@ -913,12 +1093,6 @@ ScriptsOnlyBuild:
     className: CinemachineConfiner2D
   - hash:
       serializedVersion: 2
-      Hash: 9fec5ca2c787e9cb93b53a649a8b977a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GlobalAudioListener
-  - hash:
-      serializedVersion: 2
       Hash: 80958a220b168b33ebba29b4a5783435
     assemblyName: VRM10
     namespaceName: UniVRM10
@@ -935,12 +1109,6 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine
     namespaceName: Cinemachine
     className: CinemachineClearShot
-  - hash:
-      serializedVersion: 2
-      Hash: 76a16f45984de169292350d6c01fc10a
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: WeaponController
   - hash:
       serializedVersion: 2
       Hash: 5eee1f0e53861510a4862c8ec36d5f55
@@ -1037,6 +1205,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: b4f05a593336f724236cdb4fdb4d61cd
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ParticleCollision
   - hash:
       serializedVersion: 2
       Hash: 4878e735441f4041539853759559c86f
@@ -1141,6 +1315,12 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 0237607a3a697cf130c195c13cb63a88
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ColorGrading
+  - hash:
+      serializedVersion: 2
       Hash: 2c583ad0ac85d03e8700dd05fdcb46cb
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1151,6 +1331,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
     className: StateMachine
+  - hash:
+      serializedVersion: 2
+      Hash: fb91b0f531b5adecb53c856ab1c2f0aa
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: LensDistortion
   - hash:
       serializedVersion: 2
       Hash: 1553f209ae0b2d5d3a35685fca55f9c3
@@ -1207,10 +1393,10 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 76bc8e41fb08d811bf480e8a2bd6e730
+      Hash: 89ca47cea2a1f8f83a1bac574ca8e424
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: NetworkManagerUI
+    className: GunAim
   - hash:
       serializedVersion: 2
       Hash: a3901985eb076c1c9b7562fca82ca3e0
@@ -1223,6 +1409,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine
     namespaceName: Cinemachine
     className: CinemachineExternalCamera
+  - hash:
+      serializedVersion: 2
+      Hash: 424074d3010ce4ec3d155fbdba52a3b3
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Grain
   - hash:
       serializedVersion: 2
       Hash: c2e17d77d48bdfa31d7c40464bc5df0d
@@ -1333,10 +1525,10 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 5f5b53321b18b584c498f8aa9968a303
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: NetworkSpawnable
+      Hash: ff086b2fc4609f8b094e7c0435c6db0a
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessLayer
   - hash:
       serializedVersion: 2
       Hash: e987953190eb4c12cf19df790566dc2c
@@ -1447,6 +1639,12 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
+      Hash: e9bfee93ebf3a7afacd9b5a36a892fc0
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AutoExposure
+  - hash:
+      serializedVersion: 2
       Hash: d7c8092511063e0dae8106bfc8ed63dd
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1495,12 +1693,6 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: efe67f886015bf43102ee0e09e40f66d
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerController
-  - hash:
-      serializedVersion: 2
       Hash: cf32d98954e63b8e30e9334b152e9b8e
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
@@ -1511,6 +1703,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnControllerColliderHitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: b462ce9b96d7f3f3a8a18557fbf44071
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Bloom
   - hash:
       serializedVersion: 2
       Hash: c4cd63f10b16ed4d4ae3c19f0ab18f0d
@@ -1531,6 +1729,12 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
+      Hash: 110aa327d5a5138dcfcbacb388ae0acc
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessEffectSettings
+  - hash:
+      serializedVersion: 2
       Hash: 2daee6f40e003ecd28ea4215f8dde8d5
     assemblyName: VRM10
     namespaceName: UniVRM10.Sample
@@ -1547,12 +1751,6 @@ ScriptsOnlyBuild:
     assemblyName: VRM10
     namespaceName: UniVRM10
     className: Vrm10AnimationInstance
-  - hash:
-      serializedVersion: 2
-      Hash: d013b93857f9eb68d952e2c81a742672
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: KillWall
   - hash:
       serializedVersion: 2
       Hash: 4718916586b3818eb69bf65df61f0f3a
@@ -1657,6 +1855,12 @@ ScriptsOnlyBuild:
     className: CinemachinePOV
   - hash:
       serializedVersion: 2
+      Hash: 80a72b656b55a7a1fc92e1a02151ea22
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: ScreenSpaceReflections
+  - hash:
+      serializedVersion: 2
       Hash: fab6bbba359446a75b28d3c1a4cccc4a
     assemblyName: Unity.Netcode.Runtime
     namespaceName: Unity.Netcode
@@ -1691,6 +1895,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnEndDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: fb1867f193ee9a21db25f962d2d57e4d
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: AmbientOcclusion
   - hash:
       serializedVersion: 2
       Hash: 51b80d3734ea86b38e3101db98029e15
@@ -1753,6 +1963,24 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 4ea1bf258a208f00f70cf744bd7e56ce
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: Vignette
+  - hash:
+      serializedVersion: 2
+      Hash: 9a2162ebe7303f13b89ba4fcb5e96459
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ExtinguishableFire
+  - hash:
+      serializedVersion: 2
+      Hash: f41afcb9a4025cf91d39ebcd0074d37a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ParticleMenu
+  - hash:
+      serializedVersion: 2
       Hash: e33dbdd54a1cefdee6383cb7acb72f39
     assemblyName: VRM10
     namespaceName: UniVRM10
@@ -1789,7 +2017,7 @@ ScriptsOnlyBuild:
     className: StateGraphAsset
   - hash:
       serializedVersion: 2
-      Hash: 3813539dbbd222831298ae93f76f1e38
+      Hash: 36cfad5d3046100301b650b8eb6329e8
     assemblyName: Cinemachine
     namespaceName: Cinemachine.PostFX
     className: CinemachinePostProcessing
@@ -1829,6 +2057,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 8e867e9b6da8d6e002a3b7061e5f4ea2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Readme
   - hash:
       serializedVersion: 2
       Hash: a2d1a6b93bcddf6bb2e718240152ebb7
@@ -1915,6 +2149,12 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: ecb82fa069f447e07427a2f3b70a7ccd
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GunShoot
+  - hash:
+      serializedVersion: 2
       Hash: 7bb32d6e4c7614a97d9723ce7e26588c
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -1993,6 +2233,18 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 2fd42819c69acefd80a2bbcd49cbe8cf
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessProfile
+  - hash:
+      serializedVersion: 2
+      Hash: 429ce0b58f9d2275bbc4ed740bee78ec
+    assemblyName: Unity.Postprocessing.Runtime
+    namespaceName: UnityEngine.Rendering.PostProcessing
+    className: PostProcessDebug
+  - hash:
+      serializedVersion: 2
       Hash: d5cd7f207e91ca8336c65a577a6fb2a0
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -2003,12 +2255,6 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine
     namespaceName: Cinemachine
     className: CinemachineStateDrivenCamera
-  - hash:
-      serializedVersion: 2
-      Hash: 7d0fc40781da9ed6c800b343447a40d1
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: TestRelay
   - hash:
       serializedVersion: 2
       Hash: cbd766ef1c8aa0174a18f8bd4e76d85b
@@ -2023,12 +2269,6 @@ ScriptsOnlyBuild:
     className: BoneMapping
   - hash:
       serializedVersion: 2
-      Hash: b2bb2986bfd8ace9d0e874ac70ec34b9
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Shootable
-  - hash:
-      serializedVersion: 2
       Hash: b55e4d744578b5b9d59d03bb89f89039
     assemblyName: Unity.Multiplayer.Tools.MetricTestData
     namespaceName: Unity.Multiplayer.Tools.MetricTestData
@@ -2041,22 +2281,10 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpMessageListener
   - hash:
       serializedVersion: 2
-      Hash: f4374939b4c3f248214dc84a7dbbb9c4
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: AudioManager
-  - hash:
-      serializedVersion: 2
       Hash: 26c82ff03f1ea665dbb44d0bb1cdcfd3
     assemblyName: Unity.Multiplayer.Samples.Utilities
     namespaceName: Unity.Multiplayer.Samples.Utilities
     className: NetworkedLoadingProgressTracker
-  - hash:
-      serializedVersion: 2
-      Hash: ccf1ee6ad5ed78373c858d6c58001c13
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: TestLobby
   - hash:
       serializedVersion: 2
       Hash: e099b5a976ec29ed045916c0aeeb4bb2
@@ -2087,8 +2315,87 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: f4374939b4c3f248214dc84a7dbbb9c4
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
+      Hash: cf8fdba0b69a1f235d5de7f57e0d0d11
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 8c769092f717e4eedd2b958192e647b6
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: WeaponController
+  - hash:
+      serializedVersion: 2
+      Hash: f6d1f03928649a2fb76b160841206984
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: efe67f886015bf43102ee0e09e40f66d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: 80208101f15e0070f1985695e325eb5a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CharacterSelectManager
+  - hash:
+      serializedVersion: 2
+      Hash: 7d0fc40781da9ed6c800b343447a40d1
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TestRelay
+  - hash:
+      serializedVersion: 2
+      Hash: b2bb2986bfd8ace9d0e874ac70ec34b9
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Shootable
+  - hash:
+      serializedVersion: 2
+      Hash: d013b93857f9eb68d952e2c81a742672
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: KillWall
+  - hash:
+      serializedVersion: 2
+      Hash: ccf1ee6ad5ed78373c858d6c58001c13
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TestLobby
+  - hash:
+      serializedVersion: 2
+      Hash: 9fec5ca2c787e9cb93b53a649a8b977a
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GlobalAudioListener
+  - hash:
+      serializedVersion: 2
+      Hash: 80620e0a7f3a1d0f6f3f62ea4412805e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NetworkManagerUI
+  - hash:
+      serializedVersion: 2
+      Hash: 5f5b53321b18b584c498f8aa9968a303
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: NetworkSpawnable
   platform: 19
   scenePathNames:
-  - Assets/Scenes/LevelDesignsad.unity
+  - Assets/Scenes/CharacterSelect.unity
+  - Assets/Scenes/OfflineTester.unity
   playerPath: C:/Users/micro/OneDrive/Documents/Game Development/Unity Projects/ThirdPersonShooter/Builds/Charged
     Up.exe

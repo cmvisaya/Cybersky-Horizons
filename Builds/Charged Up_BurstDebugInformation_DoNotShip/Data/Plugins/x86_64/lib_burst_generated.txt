@@ -34,6 +34,7 @@ Library: C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\Third
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=Unity.Multiplayer.Tools.NetStatsMonitor.Component;
 --assembly-defines=VRMShaders.GLTF.UniUnlit.Runtime;
+--assembly-defines=Unity.Postprocessing.Runtime;
 --assembly-defines=Unity.ProBuilder.Stl;
 --assembly-defines=Unity.Services.Core.Environments.Internal;
 --assembly-defines=Unity.Multiplayer.Tools.NetworkSolutionInterface;
@@ -247,6 +248,7 @@ Library: C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\Third
 --assembly-defines=Unity.VisualScripting.State;
 --assembly-defines=Unity.Multiplayer.Tools.NetStatsMonitor.Component;
 --assembly-defines=VRMShaders.GLTF.UniUnlit.Runtime;
+--assembly-defines=Unity.Postprocessing.Runtime;
 --assembly-defines=Unity.ProBuilder.Stl;
 --assembly-defines=Unity.Services.Core.Environments.Internal;
 --assembly-defines=Unity.Multiplayer.Tools.NetworkSolutionInterface;

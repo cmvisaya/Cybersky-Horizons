@@ -32,6 +32,7 @@
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.Netcode.Components.dll"
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.Netcode.Runtime.dll"
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.Networking.Transport.dll"
+-a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.Postprocessing.Runtime.dll"
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.ProBuilder.Csg.dll"
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.ProBuilder.dll"
 -a="C:\Users\micro\OneDrive\Documents\Game Development\Unity Projects\ThirdPersonShooter\Library\Bee\PlayerScriptAssemblies\Unity.ProBuilder.KdTree.dll"

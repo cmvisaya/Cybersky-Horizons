@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  sprintSpeed: 12
+  sprintSpeed: 13
   speed: 0
   bulletTimeSpeedMult: 0.6
   jumpForce: 13
@@ -515,6 +515,7 @@ MonoBehaviour:
   timeBetweenShots: 0
   magazineSize: 5
   bulletsPerTap: 1
+  bulletsPerReload: 1
   allowButtonHold: 0
   bulletsLeft: 0
   bulletsShot: 0
@@ -524,11 +525,11 @@ MonoBehaviour:
   cam: {fileID: 7791687548105537683}
   attackPoint: {fileID: 4068680182939390592}
   muzzleFlash: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
-  bulletHole: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 384
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
+  shotSoundVolume: 1
   reloadSound: {fileID: 8300000, guid: d4ec65d2be6efbc4ebc261f0b3bd12d4, type: 3}
   dryFireSound: {fileID: 8300000, guid: d412f156fd16b5045b07fe844bbb3203, type: 3}
   crosshairs: {fileID: 0}

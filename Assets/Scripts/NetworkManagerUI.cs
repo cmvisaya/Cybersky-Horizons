@@ -25,6 +25,7 @@ public class NetworkManagerUI : MonoBehaviour
     private string playerName;
 
     [SerializeField] private GameObject[] menus;
+    [SerializeField] private GameObject[] playerPrefabs;
 
     private string KEY_START_GAME;
 

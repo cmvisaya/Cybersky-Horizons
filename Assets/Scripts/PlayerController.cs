@@ -69,7 +69,7 @@ public class PlayerController : NetworkBehaviour
         if (Vector3.Dot(moveDirection, pivot.transform.forward) < 0) moveDirection = -moveDirection;
         walkingCollider.enabled = false;
 
-        wc.LoadBullets(1);
+        wc.LoadBullets();
     }
     private void StopWallRun() {
         if(isWallRunning) cc.ActivateCamera(0);

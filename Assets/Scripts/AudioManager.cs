@@ -12,7 +12,7 @@ public class AudioManager : NetworkBehaviour
 
     [SerializeField] AudioClip[] globalClips;
 
-    private void Start() {
+    private void Awake() {
         Instance = this;
         source = GetComponent<AudioSource>();
     }

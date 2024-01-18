@@ -18,8 +18,8 @@ public class WeaponController : NetworkBehaviour
     //Gun Stats
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
-    public int magazineSize, bulletsPerTap;
-    public bool allowButtonHold;
+    public int magazineSize, bulletsPerTap, bulletsPerReload;
+    public bool allowButtonHold, allowSightSprinting;
     [SerializeField] int bulletsLeft, bulletsShot;
     [SerializeField] bool shooting, readyToShoot, reloading;
     public Camera cam;
@@ -28,13 +28,19 @@ public class WeaponController : NetworkBehaviour
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
     public AudioClip shotSound;
+    public float shotSoundVolume;
     public AudioClip reloadSound;
     public AudioClip dryFireSound;
+    private bool dryFireSoundPlayed;
     public RawImage crosshairs;
 
     private AudioManager am;
 
     public TextMeshProUGUI boulettes;
+
+    public void LoadBullets() {
+        LoadBullets(bulletsPerReload);
+    }
 
     public void LoadBullets(int bullets) {
         am.PlaySoundEffect(reloadSound, 0.5f);
@@ -46,6 +52,8 @@ public class WeaponController : NetworkBehaviour
         if (allowButtonHold) shooting = Input.GetButton("Fire1");
         else shooting = Input.GetButtonDown("Fire1");
 
+        if (Input.GetButtonUp("Fire1")) dryFireSoundPlayed = false;
+
         //if ((Input.GetButtonDown("Reload") && bulletsLeft <= magazineSize && !reloading) || (bulletsLeft == 0 && !reloading)) Reload();
 
         //Shoot
@@ -54,7 +62,8 @@ public class WeaponController : NetworkBehaviour
                 bulletsShot = bulletsPerTap;
                 Shoot();
             } else {
-                am.PlaySoundEffect(dryFireSound, 0.5f);
+                if (!dryFireSoundPlayed) am.PlaySoundEffect(dryFireSound, 0.5f);
+                dryFireSoundPlayed = true;
             }
         }
     }
@@ -72,6 +81,9 @@ public class WeaponController : NetworkBehaviour
         //Raycast for shot - need to edit ray for third person - since its invisible i think we can just do it from the camera to the center... which actually this might be doing
         RaycastHit[] hits;
         hits = Physics.RaycastAll(cam.transform.position, direction, range, whatIsEnemy);
+
+        Debug.DrawRay(cam.transform.position, direction, Color.green, 5f);
+
         if (hits.Length > 0) {
             foreach (RaycastHit rayHit in hits) {
                 //Code for hit enemies to take damage
@@ -86,7 +98,7 @@ public class WeaponController : NetworkBehaviour
 
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
-        am.PlayGlobalSoundEffectServerRpc(0, transform.position, 1f);
+        am.PlayGlobalSoundEffectServerRpc(0, transform.position, shotSoundVolume);
         bulletsLeft--;
         bulletsShot--;
 
@@ -149,7 +161,7 @@ public class WeaponController : NetworkBehaviour
                 crosshairs.CrossFadeAlpha(1.0f, 0.1f, false);
             }
             pc.aiming = true;
-            pc.sprintEnabled = false;
+            if (!allowSightSprinting) pc.sprintEnabled = false;
             pc.jumpEnabled = false;
             pc.gravityScale = bulletTimeGravity;
             SetSeat(activeSeat);
