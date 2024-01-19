@@ -49,6 +49,5 @@ public class CharacterSelectManager : MonoBehaviour
     private void LockIn() {
         GameManager.Instance.selectedCharacterCode = currCharCode;
         GameManager.Instance.LoadScene(nextSceneCode);
-        Debug.Log("Selected!"); //Change scenes here
     }
 }

@@ -37,8 +37,6 @@ public class TestRelay : MonoBehaviour
 
             NetworkManager.Singleton.StartHost();
 
-            PlayerSpawner.Instance.SpawnPlayer();
-
             return joinCode;
 
         } catch (RelayServiceException e) {
@@ -59,7 +57,7 @@ public class TestRelay : MonoBehaviour
 
             NetworkManager.Singleton.StartClient();
 
-            PlayerSpawner.Instance.SpawnPlayer();
+
             
         } catch (RelayServiceException e) {
             Debug.Log(e);

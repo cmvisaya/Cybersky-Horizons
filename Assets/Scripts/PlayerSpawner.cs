@@ -2,50 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 
 public class PlayerSpawner : NetworkBehaviour {
 
-    public static PlayerSpawner Instance;
     [SerializeField] private GameObject[] playerPrefabList;
 
-    private void Awake() {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    public bool playerSpawned = false;
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    public override void OnNetworkSpawn() {
+    if (IsOwner) {
+        // Only the owner (host or local client) sets the character code
+        int charCode = GameObject.Find("GameManager").GetComponent<GameManager>().selectedCharacterCode;
+        Debug.Log(charCode + " | " + OwnerClientId);
+        SpawnPlayerServerRpc(charCode, OwnerClientId);
     }
+}
 
-    public void SpawnPlayer() {
-        if (OwnerClientId == 0) SpawnPlayerServerRpc();
-        else SpawnPlayerClientRpc(OwnerClientId);
-    }
-    
     [ServerRpc(RequireOwnership = false)]
-    public void SpawnPlayerServerRpc() {
-        GameObject newPlayer;
-        newPlayer = (GameObject)Instantiate(playerPrefabList[GameManager.Instance.selectedCharacterCode]);
+    private void SpawnPlayerServerRpc(int charCode, ulong clientId) {
+        if (playerSpawned) return;
 
-        NetworkObject netObj = newPlayer.GetComponent<NetworkObject>();
-        newPlayer.SetActive(true);
+        Debug.Log($"SpawnPlayerServerRpc - CharCode: {charCode}, OwnerClientId: {clientId}");
 
-        Debug.Log("HELLLLLLLLPPPPP " + OwnerClientId);
-        netObj.SpawnAsPlayerObject(OwnerClientId, true);
-    }
+        Transform go = Instantiate(playerPrefabList[charCode]).transform;
+        NetworkObject netObj = go.GetComponent<NetworkObject>();
 
-    [ClientRpc]
-    public void SpawnPlayerClientRpc(ulong ownderId) {
-        if(OwnerClientId != ownderId) return;
-        GameObject newPlayer;
-        newPlayer = (GameObject)Instantiate(playerPrefabList[GameManager.Instance.selectedCharacterCode]);
-
-        NetworkObject netObj = newPlayer.GetComponent<NetworkObject>();
-        newPlayer.SetActive(true);
-
-        Debug.Log("WHAT THE HELLLLL " + OwnerClientId);
-        netObj.SpawnAsPlayerObject(OwnerClientId, true);
+        if (netObj != null) {
+            netObj.SpawnWithOwnership(clientId, false);
+            go.parent = transform;
+            playerSpawned = true;
+            Debug.Log("Player spawned successfully.");
+        } else {
+            Debug.LogError("NetworkObject component not found on the player prefab.");
+        }
     }
 }

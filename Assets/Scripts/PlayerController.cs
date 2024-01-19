@@ -50,6 +50,8 @@ public class PlayerController : NetworkBehaviour
 
     public ulong debugid;
 
+    public int characterId;
+
     private void StartWallRun() {
         if(!isWallRunning) {
             cc.ActivateCamera(2);
@@ -93,6 +95,10 @@ public class PlayerController : NetworkBehaviour
         yield return new WaitForSeconds(0.3f);
         walkingCollider.enabled = true;
         wallRunOnCD = false;
+    }
+
+    private void Awake() {
+        //if(characterId != GameManager.Instance.selectedCharacterCode) gameObject.SetActive(false);
     }
 
     // Start is called before the first frame update

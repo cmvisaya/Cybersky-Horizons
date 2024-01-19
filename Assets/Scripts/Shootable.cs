@@ -14,6 +14,7 @@ public class Shootable : NetworkBehaviour
         if(health <= 0) {
             string tag = gameObject.GetComponent<Collider>().tag;
             Debug.Log("Entity with tag " + tag + " took damage. Owner: " + OwnerClientId);
+            health = 100;
             HandleObjectDeath(tag);
         }
     }

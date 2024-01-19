@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int selectedCharacterCode = 0;
+    public int selectedCharacterCode;
+    public Dictionary<int, int> charCodes = new Dictionary<int, int>(); //First int is network client id
 
     private void Awake()
     {

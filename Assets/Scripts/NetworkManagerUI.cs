@@ -28,6 +28,8 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] private GameObject[] playerPrefabs;
 
     private string KEY_START_GAME;
+    private int newClientId = 0;
+    private Player thisPlayer;
 
     private void Awake() {
         Instance = this;
@@ -211,7 +213,6 @@ public class NetworkManagerUI : MonoBehaviour
                 joinedLobby = lobby;
                 Debug.Log("Joined Lobby with code " + lobbyCode);
                 il1.text = "Waiting for other players... (" + lobby.Players.Count + "/" + lobby.MaxPlayers + ")\n" + lobby.Name + " (" + lobby.LobbyCode + ")";
-                //PrintPlayers();
             } else {
                 Debug.Log("Invalid username");
             }
@@ -245,10 +246,11 @@ public class NetworkManagerUI : MonoBehaviour
         }
     }
 
-    private Player GetPlayer() {
+    public Player GetPlayer() {
         return new Player {
             Data = new Dictionary<string, PlayerDataObject> {
-                { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) }
+                { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) },
+                { "CharCode", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "" + GameManager.Instance.selectedCharacterCode) }
             }
         };
     }
@@ -264,7 +266,7 @@ public class NetworkManagerUI : MonoBehaviour
         if(lobby != null) {
             Debug.Log("Players in Lobby " + lobby.Name);
             foreach (Player player in lobby.Players) {
-                Debug.Log(player.Id + " " + player.Data["PlayerName"].Value);
+                Debug.Log(player.Id + " " + player.Data["PlayerName"].Value + " " + player.Data["CharCode"].Value);
             }
         }
     }
@@ -292,6 +294,7 @@ public class NetworkManagerUI : MonoBehaviour
     public async void StartGame() {
         if (IsLobbyHost()) {
             try {
+                PrintPlayers();
                 ActivateMenu(3);
                 Debug.Log("Start Game");
 
@@ -304,6 +307,7 @@ public class NetworkManagerUI : MonoBehaviour
                 });
 
                 joinedLobby = lobby;
+                //PrintPlayers();
 
                 /*GameObject[] spawnables = GameObject.FindGameObjectsWithTag("Enemy");
                 foreach (GameObject spawnable in spawnables) {

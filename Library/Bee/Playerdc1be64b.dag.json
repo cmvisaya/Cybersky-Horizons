@@ -399,18 +399,6 @@
       "DebugActionIndex": 14
     },
     {
-      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets0.resource",
-      "DisplayName": "Copying sharedassets0.resource",
-      "ActionType": "CopyFiles",
-      "Inputs": [
-        "Library/PlayerDataCache/Win64/Data/sharedassets0.resource"
-      ],
-      "Outputs": [
-        "Builds/Charged Up_Data/sharedassets0.resource"
-      ],
-      "DebugActionIndex": 15
-    },
-    {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.assets",
       "DisplayName": "Copying sharedassets1.assets",
       "ActionType": "CopyFiles",
@@ -420,7 +408,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets1.assets"
       ],
-      "DebugActionIndex": 16
+      "DebugActionIndex": 15
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.assets.resS",
@@ -431,6 +419,18 @@
       ],
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets1.assets.resS"
+      ],
+      "DebugActionIndex": 16
+    },
+    {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.resource",
+      "DisplayName": "Copying sharedassets1.resource",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/sharedassets1.resource"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/sharedassets1.resource"
       ],
       "DebugActionIndex": 17
     },
@@ -468,9 +468,9 @@
         "Library/PlayerDataCache/Win64/Data/ScriptingAssemblies.json",
         "Library/PlayerDataCache/Win64/Data/sharedassets0.assets",
         "Library/PlayerDataCache/Win64/Data/sharedassets0.assets.resS",
-        "Library/PlayerDataCache/Win64/Data/sharedassets0.resource",
         "Library/PlayerDataCache/Win64/Data/sharedassets1.assets",
         "Library/PlayerDataCache/Win64/Data/sharedassets1.assets.resS",
+        "Library/PlayerDataCache/Win64/Data/sharedassets1.resource",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.AIModule.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.ARModule.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.AccessibilityModule.dll",

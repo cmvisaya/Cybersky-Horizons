@@ -489,6 +489,7 @@ MonoBehaviour:
   wallrunTilt: 25
   wc: {fileID: 5562254263423252350}
   debugid: 0
+  characterId: 1
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,15 +508,15 @@ MonoBehaviour:
   activeSeat: {fileID: 6259101081602410017}
   cc: {fileID: 4452130474815388830}
   bulletTimeGravity: 0.2
-  damage: 24
-  timeBetweenShooting: 0.07
+  damage: 22
+  timeBetweenShooting: 0.09
   spread: 0.02
   range: 20
   reloadTime: 1.25
   timeBetweenShots: 0.4
   magazineSize: 25
   bulletsPerTap: 1
-  bulletsPerReload: 3
+  bulletsPerReload: 4
   allowButtonHold: 1
   allowSightSprinting: 1
   bulletsLeft: 0
@@ -626,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 6019215020512131460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: 0.9119997, y: 1.61, z: -42.2}
+  m_LocalPosition: {x: 0.9119997, y: 1.61, z: -42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -665,7 +666,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
