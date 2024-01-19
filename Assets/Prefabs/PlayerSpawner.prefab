@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1070134348
+  GlobalObjectIdHash: 2713432144
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -68,3 +68,5 @@ MonoBehaviour:
   playerPrefabList:
   - {fileID: 7535104662361938694, guid: 5c783d22ed2408745bfab9ac5fe5dc01, type: 3}
   - {fileID: 7535104662361938694, guid: 87180a66c0484b94a8709f680fb87ec3, type: 3}
+  - {fileID: 7535104662361938694, guid: 3fec68896d34c1e4f8d847f46d811f9b, type: 3}
+  playerSpawned: 0

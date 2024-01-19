@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  sprintSpeed: 13
+  sprintSpeed: 12
   speed: 0
   bulletTimeSpeedMult: 0.6
   jumpForce: 13
@@ -489,6 +489,7 @@ MonoBehaviour:
   wallrunTilt: 25
   wc: {fileID: 5562254263423252350}
   debugid: 0
+  characterId: 0
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +511,7 @@ MonoBehaviour:
   damage: 140
   timeBetweenShooting: 0.5
   spread: 0
-  range: 100
+  range: 65
   reloadTime: 1.25
   timeBetweenShots: 0
   magazineSize: 5
@@ -626,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 6019215020512131460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: 0.9119997, y: 1.61, z: -42.2}
+  m_LocalPosition: {x: 0.5349997, y: 1.0600001, z: -40.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -665,7 +666,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
