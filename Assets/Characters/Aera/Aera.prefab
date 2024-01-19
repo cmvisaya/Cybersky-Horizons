@@ -1288,9 +1288,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 4957422148142613435}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: 0, y: 0.7818984, z: -0.0024387985}
+    m_Extent: {x: 0.60049534, y: 0.78019905, z: 0.14073141}
+  m_DirtyAABB: 0
 --- !u!1 &1121859234148692182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,6 +2005,8 @@ GameObject:
   - component: {fileID: 6268623225197926459}
   - component: {fileID: 8789330163836591473}
   - component: {fileID: 8627606273400068797}
+  - component: {fileID: 5294754998550415995}
+  - component: {fileID: 4924335642067286938}
   m_Layer: 0
   m_Name: Aera
   m_TagString: Untagged
@@ -2291,6 +2293,50 @@ MonoBehaviour:
       m_RotationOrder: 4
     CurveXRangeDegree: 90
     CurveYRangeDegree: 10
+--- !u!114 &5294754998550415995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462909537101777965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 0
+  SyncPositionY: 0
+  SyncPositionZ: 0
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &4924335642067286938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2462909537101777965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad8deae8091111f4eb30a56c1f4e0d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransitionStateInfoList: []
+  m_Animator: {fileID: 930579918919434794}
 --- !u!1 &2519880553898700396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2505,9 +2551,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 4957422148142613435}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: 0.0005208403, y: 1.4320488, z: -0.031392284}
+    m_Extent: {x: 0.12590602, y: 0.1708619, z: 0.13362566}
+  m_DirtyAABB: 0
 --- !u!1 &2611714927005012883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,9 +3846,9 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 4957422148142613435}
   m_AABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_DirtyAABB: 1
+    m_Center: {x: 0.000000014901161, y: 1.4289052, z: 0.01769459}
+    m_Extent: {x: 0.1078513, y: 0.12023044, z: 0.071457356}
+  m_DirtyAABB: 0
 --- !u!1 &4180055628036369126
 GameObject:
   m_ObjectHideFlags: 0

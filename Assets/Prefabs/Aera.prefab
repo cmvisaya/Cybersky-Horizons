@@ -508,7 +508,7 @@ MonoBehaviour:
   activeSeat: {fileID: 6259101081602410017}
   cc: {fileID: 4452130474815388830}
   bulletTimeGravity: 0.2
-  damage: 140
+  damage: 40
   timeBetweenShooting: 0.3
   spread: 0.06
   range: 20
