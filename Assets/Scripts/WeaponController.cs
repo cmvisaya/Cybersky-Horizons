@@ -27,6 +27,7 @@ public class WeaponController : NetworkBehaviour
     public GameObject muzzleFlash;
     public RaycastHit rayHit;
     public LayerMask whatIsEnemy;
+    public LayerMask whatIsWall;
     public AudioClip shotSound;
     public float shotSoundVolume;
     public AudioClip reloadSound;
@@ -37,6 +38,8 @@ public class WeaponController : NetworkBehaviour
     private AudioManager am;
 
     public TextMeshProUGUI boulettes;
+
+    public int teamId = -1;
 
     public void LoadBullets() {
         LoadBullets(bulletsPerReload);
@@ -68,6 +71,10 @@ public class WeaponController : NetworkBehaviour
         }
     }
 
+    private bool CompareLayer(RaycastHit hit, string layerName) {
+        return hit.transform.gameObject.layer == LayerMask.NameToLayer(layerName);
+    }
+
     private void Shoot() {
         readyToShoot = false;
 
@@ -82,16 +89,26 @@ public class WeaponController : NetworkBehaviour
         RaycastHit[] hits;
         hits = Physics.RaycastAll(cam.transform.position, direction, range, whatIsEnemy);
 
-        Debug.DrawRay(cam.transform.position, direction, Color.green, 5f);
+        RaycastHit hit;
+        bool hitWall = false;
 
-        if (hits.Length > 0) {
+        //If hit returns an object tagged with wall or default, do not process hits. (This would mean the first object we hit was a wall);
+        if(Physics.Raycast(cam.transform.position, direction, out hit, range, whatIsWall)) {
+            hitWall = CompareLayer(hit, "Walls") || CompareLayer(hit, "Default");
+            Debug.Log(hit.collider.gameObject.name);
+        } //Change to include everything but collat-able objects
+
+        if (!hitWall && hits.Length > 0) {
             foreach (RaycastHit rayHit in hits) {
                 //Code for hit enemies to take damage
                 Shootable hitComponent = rayHit.collider.GetComponent<Shootable>();
-                if (rayHit.collider.CompareTag("Enemy") || (hitComponent.OwnerClientId != OwnerClientId && rayHit.collider.CompareTag("Player")))
-                    hitComponent.TakeDamageServerRpc(damage);
+                bool shouldTakeDamage = rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Objective")
+                    || (hitComponent.OwnerClientId != OwnerClientId && rayHit.collider.CompareTag("Player"));
+                if (shouldTakeDamage) hitComponent.TakeDamageServerRpc(damage, teamId);
             }
         }
+
+        //Debug.DrawRay(cam.transform.position, direction, Color.green, 5f);
 
         //Screenshake
         CameraController.Instance.ShakeCameras(2.25f, 0.1f);
@@ -126,6 +143,10 @@ public class WeaponController : NetworkBehaviour
     private void Awake() {
         bulletsLeft = 0;
         readyToShoot = true;
+        
+        //BLUE TEAM FOR TESTING PURPOSES
+        //MAKE SURE TO GIVE PLAYER SHOOTABLE COMPONENT A PROPER TEAM ID
+        teamId = 1;
     }
 
     private void Start() {

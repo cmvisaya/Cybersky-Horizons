@@ -432,6 +432,7 @@
 "Assets/Scripts/Shootable.cs"
 "Assets/Scripts/TestLobby.cs"
 "Assets/Scripts/TestRelay.cs"
+"Assets/Scripts/TTRunner.cs"
 "Assets/Scripts/WeaponController.cs"
 "Assets/UnityTechnologies/EffectExamples/Shared/Scripts/DecalDestroyer.cs"
 "Assets/UnityTechnologies/EffectExamples/Shared/Scripts/ExtinguishableFire.cs"

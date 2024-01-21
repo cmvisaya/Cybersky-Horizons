@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Shootable.cs" />
     <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\Scripts\TTRunner.cs" />
     <Compile Include="Assets\Scripts\TestLobby.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

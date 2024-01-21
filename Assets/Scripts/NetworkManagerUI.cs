@@ -14,11 +14,11 @@ public class NetworkManagerUI : MonoBehaviour
 
     public static NetworkManagerUI Instance;
     [SerializeField] private Button serverBtn, hostBtn, clientBtn;
-    [SerializeField] private Button joinBtn, refreshBtn, backBtn1, backBtn2, createBtn, initJoinBtn, startBtn;
+    [SerializeField] private Button joinBtn, refreshBtn, backBtn1, backBtn2, createBtn, initJoinBtn, startBtn, switchTeamBtn;
 
     private string lobbyCode;
 
-    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn;
+    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn, teamText;
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartbeatTimer, lobbyUpdateTimer;
@@ -73,6 +73,19 @@ public class NetworkManagerUI : MonoBehaviour
 
         startBtn.onClick.AddListener(() => {
             StartGame();
+        });
+
+        switchTeamBtn.onClick.AddListener(() => {
+            GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            gm.ChangeTeam();
+            switch (gm.teamId) {
+                case 0:
+                    teamText.text = "(Your Team: RED)";
+                    break;
+                case 1:
+                teamText.text = "(Your Team: BLUE)";
+                break;
+            }
         });
     }
 

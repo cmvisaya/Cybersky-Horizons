@@ -530,6 +530,9 @@ MonoBehaviour:
   whatIsEnemy:
     serializedVersion: 2
     m_Bits: 384
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 247
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
   shotSoundVolume: 0.2
   reloadSound: {fileID: 8300000, guid: d4ec65d2be6efbc4ebc261f0b3bd12d4, type: 3}

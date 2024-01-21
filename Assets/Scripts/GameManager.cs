@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public int selectedCharacterCode;
+    public int selectedCharacterCode, teamId, numTeams;
     public Dictionary<int, int> charCodes = new Dictionary<int, int>(); //First int is network client id
 
     private void Awake()
@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        //Default team values
+        numTeams = 2;
+        teamId = 0;
     }
 
     // Update is called once per frame
@@ -29,5 +33,9 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int id) {
         SceneManager.LoadScene(id);
+    }
+
+    public void ChangeTeam() {
+        teamId = (teamId + 1) % numTeams;
     }
 }

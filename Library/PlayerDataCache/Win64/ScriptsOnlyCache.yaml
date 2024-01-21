@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - PlayerController
     - PlayerSpawner
     - Shootable
+    - TTRunner
     - TestRelay
     - WeaponController
     Cinemachine.dll:
@@ -63,8 +64,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -80,6 +83,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.RectMask2D
+    - UnityEngine.UI.Slider
     VRM.dll:
     - VRM.BlendShapeAvatar
     - VRM.BlendShapeClip
@@ -144,6 +148,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
     UnityEngine.UIElementsModule:
     - UnityEngine.UIElements.DynamicAtlasSettings
@@ -260,9 +265,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12982}
     - Class: 114
-      Script: {instanceID: 13962}
+      Script: {instanceID: 13964}
     - Class: 114
-      Script: {instanceID: 14420}
+      Script: {instanceID: 14422}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -301,6 +306,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -401,23 +408,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12592}
     - Class: 114
+      Script: {instanceID: 12724}
+    - Class: 114
       Script: {instanceID: 12816}
     - Class: 114
       Script: {instanceID: 12982}
     - Class: 114
       Script: {instanceID: 13386}
     - Class: 114
-      Script: {instanceID: 13792}
+      Script: {instanceID: 13590}
     - Class: 114
-      Script: {instanceID: 13962}
+      Script: {instanceID: 13794}
     - Class: 114
-      Script: {instanceID: 14420}
+      Script: {instanceID: 13964}
     - Class: 114
-      Script: {instanceID: 15294}
+      Script: {instanceID: 14422}
     - Class: 114
-      Script: {instanceID: 15374}
+      Script: {instanceID: 15296}
     - Class: 114
-      Script: {instanceID: 15670}
+      Script: {instanceID: 15376}
+    - Class: 114
+      Script: {instanceID: 15672}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1087,7 +1098,7 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: 8c769092f717e4eedd2b958192e647b6
+      Hash: fb146dcf7bfa999926fec8b39c398767
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WeaponController
@@ -2071,6 +2082,12 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: bd5c5a373bb657e8ba07a37baa11cf95
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TTRunner
+  - hash:
+      serializedVersion: 2
       Hash: 8e867e9b6da8d6e002a3b7061e5f4ea2
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -2287,7 +2304,7 @@ ScriptsOnlyBuild:
     className: BoneMapping
   - hash:
       serializedVersion: 2
-      Hash: b2bb2986bfd8ace9d0e874ac70ec34b9
+      Hash: 6c0f7ebb2b8d8317954dc325d5d8badf
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Shootable

@@ -43,7 +43,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float wallrunTilt;
     public WeaponController wc;
 
-    private Vector3 respawnLocation;
+    [SerializeField] private Transform respawnLocation;
 
     //Debug vars
     private bool cursorLocked;
@@ -128,9 +128,15 @@ public class PlayerController : NetworkBehaviour
         storedGravityScale = gravityScale;
         cc.ActivateCamera(0);
 
-        respawnLocation = transform.position;
+        //respawnLocation = transform.position;
 
         debugid = OwnerClientId;
+
+        int teamId = GetComponent<WeaponController>().teamId;
+        if (teamId == 0) respawnLocation = GameObject.Find("Red Spawn").transform;
+        else if (teamId == 1) respawnLocation = GameObject.Find("Blue Spawn").transform;
+
+        Respawn();
     }
 
 
@@ -234,7 +240,9 @@ public class PlayerController : NetworkBehaviour
     public void RespawnServerRpc() {
         if(gameObject.GetComponent<Collider>().tag != "Player") return;
         controller.enabled = false;
-        transform.position = respawnLocation;
+        transform.position = respawnLocation.position;
+        playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
+        pivot.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         controller.enabled = true;
     }
 
@@ -242,7 +250,9 @@ public class PlayerController : NetworkBehaviour
     public void RespawnClientRpc(ulong ownerId) {
         if(OwnerClientId != ownerId) return;
         controller.enabled = false;
-        transform.position = respawnLocation;
+        transform.position = respawnLocation.position;
+        playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
+        pivot.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         controller.enabled = true;
     }
 
