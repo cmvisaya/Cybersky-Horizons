@@ -64,10 +64,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -534,7 +532,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: cf8fdba0b69a1f235d5de7f57e0d0d11
+      Hash: f1d217aba1bc19cf27be4fa772278588
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -1098,7 +1096,7 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: fb146dcf7bfa999926fec8b39c398767
+      Hash: 38bf0c13805a7b5d7a7ae64a06e79d47
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WeaponController
@@ -1392,7 +1390,7 @@ ScriptsOnlyBuild:
     className: GunAim
   - hash:
       serializedVersion: 2
-      Hash: 80620e0a7f3a1d0f6f3f62ea4412805e
+      Hash: 7d04b25f0572f798982532cc246fa006
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: NetworkManagerUI
@@ -1698,7 +1696,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: a32d85cf89cfe21d66eddd7bd82bbe21
+      Hash: f44ebf4e0ecef87fb1c8f1554d3524e6
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerController
@@ -2082,7 +2080,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: bd5c5a373bb657e8ba07a37baa11cf95
+      Hash: d925a86c3d808daa01c845f9dc17eb62
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TTRunner
@@ -2304,7 +2302,7 @@ ScriptsOnlyBuild:
     className: BoneMapping
   - hash:
       serializedVersion: 2
-      Hash: 6c0f7ebb2b8d8317954dc325d5d8badf
+      Hash: b96842e1142026fe14173fd0a3bf9af3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Shootable

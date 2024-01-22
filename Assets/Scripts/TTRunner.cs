@@ -10,8 +10,10 @@ public class TTRunner : MonoBehaviour
     [SerializeField] private Slider redCentral, redOpposite, blueCentral, blueOpposite;
     [SerializeField] private Shootable rchp, rohp, bchp, bohp;
     private bool[] objectivesDestroyed = new bool[4];
+    private bool timerActive = true;
+    [SerializeField] private float secondsLeft, secondsPerGame;
     [SerializeField] private int maxHp;
-    [SerializeField] private TextMeshProUGUI winText;
+    [SerializeField] private TextMeshProUGUI winText, timerText;
     public Transform redSpawn, blueSpawn;
 
     private void Awake() {
@@ -19,6 +21,7 @@ public class TTRunner : MonoBehaviour
             winText.text = "";
             winText.gameObject.SetActive(false);
         }
+        secondsLeft = secondsPerGame + 1;
     }
 
     // Start is called before the first frame update
@@ -39,6 +42,25 @@ public class TTRunner : MonoBehaviour
         redOpposite.value = rohp.GetHealth();
         blueCentral.value = bchp.GetHealth();
         blueOpposite.value = bohp.GetHealth();
+
+        HandleTimer();
+    }
+
+    private void HandleTimer() {
+        if (timerActive && secondsLeft > 0 && timerText.transform.parent.gameObject.activeSelf) {
+            secondsLeft -= Time.deltaTime;
+            int seconds = (int) (secondsLeft % 60);
+            if (seconds < 10) timerText.text = "" + (int) (secondsLeft / 60) + ":0" + (int) (secondsLeft % 60);
+            else timerText.text = "" + (int) (secondsLeft / 60) + ":" + (int) (secondsLeft % 60);
+        }
+
+        if(secondsLeft < 1) {
+            PlayerController[] players = Object.FindObjectsOfType<PlayerController>();
+            foreach(PlayerController player in players) {
+                player.hasControl = false;
+                player.gameObject.GetComponent<WeaponController>().hasControl = false;
+            }
+        }
     }
 
     public void KillObjective(int id) {

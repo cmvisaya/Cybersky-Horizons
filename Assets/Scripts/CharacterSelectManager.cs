@@ -27,6 +27,9 @@ public class CharacterSelectManager : MonoBehaviour
         charButtons[2].onClick.AddListener(() => {
             SelectCharacter(2);
         });
+        charButtons[3].onClick.AddListener(() => {
+            SelectCharacter(3);
+        });
     }
 
     private void Start() {

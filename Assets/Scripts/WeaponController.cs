@@ -19,7 +19,7 @@ public class WeaponController : NetworkBehaviour
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap, bulletsPerReload;
-    public bool allowButtonHold, allowSightSprinting;
+    public bool allowButtonHold, allowSightSprinting, hasControl;
     [SerializeField] int bulletsLeft, bulletsShot;
     [SerializeField] bool shooting, readyToShoot, reloading;
     public Camera cam;
@@ -30,6 +30,8 @@ public class WeaponController : NetworkBehaviour
     public LayerMask whatIsWall;
     public AudioClip shotSound;
     public float shotSoundVolume;
+    public float shakeIntensity = 2.25f;
+    public float shakeTime = 0.1f;
     public AudioClip reloadSound;
     public AudioClip dryFireSound;
     private bool dryFireSoundPlayed;
@@ -111,7 +113,7 @@ public class WeaponController : NetworkBehaviour
         //Debug.DrawRay(cam.transform.position, direction, Color.green, 5f);
 
         //Screenshake
-        CameraController.Instance.ShakeCameras(2.25f, 0.1f);
+        CameraController.Instance.ShakeCameras(shakeIntensity, shakeTime);
 
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
@@ -147,6 +149,7 @@ public class WeaponController : NetworkBehaviour
         //BLUE TEAM FOR TESTING PURPOSES
         //MAKE SURE TO GIVE PLAYER SHOOTABLE COMPONENT A PROPER TEAM ID
         teamId = 1;
+        hasControl = true;
     }
 
     private void Start() {
@@ -162,7 +165,7 @@ public class WeaponController : NetworkBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!IsOwner) return;
+        if (!IsOwner || !hasControl) return;
 
         ShotInput();
         AimInput();

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public int selectedCharacterCode, teamId, numTeams;
+    public string displayName;
     public Dictionary<int, int> charCodes = new Dictionary<int, int>(); //First int is network client id
 
     private void Awake()

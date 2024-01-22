@@ -9,6 +9,7 @@ public class AudioManager : NetworkBehaviour
     private AudioSource source;
 
     public AudioListener al;
+    public float volumeMult;
 
     [SerializeField] AudioClip[] globalClips;
 
@@ -17,7 +18,7 @@ public class AudioManager : NetworkBehaviour
         source = GetComponent<AudioSource>();
     }
     public void PlaySoundEffect(AudioClip clip, float volume) {
-        source.PlayOneShot(clip, volume);
+        source.PlayOneShot(clip, volume * volumeMult);
     }
     
     [ServerRpc(RequireOwnership = false)]
@@ -25,19 +26,19 @@ public class AudioManager : NetworkBehaviour
         Debug.Log("SFX run at OwnerId: " + OwnerClientId);
         if(id >= 0 && id < globalClips.Length) {
             //PlaySoundEffectAtLocationServerRpc(id, position, volume);
-            PlaySoundEffectAtLocationClientRpc(id, position, volume);
+            PlaySoundEffectAtLocationClientRpc(id, position, volume * volumeMult);
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void PlaySoundEffectAtLocationServerRpc(int id, Vector3 position, float volume) {
         Debug.Log("Play at Server");
-        AudioSource.PlayClipAtPoint(globalClips[id], position, volume);
+        AudioSource.PlayClipAtPoint(globalClips[id], position, volume * volumeMult);
     }
 
     [ClientRpc]
     private void PlaySoundEffectAtLocationClientRpc(int id, Vector3 position, float volume) {
         Debug.Log("Play at Client");
-        AudioSource.PlayClipAtPoint(globalClips[id], position, volume);
+        AudioSource.PlayClipAtPoint(globalClips[id], position, volume * volumeMult);
     }
 }

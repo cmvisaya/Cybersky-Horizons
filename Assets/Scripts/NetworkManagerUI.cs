@@ -302,6 +302,7 @@ public class NetworkManagerUI : MonoBehaviour
     public void ReadDisplayName(string s) {
         playerName = s;
         playerUn.text = s;
+        GameObject.Find("GameManager").GetComponent<GameManager>().displayName = s;
     }
 
     public async void StartGame() {

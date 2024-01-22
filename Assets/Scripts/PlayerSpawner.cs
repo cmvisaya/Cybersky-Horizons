@@ -16,15 +16,17 @@ public class PlayerSpawner : NetworkBehaviour {
     public override void OnNetworkSpawn() {
     if (IsOwner) {
         // Only the owner (host or local client) sets the character code
-        int charCode = GameObject.Find("GameManager").GetComponent<GameManager>().selectedCharacterCode;
-        int teamId = GameObject.Find("GameManager").GetComponent<GameManager>().teamId;
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        int charCode = gm.selectedCharacterCode;
+        int teamId = gm.teamId;
+        string displayName = gm.displayName;
         Debug.Log(charCode + " | " + OwnerClientId);
-        SpawnPlayerServerRpc(charCode, teamId, OwnerClientId);
+        SpawnPlayerServerRpc(charCode, teamId, displayName, OwnerClientId);
     }
 }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SpawnPlayerServerRpc(int charCode, int teamId, ulong clientId) {
+    private void SpawnPlayerServerRpc(int charCode, int teamId, string displayName, ulong clientId) {
         if (playerSpawned) return;
 
         Debug.Log($"SpawnPlayerServerRpc - CharCode: {charCode}, OwnerClientId: {clientId}");
@@ -37,6 +39,8 @@ public class PlayerSpawner : NetworkBehaviour {
             go.parent = transform;
             go.gameObject.GetComponentInChildren<WeaponController>().teamId = teamId;
             go.gameObject.GetComponentInChildren<Shootable>().teamId = teamId;
+            go.gameObject.GetComponentInChildren<NameTag>().SetTeam(teamId);
+            go.gameObject.GetComponentInChildren<NameTag>().SetName(displayName);
             playerSpawned = true;
             Debug.Log("Player spawned successfully.");
         } else {
