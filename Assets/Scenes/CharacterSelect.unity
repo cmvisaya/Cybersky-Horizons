@@ -552,7 +552,7 @@ MonoBehaviour:
   - {fileID: 1202504159}
   - {fileID: 420711281}
   currCharCode: 0
-  nextSceneCode: 1
+  nextSceneCode: 2
   charName: {fileID: 2117679133}
   infoTooltip: {fileID: 1181454225}
 --- !u!1 &547579670
@@ -2319,7 +2319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8282757097325946853, guid: 3930466078f48914b82e10bfd5555dd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.26799995
+      value: -0.329
       objectReference: {fileID: 0}
     - target: {fileID: 8282757097325946853, guid: 3930466078f48914b82e10bfd5555dd3, type: 3}
       propertyPath: m_LocalPosition.z

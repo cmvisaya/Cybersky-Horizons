@@ -650,6 +650,7 @@ MonoBehaviour:
   sprintEnabled: 1
   aimEnabled: 1
   aiming: 0
+  shooting: 0
   whatIsWall:
     serializedVersion: 2
     m_Bits: 64
@@ -710,7 +711,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 247
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
-  shotSoundVolume: 1
+  shotSoundVolume: 0.7
   shakeIntensity: 3
   shakeTime: 0.3
   reloadSound: {fileID: 8300000, guid: d4ec65d2be6efbc4ebc261f0b3bd12d4, type: 3}
@@ -822,7 +823,7 @@ Transform:
   m_GameObject: {fileID: 6019215020512131460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: 0.5349997, y: 1.51, z: -40.75}
+  m_LocalPosition: {x: 0.9119997, y: 1.61, z: -42.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -861,7 +862,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 20
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

@@ -31,7 +31,16 @@ public class NetworkManagerUI : MonoBehaviour
     private int newClientId = 0;
     private Player thisPlayer;
 
+    [SerializeField] private AudioClip battleBGM;
+    [SerializeField] private float bgmVol = 0.3f;
+
     private void Awake() {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
         /*
         serverBtn.onClick.AddListener(() => {
@@ -47,6 +56,7 @@ public class NetworkManagerUI : MonoBehaviour
         joinBtn.onClick.AddListener(() => {
             JoinLobbyByCode(lobbyCode);
             ActivateMenu(2);
+            AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
         refreshBtn.onClick.AddListener(() => {
@@ -65,17 +75,21 @@ public class NetworkManagerUI : MonoBehaviour
         initJoinBtn.onClick.AddListener(() => {
             ListLobbies();
             ActivateMenu(1);
+            AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
         createBtn.onClick.AddListener(() => {
             CreateLobby();
+            AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
         startBtn.onClick.AddListener(() => {
             StartGame();
+            AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
         switchTeamBtn.onClick.AddListener(() => {
+            AudioManager.Instance.PlaySoundEffect(1, 2f);
             GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
             gm.ChangeTeam();
             switch (gm.teamId) {
@@ -90,16 +104,20 @@ public class NetworkManagerUI : MonoBehaviour
     }
 
     private async void Start() {
-        playerName = "";
-        KEY_START_GAME = "StartGame";
+        try {
+            playerName = "";
+            KEY_START_GAME = "StartGame";
 
-        await UnityServices.InitializeAsync();
+            await UnityServices.InitializeAsync();
 
-        AuthenticationService.Instance.SignedIn += () => {
-            Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-        };
+            AuthenticationService.Instance.SignedIn += () => {
+                Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+            };
 
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        } catch (AuthenticationException e) {
+            Debug.Log(e);
+        }
 
         ActivateMenu(0);
     }
@@ -142,6 +160,7 @@ public class NetworkManagerUI : MonoBehaviour
                     if (joinedLobby.Data[KEY_START_GAME].Value != "0") {
                         if (!IsLobbyHost()) {
                             ActivateMenu(3);
+                            AudioManager.Instance.PlayBGM(battleBGM, bgmVol);
                             TestRelay.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
                         }
                         joinedLobby = null;
@@ -160,8 +179,8 @@ public class NetworkManagerUI : MonoBehaviour
     private async void CreateLobby() {
         try {
             if (playerName.Length > 0) {
-                string lobbyName = "MyLobby";
-                int maxPlayers = 4;
+                string lobbyName = "Tower Takedown";
+                int maxPlayers = 10;
 
                 CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions {
                     IsPrivate = false,
@@ -259,6 +278,24 @@ public class NetworkManagerUI : MonoBehaviour
         }
     }
 
+    public async void DeleteLobby() {
+        try {
+            await LobbyService.Instance.DeleteLobbyAsync(hostLobby.Id);
+            NetworkManager.Singleton.Shutdown();
+            //Cleanup();
+        } catch (LobbyServiceException e) {
+            Debug.Log(e);
+        }
+    }
+
+    private void Cleanup()
+    {
+        if (NetworkManager.Singleton != null)
+        {
+            Destroy(NetworkManager.Singleton.gameObject);
+        }
+    }
+
     public Player GetPlayer() {
         return new Player {
             Data = new Dictionary<string, PlayerDataObject> {
@@ -321,6 +358,8 @@ public class NetworkManagerUI : MonoBehaviour
                 });
 
                 joinedLobby = lobby;
+
+                AudioManager.Instance.PlayBGM(battleBGM, bgmVol);
                 //PrintPlayers();
 
                 /*GameObject[] spawnables = GameObject.FindGameObjectsWithTag("Enemy");

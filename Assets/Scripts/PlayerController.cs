@@ -26,7 +26,7 @@ public class PlayerController : NetworkBehaviour
 
     [HideInInspector] public bool hasControl, jumpEnabled, sprintEnabled, aimEnabled = true;
 
-    [HideInInspector] public bool aiming = false;
+    [HideInInspector] public bool aiming, shooting = false;
 
     //Wallrunning declarations
     public LayerMask whatIsWall;
@@ -222,6 +222,7 @@ public class PlayerController : NetworkBehaviour
         else { speed = 0; }
 
         anim.SetBool("aiming", aiming);
+        anim.SetBool("shooting", shooting);
         anim.SetBool("isGrounded", grounded);
         anim.SetFloat("Speed", speed);
 
@@ -248,7 +249,7 @@ public class PlayerController : NetworkBehaviour
 
     [ClientRpc]
     public void RespawnClientRpc(ulong ownerId) {
-        if(OwnerClientId != ownerId) return;
+        if(OwnerClientId != ownerId || respawnLocation == null) return;
         controller.enabled = false;
         transform.position = respawnLocation.position;
         playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);

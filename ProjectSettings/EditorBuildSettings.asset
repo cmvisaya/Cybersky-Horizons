@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CompMap1.unity
     guid: a2aead3cb84c9644c89770955ff98639
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: ded306880a733bb4b98f8416be2504fd
+  - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity
     guid: 6aca32bbfd666c04aad31c6d6d57ab98
   - enabled: 1

@@ -225,7 +225,12 @@
         217,
         218,
         219,
-        220
+        220,
+        221,
+        222,
+        223,
+        224,
+        225
       ],
       "OverwriteOutputs": false,
       "DebugActionIndex": 0
@@ -315,6 +320,30 @@
       "DebugActionIndex": 7
     },
     {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/level2",
+      "DisplayName": "Copying level2",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/level2"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/level2"
+      ],
+      "DebugActionIndex": 8
+    },
+    {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/level2.resS",
+      "DisplayName": "Copying level2.resS",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/level2.resS"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/level2.resS"
+      ],
+      "DebugActionIndex": 9
+    },
+    {
       "Annotation": "CopyFiles Builds/Charged Up_Data/resources.assets",
       "DisplayName": "Copying resources.assets",
       "ActionType": "CopyFiles",
@@ -324,7 +353,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/resources.assets"
       ],
-      "DebugActionIndex": 8
+      "DebugActionIndex": 10
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/resources.assets.resS",
@@ -336,7 +365,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/resources.assets.resS"
       ],
-      "DebugActionIndex": 9
+      "DebugActionIndex": 11
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Resources/unity_builtin_extra",
@@ -348,7 +377,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Resources/unity_builtin_extra"
       ],
-      "DebugActionIndex": 10
+      "DebugActionIndex": 12
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/RuntimeInitializeOnLoads.json",
@@ -360,7 +389,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/RuntimeInitializeOnLoads.json"
       ],
-      "DebugActionIndex": 11
+      "DebugActionIndex": 13
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/ScriptingAssemblies.json",
@@ -372,7 +401,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/ScriptingAssemblies.json"
       ],
-      "DebugActionIndex": 12
+      "DebugActionIndex": 14
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets0.assets",
@@ -384,7 +413,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets0.assets"
       ],
-      "DebugActionIndex": 13
+      "DebugActionIndex": 15
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets0.assets.resS",
@@ -396,7 +425,19 @@
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets0.assets.resS"
       ],
-      "DebugActionIndex": 14
+      "DebugActionIndex": 16
+    },
+    {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets0.resource",
+      "DisplayName": "Copying sharedassets0.resource",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/sharedassets0.resource"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/sharedassets0.resource"
+      ],
+      "DebugActionIndex": 17
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.assets",
@@ -408,7 +449,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets1.assets"
       ],
-      "DebugActionIndex": 15
+      "DebugActionIndex": 18
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.assets.resS",
@@ -420,32 +461,56 @@
       "Outputs": [
         "Builds/Charged Up_Data/sharedassets1.assets.resS"
       ],
-      "DebugActionIndex": 16
+      "DebugActionIndex": 19
     },
     {
-      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets1.resource",
-      "DisplayName": "Copying sharedassets1.resource",
+      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets2.assets",
+      "DisplayName": "Copying sharedassets2.assets",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "Library/PlayerDataCache/Win64/Data/sharedassets1.resource"
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.assets"
       ],
       "Outputs": [
-        "Builds/Charged Up_Data/sharedassets1.resource"
+        "Builds/Charged Up_Data/sharedassets2.assets"
       ],
-      "DebugActionIndex": 17
+      "DebugActionIndex": 20
+    },
+    {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets2.assets.resS",
+      "DisplayName": "Copying sharedassets2.assets.resS",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.assets.resS"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/sharedassets2.assets.resS"
+      ],
+      "DebugActionIndex": 21
+    },
+    {
+      "Annotation": "CopyFiles Builds/Charged Up_Data/sharedassets2.resource",
+      "DisplayName": "Copying sharedassets2.resource",
+      "ActionType": "CopyFiles",
+      "Inputs": [
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.resource"
+      ],
+      "Outputs": [
+        "Builds/Charged Up_Data/sharedassets2.resource"
+      ],
+      "DebugActionIndex": 22
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/csharpactions/boot.config_tyr4.info",
       "DisplayName": "Writing boot.config_tyr4.info",
       "ActionType": "WriteFile",
       "PayloadOffset": 83,
-      "PayloadLength": 27460,
+      "PayloadLength": 27734,
       "PayloadDebugContentSnippet": "{\"System.Object\":null,\"Bee.Tun",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/csharpactions/boot.config_tyr4.info"
       ],
-      "DebugActionIndex": 18
+      "DebugActionIndex": 23
     },
     {
       "Annotation": "AddBootConfigGUID Library/Bee/artifacts/WinPlayerBuildProgram/boot.config",
@@ -461,6 +526,8 @@
         "Library/PlayerDataCache/Win64/Data/level0.resS",
         "Library/PlayerDataCache/Win64/Data/level1",
         "Library/PlayerDataCache/Win64/Data/level1.resS",
+        "Library/PlayerDataCache/Win64/Data/level2",
+        "Library/PlayerDataCache/Win64/Data/level2.resS",
         "Library/PlayerDataCache/Win64/Data/resources.assets",
         "Library/PlayerDataCache/Win64/Data/resources.assets.resS",
         "Library/PlayerDataCache/Win64/Data/Resources/unity_builtin_extra",
@@ -468,9 +535,12 @@
         "Library/PlayerDataCache/Win64/Data/ScriptingAssemblies.json",
         "Library/PlayerDataCache/Win64/Data/sharedassets0.assets",
         "Library/PlayerDataCache/Win64/Data/sharedassets0.assets.resS",
+        "Library/PlayerDataCache/Win64/Data/sharedassets0.resource",
         "Library/PlayerDataCache/Win64/Data/sharedassets1.assets",
         "Library/PlayerDataCache/Win64/Data/sharedassets1.assets.resS",
-        "Library/PlayerDataCache/Win64/Data/sharedassets1.resource",
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.assets",
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.assets.resS",
+        "Library/PlayerDataCache/Win64/Data/sharedassets2.resource",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.AIModule.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.ARModule.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.AccessibilityModule.dll",
@@ -682,12 +752,12 @@
         "Library/Bee/artifacts/WinPlayerBuildProgram/boot.config"
       ],
       "ToBuildDependencies": [
-        18
+        23
       ],
       "OverwriteOutputs": false,
       "AllowUnexpectedOutput": true,
       "Env": [],
-      "DebugActionIndex": 19
+      "DebugActionIndex": 24
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/boot.config",
@@ -700,9 +770,9 @@
         "Builds/Charged Up_Data/boot.config"
       ],
       "ToBuildDependencies": [
-        19
+        24
       ],
-      "DebugActionIndex": 20
+      "DebugActionIndex": 25
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/StreamingAssets/UnityServicesProjectConfiguration.json",
@@ -714,7 +784,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/StreamingAssets/UnityServicesProjectConfiguration.json"
       ],
-      "DebugActionIndex": 21
+      "DebugActionIndex": 26
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AIModule.dll",
@@ -726,7 +796,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AIModule.dll"
       ],
-      "DebugActionIndex": 22
+      "DebugActionIndex": 27
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ARModule.dll",
@@ -738,7 +808,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ARModule.dll"
       ],
-      "DebugActionIndex": 23
+      "DebugActionIndex": 28
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AccessibilityModule.dll",
@@ -750,7 +820,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AccessibilityModule.dll"
       ],
-      "DebugActionIndex": 24
+      "DebugActionIndex": 29
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AndroidJNIModule.dll",
@@ -762,7 +832,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AndroidJNIModule.dll"
       ],
-      "DebugActionIndex": 25
+      "DebugActionIndex": 30
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AnimationModule.dll",
@@ -774,7 +844,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AnimationModule.dll"
       ],
-      "DebugActionIndex": 26
+      "DebugActionIndex": 31
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AssetBundleModule.dll",
@@ -786,7 +856,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AssetBundleModule.dll"
       ],
-      "DebugActionIndex": 27
+      "DebugActionIndex": 32
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.AudioModule.dll",
@@ -798,7 +868,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.AudioModule.dll"
       ],
-      "DebugActionIndex": 28
+      "DebugActionIndex": 33
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ClothModule.dll",
@@ -810,7 +880,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ClothModule.dll"
       ],
-      "DebugActionIndex": 29
+      "DebugActionIndex": 34
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ClusterInputModule.dll",
@@ -822,7 +892,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ClusterInputModule.dll"
       ],
-      "DebugActionIndex": 30
+      "DebugActionIndex": 35
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ClusterRendererModule.dll",
@@ -834,7 +904,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ClusterRendererModule.dll"
       ],
-      "DebugActionIndex": 31
+      "DebugActionIndex": 36
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ContentLoadModule.dll",
@@ -846,7 +916,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ContentLoadModule.dll"
       ],
-      "DebugActionIndex": 32
+      "DebugActionIndex": 37
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.CoreModule.dll",
@@ -858,7 +928,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.CoreModule.dll"
       ],
-      "DebugActionIndex": 33
+      "DebugActionIndex": 38
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.CrashReportingModule.dll",
@@ -870,7 +940,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.CrashReportingModule.dll"
       ],
-      "DebugActionIndex": 34
+      "DebugActionIndex": 39
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.DSPGraphModule.dll",
@@ -882,7 +952,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.DSPGraphModule.dll"
       ],
-      "DebugActionIndex": 35
+      "DebugActionIndex": 40
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.DirectorModule.dll",
@@ -894,7 +964,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.DirectorModule.dll"
       ],
-      "DebugActionIndex": 36
+      "DebugActionIndex": 41
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.GIModule.dll",
@@ -906,7 +976,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.GIModule.dll"
       ],
-      "DebugActionIndex": 37
+      "DebugActionIndex": 42
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.GameCenterModule.dll",
@@ -918,7 +988,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.GameCenterModule.dll"
       ],
-      "DebugActionIndex": 38
+      "DebugActionIndex": 43
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.GridModule.dll",
@@ -930,7 +1000,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.GridModule.dll"
       ],
-      "DebugActionIndex": 39
+      "DebugActionIndex": 44
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.HotReloadModule.dll",
@@ -942,7 +1012,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.HotReloadModule.dll"
       ],
-      "DebugActionIndex": 40
+      "DebugActionIndex": 45
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.IMGUIModule.dll",
@@ -954,7 +1024,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.IMGUIModule.dll"
       ],
-      "DebugActionIndex": 41
+      "DebugActionIndex": 46
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ImageConversionModule.dll",
@@ -966,7 +1036,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ImageConversionModule.dll"
       ],
-      "DebugActionIndex": 42
+      "DebugActionIndex": 47
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.InputLegacyModule.dll",
@@ -978,7 +1048,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.InputLegacyModule.dll"
       ],
-      "DebugActionIndex": 43
+      "DebugActionIndex": 48
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.InputModule.dll",
@@ -990,7 +1060,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.InputModule.dll"
       ],
-      "DebugActionIndex": 44
+      "DebugActionIndex": 49
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.JSONSerializeModule.dll",
@@ -1002,7 +1072,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.JSONSerializeModule.dll"
       ],
-      "DebugActionIndex": 45
+      "DebugActionIndex": 50
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.LocalizationModule.dll",
@@ -1014,7 +1084,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.LocalizationModule.dll"
       ],
-      "DebugActionIndex": 46
+      "DebugActionIndex": 51
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.NVIDIAModule.dll",
@@ -1026,7 +1096,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.NVIDIAModule.dll"
       ],
-      "DebugActionIndex": 47
+      "DebugActionIndex": 52
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ParticleSystemModule.dll",
@@ -1038,7 +1108,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ParticleSystemModule.dll"
       ],
-      "DebugActionIndex": 48
+      "DebugActionIndex": 53
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
@@ -1050,7 +1120,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.PerformanceReportingModule.dll"
       ],
-      "DebugActionIndex": 49
+      "DebugActionIndex": 54
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.Physics2DModule.dll",
@@ -1062,7 +1132,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.Physics2DModule.dll"
       ],
-      "DebugActionIndex": 50
+      "DebugActionIndex": 55
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.PhysicsModule.dll",
@@ -1074,7 +1144,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.PhysicsModule.dll"
       ],
-      "DebugActionIndex": 51
+      "DebugActionIndex": 56
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ProfilerModule.dll",
@@ -1086,7 +1156,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ProfilerModule.dll"
       ],
-      "DebugActionIndex": 52
+      "DebugActionIndex": 57
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.PropertiesModule.dll",
@@ -1098,7 +1168,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.PropertiesModule.dll"
       ],
-      "DebugActionIndex": 53
+      "DebugActionIndex": 58
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
@@ -1110,7 +1180,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
       ],
-      "DebugActionIndex": 54
+      "DebugActionIndex": 59
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
@@ -1122,7 +1192,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.ScreenCaptureModule.dll"
       ],
-      "DebugActionIndex": 55
+      "DebugActionIndex": 60
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.SharedInternalsModule.dll",
@@ -1134,7 +1204,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.SharedInternalsModule.dll"
       ],
-      "DebugActionIndex": 56
+      "DebugActionIndex": 61
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.SpriteMaskModule.dll",
@@ -1146,7 +1216,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.SpriteMaskModule.dll"
       ],
-      "DebugActionIndex": 57
+      "DebugActionIndex": 62
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.SpriteShapeModule.dll",
@@ -1158,7 +1228,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.SpriteShapeModule.dll"
       ],
-      "DebugActionIndex": 58
+      "DebugActionIndex": 63
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.StreamingModule.dll",
@@ -1170,7 +1240,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.StreamingModule.dll"
       ],
-      "DebugActionIndex": 59
+      "DebugActionIndex": 64
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.SubstanceModule.dll",
@@ -1182,7 +1252,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.SubstanceModule.dll"
       ],
-      "DebugActionIndex": 60
+      "DebugActionIndex": 65
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.SubsystemsModule.dll",
@@ -1194,7 +1264,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.SubsystemsModule.dll"
       ],
-      "DebugActionIndex": 61
+      "DebugActionIndex": 66
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TLSModule.dll",
@@ -1206,7 +1276,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TLSModule.dll"
       ],
-      "DebugActionIndex": 62
+      "DebugActionIndex": 67
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TerrainModule.dll",
@@ -1218,7 +1288,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TerrainModule.dll"
       ],
-      "DebugActionIndex": 63
+      "DebugActionIndex": 68
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
@@ -1230,7 +1300,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TerrainPhysicsModule.dll"
       ],
-      "DebugActionIndex": 64
+      "DebugActionIndex": 69
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
@@ -1242,7 +1312,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll"
       ],
-      "DebugActionIndex": 65
+      "DebugActionIndex": 70
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
@@ -1254,7 +1324,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll"
       ],
-      "DebugActionIndex": 66
+      "DebugActionIndex": 71
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TextRenderingModule.dll",
@@ -1266,7 +1336,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TextRenderingModule.dll"
       ],
-      "DebugActionIndex": 67
+      "DebugActionIndex": 72
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.TilemapModule.dll",
@@ -1278,7 +1348,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.TilemapModule.dll"
       ],
-      "DebugActionIndex": 68
+      "DebugActionIndex": 73
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UIElementsModule.dll",
@@ -1290,7 +1360,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UIElementsModule.dll"
       ],
-      "DebugActionIndex": 69
+      "DebugActionIndex": 74
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UIModule.dll",
@@ -1302,7 +1372,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UIModule.dll"
       ],
-      "DebugActionIndex": 70
+      "DebugActionIndex": 75
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UmbraModule.dll",
@@ -1314,7 +1384,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UmbraModule.dll"
       ],
-      "DebugActionIndex": 71
+      "DebugActionIndex": 76
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
@@ -1326,7 +1396,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll"
       ],
-      "DebugActionIndex": 72
+      "DebugActionIndex": 77
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
@@ -1338,7 +1408,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityAnalyticsModule.dll"
       ],
-      "DebugActionIndex": 73
+      "DebugActionIndex": 78
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityConnectModule.dll",
@@ -1350,7 +1420,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityConnectModule.dll"
       ],
-      "DebugActionIndex": 74
+      "DebugActionIndex": 79
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityCurlModule.dll",
@@ -1362,7 +1432,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityCurlModule.dll"
       ],
-      "DebugActionIndex": 75
+      "DebugActionIndex": 80
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
@@ -1374,7 +1444,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityTestProtocolModule.dll"
       ],
-      "DebugActionIndex": 76
+      "DebugActionIndex": 81
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
@@ -1386,7 +1456,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll"
       ],
-      "DebugActionIndex": 77
+      "DebugActionIndex": 82
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
@@ -1398,7 +1468,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll"
       ],
-      "DebugActionIndex": 78
+      "DebugActionIndex": 83
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
@@ -1410,7 +1480,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestModule.dll"
       ],
-      "DebugActionIndex": 79
+      "DebugActionIndex": 84
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
@@ -1422,7 +1492,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll"
       ],
-      "DebugActionIndex": 80
+      "DebugActionIndex": 85
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
@@ -1434,7 +1504,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll"
       ],
-      "DebugActionIndex": 81
+      "DebugActionIndex": 86
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.VFXModule.dll",
@@ -1446,7 +1516,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.VFXModule.dll"
       ],
-      "DebugActionIndex": 82
+      "DebugActionIndex": 87
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.VRModule.dll",
@@ -1458,7 +1528,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.VRModule.dll"
       ],
-      "DebugActionIndex": 83
+      "DebugActionIndex": 88
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.VehiclesModule.dll",
@@ -1470,7 +1540,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.VehiclesModule.dll"
       ],
-      "DebugActionIndex": 84
+      "DebugActionIndex": 89
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.VideoModule.dll",
@@ -1482,7 +1552,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.VideoModule.dll"
       ],
-      "DebugActionIndex": 85
+      "DebugActionIndex": 90
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
@@ -1494,7 +1564,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.VirtualTexturingModule.dll"
       ],
-      "DebugActionIndex": 86
+      "DebugActionIndex": 91
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.WindModule.dll",
@@ -1506,7 +1576,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.WindModule.dll"
       ],
-      "DebugActionIndex": 87
+      "DebugActionIndex": 92
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.XRModule.dll",
@@ -1518,7 +1588,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.XRModule.dll"
       ],
-      "DebugActionIndex": 88
+      "DebugActionIndex": 93
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.dll",
@@ -1530,7 +1600,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.dll"
       ],
-      "DebugActionIndex": 89
+      "DebugActionIndex": 94
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Assembly-CSharp.dll",
@@ -1542,7 +1612,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Assembly-CSharp.dll"
       ],
-      "DebugActionIndex": 90
+      "DebugActionIndex": 95
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/FastSpringBone.dll",
@@ -1554,7 +1624,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/FastSpringBone.dll"
       ],
-      "DebugActionIndex": 91
+      "DebugActionIndex": 96
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.dll",
@@ -1566,7 +1636,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.dll"
       ],
-      "DebugActionIndex": 92
+      "DebugActionIndex": 97
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Networking.Transport.dll",
@@ -1578,7 +1648,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Networking.Transport.dll"
       ],
-      "DebugActionIndex": 93
+      "DebugActionIndex": 98
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRMShaders.GLTF.IO.Runtime.dll",
@@ -1590,7 +1660,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRMShaders.GLTF.IO.Runtime.dll"
       ],
-      "DebugActionIndex": 94
+      "DebugActionIndex": 99
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRMShaders.VRM10.Format.Runtime.dll",
@@ -1602,7 +1672,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRMShaders.VRM10.Format.Runtime.dll"
       ],
-      "DebugActionIndex": 95
+      "DebugActionIndex": 100
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Scheduler.dll",
@@ -1614,7 +1684,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Scheduler.dll"
       ],
-      "DebugActionIndex": 96
+      "DebugActionIndex": 101
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Relay.dll",
@@ -1626,7 +1696,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Relay.dll"
       ],
-      "DebugActionIndex": 97
+      "DebugActionIndex": 102
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Configuration.dll",
@@ -1638,7 +1708,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Configuration.dll"
       ],
-      "DebugActionIndex": 98
+      "DebugActionIndex": 103
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRM10.dll",
@@ -1650,7 +1720,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRM10.dll"
       ],
-      "DebugActionIndex": 99
+      "DebugActionIndex": 104
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Collections.dll",
@@ -1662,7 +1732,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Collections.dll"
       ],
-      "DebugActionIndex": 100
+      "DebugActionIndex": 105
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.ProBuilder.Poly2Tri.dll",
@@ -1674,7 +1744,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.ProBuilder.Poly2Tri.dll"
       ],
-      "DebugActionIndex": 101
+      "DebugActionIndex": 106
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.TextMeshPro.dll",
@@ -1686,7 +1756,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.TextMeshPro.dll"
       ],
-      "DebugActionIndex": 102
+      "DebugActionIndex": 107
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Burst.dll",
@@ -1698,7 +1768,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Burst.dll"
       ],
-      "DebugActionIndex": 103
+      "DebugActionIndex": 108
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.ProBuilder.dll",
@@ -1710,7 +1780,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.ProBuilder.dll"
       ],
-      "DebugActionIndex": 104
+      "DebugActionIndex": 109
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Device.dll",
@@ -1722,7 +1792,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Device.dll"
       ],
-      "DebugActionIndex": 105
+      "DebugActionIndex": 110
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Tutorials.Core.dll",
@@ -1734,7 +1804,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Tutorials.Core.dll"
       ],
-      "DebugActionIndex": 106
+      "DebugActionIndex": 111
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Threading.dll",
@@ -1746,7 +1816,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Threading.dll"
       ],
-      "DebugActionIndex": 107
+      "DebugActionIndex": 112
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll",
@@ -1758,7 +1828,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Implementation.dll"
       ],
-      "DebugActionIndex": 108
+      "DebugActionIndex": 113
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Initialization.dll",
@@ -1770,7 +1840,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Initialization.dll"
       ],
-      "DebugActionIndex": 109
+      "DebugActionIndex": 114
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UniGLTF.Utils.dll",
@@ -1782,7 +1852,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UniGLTF.Utils.dll"
       ],
-      "DebugActionIndex": 110
+      "DebugActionIndex": 115
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Lobbies.dll",
@@ -1794,7 +1864,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Lobbies.dll"
       ],
-      "DebugActionIndex": 111
+      "DebugActionIndex": 116
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricTypes.dll",
@@ -1806,7 +1876,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricTypes.dll"
       ],
-      "DebugActionIndex": 112
+      "DebugActionIndex": 117
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.VisualScripting.State.dll",
@@ -1818,7 +1888,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.VisualScripting.State.dll"
       ],
-      "DebugActionIndex": 113
+      "DebugActionIndex": 118
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll",
@@ -1830,7 +1900,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Component.dll"
       ],
-      "DebugActionIndex": 114
+      "DebugActionIndex": 119
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRMShaders.GLTF.UniUnlit.Runtime.dll",
@@ -1842,7 +1912,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRMShaders.GLTF.UniUnlit.Runtime.dll"
       ],
-      "DebugActionIndex": 115
+      "DebugActionIndex": 120
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Postprocessing.Runtime.dll",
@@ -1854,7 +1924,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Postprocessing.Runtime.dll"
       ],
-      "DebugActionIndex": 116
+      "DebugActionIndex": 121
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.ProBuilder.Stl.dll",
@@ -1866,7 +1936,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.ProBuilder.Stl.dll"
       ],
-      "DebugActionIndex": 117
+      "DebugActionIndex": 122
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Environments.Internal.dll",
@@ -1878,7 +1948,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Environments.Internal.dll"
       ],
-      "DebugActionIndex": 118
+      "DebugActionIndex": 123
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetworkSolutionInterface.dll",
@@ -1890,7 +1960,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetworkSolutionInterface.dll"
       ],
-      "DebugActionIndex": 119
+      "DebugActionIndex": 124
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Networking.dll",
@@ -1902,7 +1972,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Networking.dll"
       ],
-      "DebugActionIndex": 120
+      "DebugActionIndex": 125
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.ProBuilder.Csg.dll",
@@ -1914,7 +1984,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.ProBuilder.Csg.dll"
       ],
-      "DebugActionIndex": 121
+      "DebugActionIndex": 126
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Formats.Fbx.Runtime.dll",
@@ -1926,7 +1996,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Formats.Fbx.Runtime.dll"
       ],
-      "DebugActionIndex": 122
+      "DebugActionIndex": 127
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/FastSpringBone10.dll",
@@ -1938,7 +2008,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/FastSpringBone10.dll"
       ],
-      "DebugActionIndex": 123
+      "DebugActionIndex": 128
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.VisualScripting.Flow.dll",
@@ -1950,7 +2020,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.VisualScripting.Flow.dll"
       ],
-      "DebugActionIndex": 124
+      "DebugActionIndex": 129
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.dll",
@@ -1962,7 +2032,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsMonitor.Configuration.dll"
       ],
-      "DebugActionIndex": 125
+      "DebugActionIndex": 130
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Netcode.Components.dll",
@@ -1974,7 +2044,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Netcode.Components.dll"
       ],
-      "DebugActionIndex": 126
+      "DebugActionIndex": 131
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Environments.dll",
@@ -1986,7 +2056,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Environments.dll"
       ],
-      "DebugActionIndex": 127
+      "DebugActionIndex": 132
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStats.dll",
@@ -1998,7 +2068,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStats.dll"
       ],
-      "DebugActionIndex": 128
+      "DebugActionIndex": 133
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRM.dll",
@@ -2010,7 +2080,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRM.dll"
       ],
-      "DebugActionIndex": 129
+      "DebugActionIndex": 134
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Netcode.Runtime.dll",
@@ -2022,7 +2092,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Netcode.Runtime.dll"
       ],
-      "DebugActionIndex": 130
+      "DebugActionIndex": 135
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/unity-websocket-sharp.dll",
@@ -2034,7 +2104,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/unity-websocket-sharp.dll"
       ],
-      "DebugActionIndex": 131
+      "DebugActionIndex": 136
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.RNSM.dll",
@@ -2046,7 +2116,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.RNSM.dll"
       ],
-      "DebugActionIndex": 132
+      "DebugActionIndex": 137
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricTestData.dll",
@@ -2058,7 +2128,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricTestData.dll"
       ],
-      "DebugActionIndex": 133
+      "DebugActionIndex": 138
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.dll",
@@ -2070,7 +2140,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.dll"
       ],
-      "DebugActionIndex": 134
+      "DebugActionIndex": 139
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Analytics.dll",
@@ -2082,7 +2152,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Analytics.dll"
       ],
-      "DebugActionIndex": 135
+      "DebugActionIndex": 140
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Wire.Internal.dll",
@@ -2094,7 +2164,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Wire.Internal.dll"
       ],
-      "DebugActionIndex": 136
+      "DebugActionIndex": 141
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/FbxBuildTestAssets.dll",
@@ -2106,7 +2176,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/FbxBuildTestAssets.dll"
       ],
-      "DebugActionIndex": 137
+      "DebugActionIndex": 142
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Common.dll",
@@ -2118,7 +2188,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Common.dll"
       ],
-      "DebugActionIndex": 138
+      "DebugActionIndex": 143
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Profiling.Core.dll",
@@ -2130,7 +2200,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Profiling.Core.dll"
       ],
-      "DebugActionIndex": 139
+      "DebugActionIndex": 144
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/MToon.dll",
@@ -2142,7 +2212,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/MToon.dll"
       ],
-      "DebugActionIndex": 140
+      "DebugActionIndex": 145
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.ClientAuthority.dll",
@@ -2154,7 +2224,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Samples.Utilities.ClientAuthority.dll"
       ],
-      "DebugActionIndex": 141
+      "DebugActionIndex": 146
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UniHumanoid.dll",
@@ -2166,7 +2236,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UniHumanoid.dll"
       ],
-      "DebugActionIndex": 142
+      "DebugActionIndex": 147
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Internal.dll",
@@ -2178,7 +2248,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Internal.dll"
       ],
-      "DebugActionIndex": 143
+      "DebugActionIndex": 148
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.TerrainTools.dll",
@@ -2190,7 +2260,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.TerrainTools.dll"
       ],
-      "DebugActionIndex": 144
+      "DebugActionIndex": 149
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRMShaders.VRM10.MToon10.Runtime.dll",
@@ -2202,7 +2272,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRMShaders.VRM10.MToon10.Runtime.dll"
       ],
-      "DebugActionIndex": 145
+      "DebugActionIndex": 150
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VrmLib.dll",
@@ -2214,7 +2284,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VrmLib.dll"
       ],
-      "DebugActionIndex": 146
+      "DebugActionIndex": 151
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.VisualScripting.Core.dll",
@@ -2226,7 +2296,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.VisualScripting.Core.dll"
       ],
-      "DebugActionIndex": 147
+      "DebugActionIndex": 152
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.QoS.dll",
@@ -2238,7 +2308,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.QoS.dll"
       ],
-      "DebugActionIndex": 148
+      "DebugActionIndex": 153
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll",
@@ -2250,7 +2320,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetworkProfiler.Runtime.dll"
       ],
-      "DebugActionIndex": 149
+      "DebugActionIndex": 154
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UnityEngine.UI.dll",
@@ -2262,7 +2332,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UnityEngine.UI.dll"
       ],
-      "DebugActionIndex": 150
+      "DebugActionIndex": 155
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Telemetry.dll",
@@ -2274,7 +2344,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Telemetry.dll"
       ],
-      "DebugActionIndex": 151
+      "DebugActionIndex": 156
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Adapters.Ngo1.dll",
@@ -2286,7 +2356,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Adapters.Ngo1.dll"
       ],
-      "DebugActionIndex": 152
+      "DebugActionIndex": 157
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/VRMShaders.VRM.IO.Runtime.dll",
@@ -2298,7 +2368,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/VRMShaders.VRM.IO.Runtime.dll"
       ],
-      "DebugActionIndex": 153
+      "DebugActionIndex": 158
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Timeline.dll",
@@ -2310,7 +2380,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Timeline.dll"
       ],
-      "DebugActionIndex": 154
+      "DebugActionIndex": 159
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Adapters.dll",
@@ -2322,7 +2392,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.Adapters.dll"
       ],
-      "DebugActionIndex": 155
+      "DebugActionIndex": 160
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Autodesk.Fbx.dll",
@@ -2334,7 +2404,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Autodesk.Fbx.dll"
       ],
-      "DebugActionIndex": 156
+      "DebugActionIndex": 161
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Authentication.dll",
@@ -2346,7 +2416,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Authentication.dll"
       ],
-      "DebugActionIndex": 157
+      "DebugActionIndex": 162
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.ProBuilder.KdTree.dll",
@@ -2358,7 +2428,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.ProBuilder.KdTree.dll"
       ],
-      "DebugActionIndex": 158
+      "DebugActionIndex": 163
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Mathematics.dll",
@@ -2370,7 +2440,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Mathematics.dll"
       ],
-      "DebugActionIndex": 159
+      "DebugActionIndex": 164
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Services.Core.Registration.dll",
@@ -2382,7 +2452,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Services.Core.Registration.dll"
       ],
-      "DebugActionIndex": 160
+      "DebugActionIndex": 165
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Cinemachine.dll",
@@ -2394,7 +2464,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Cinemachine.dll"
       ],
-      "DebugActionIndex": 161
+      "DebugActionIndex": 166
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsReporting.dll",
@@ -2406,7 +2476,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.NetStatsReporting.dll"
       ],
-      "DebugActionIndex": 162
+      "DebugActionIndex": 167
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/UniGLTF.dll",
@@ -2418,7 +2488,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/UniGLTF.dll"
       ],
-      "DebugActionIndex": 163
+      "DebugActionIndex": 168
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricEvents.dll",
@@ -2430,7 +2500,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Multiplayer.Tools.MetricEvents.dll"
       ],
-      "DebugActionIndex": 164
+      "DebugActionIndex": 169
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/websocket-sharp.dll",
@@ -2442,7 +2512,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/websocket-sharp.dll"
       ],
-      "DebugActionIndex": 165
+      "DebugActionIndex": 170
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll",
@@ -2454,7 +2524,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll"
       ],
-      "DebugActionIndex": 166
+      "DebugActionIndex": 171
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll",
@@ -2466,7 +2536,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll"
       ],
-      "DebugActionIndex": 167
+      "DebugActionIndex": 172
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Unity.Burst.Unsafe.dll",
@@ -2478,7 +2548,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Unity.Burst.Unsafe.dll"
       ],
-      "DebugActionIndex": 168
+      "DebugActionIndex": 173
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Newtonsoft.Json.dll",
@@ -2490,7 +2560,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Newtonsoft.Json.dll"
       ],
-      "DebugActionIndex": 169
+      "DebugActionIndex": 174
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Runtime.dll",
@@ -2502,7 +2572,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Runtime.dll"
       ],
-      "DebugActionIndex": 170
+      "DebugActionIndex": 175
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/netstandard.dll",
@@ -2514,7 +2584,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/netstandard.dll"
       ],
-      "DebugActionIndex": 171
+      "DebugActionIndex": 176
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/Mono.Security.dll",
@@ -2526,7 +2596,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/Mono.Security.dll"
       ],
-      "DebugActionIndex": 172
+      "DebugActionIndex": 177
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.ComponentModel.Composition.dll",
@@ -2538,7 +2608,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.ComponentModel.Composition.dll"
       ],
-      "DebugActionIndex": 173
+      "DebugActionIndex": 178
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Configuration.dll",
@@ -2550,7 +2620,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Configuration.dll"
       ],
-      "DebugActionIndex": 174
+      "DebugActionIndex": 179
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Core.dll",
@@ -2562,7 +2632,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Core.dll"
       ],
-      "DebugActionIndex": 175
+      "DebugActionIndex": 180
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Data.DataSetExtensions.dll",
@@ -2574,7 +2644,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Data.DataSetExtensions.dll"
       ],
-      "DebugActionIndex": 176
+      "DebugActionIndex": 181
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Data.dll",
@@ -2586,7 +2656,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Data.dll"
       ],
-      "DebugActionIndex": 177
+      "DebugActionIndex": 182
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Drawing.dll",
@@ -2598,7 +2668,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Drawing.dll"
       ],
-      "DebugActionIndex": 178
+      "DebugActionIndex": 183
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.EnterpriseServices.dll",
@@ -2610,7 +2680,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.EnterpriseServices.dll"
       ],
-      "DebugActionIndex": 179
+      "DebugActionIndex": 184
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.IO.Compression.FileSystem.dll",
@@ -2622,7 +2692,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.IO.Compression.FileSystem.dll"
       ],
-      "DebugActionIndex": 180
+      "DebugActionIndex": 185
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.IO.Compression.dll",
@@ -2634,7 +2704,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.IO.Compression.dll"
       ],
-      "DebugActionIndex": 181
+      "DebugActionIndex": 186
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Net.Http.dll",
@@ -2646,7 +2716,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Net.Http.dll"
       ],
-      "DebugActionIndex": 182
+      "DebugActionIndex": 187
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Numerics.dll",
@@ -2658,7 +2728,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Numerics.dll"
       ],
-      "DebugActionIndex": 183
+      "DebugActionIndex": 188
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Runtime.Serialization.dll",
@@ -2670,7 +2740,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Runtime.Serialization.dll"
       ],
-      "DebugActionIndex": 184
+      "DebugActionIndex": 189
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Security.dll",
@@ -2682,7 +2752,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Security.dll"
       ],
-      "DebugActionIndex": 185
+      "DebugActionIndex": 190
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.ServiceModel.Internals.dll",
@@ -2694,7 +2764,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.ServiceModel.Internals.dll"
       ],
-      "DebugActionIndex": 186
+      "DebugActionIndex": 191
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Transactions.dll",
@@ -2706,7 +2776,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Transactions.dll"
       ],
-      "DebugActionIndex": 187
+      "DebugActionIndex": 192
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Xml.Linq.dll",
@@ -2718,7 +2788,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Xml.Linq.dll"
       ],
-      "DebugActionIndex": 188
+      "DebugActionIndex": 193
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.Xml.dll",
@@ -2730,7 +2800,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.Xml.dll"
       ],
-      "DebugActionIndex": 189
+      "DebugActionIndex": 194
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/System.dll",
@@ -2742,7 +2812,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/System.dll"
       ],
-      "DebugActionIndex": 190
+      "DebugActionIndex": 195
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Managed/mscorlib.dll",
@@ -2754,13 +2824,13 @@
       "Outputs": [
         "Builds/Charged Up_Data/Managed/mscorlib.dll"
       ],
-      "DebugActionIndex": 191
+      "DebugActionIndex": 196
     },
     {
       "Annotation": "GenerateNativePluginsForAssemblies Library/Bee/artifacts/WinPlayerBuildProgram/AsyncPluginsFromLinker",
       "DisplayName": "Running Burst Compiler",
       "ActionType": "RunRPCCommand",
-      "PayloadOffset": 27666,
+      "PayloadOffset": 27940,
       "PayloadLength": 26187,
       "PayloadDebugContentSnippet": "{\"PlayerBuildProgramLibrary.Da",
       "Action": "GenerateNativePluginsForAssemblies",
@@ -2969,7 +3039,7 @@
           "Recurse": 1
         }
       ],
-      "DebugActionIndex": 192
+      "DebugActionIndex": 197
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Plugins/x86_64/lib_burst_generated.dll",
@@ -2982,22 +3052,22 @@
         "Builds/Charged Up_Data/Plugins/x86_64/lib_burst_generated.dll"
       ],
       "ToBuildDependencies": [
-        192
+        197
       ],
-      "DebugActionIndex": 193
+      "DebugActionIndex": 198
     },
     {
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
       "DisplayName": "Writing app.info",
       "ActionType": "WriteFile",
-      "PayloadOffset": 53942,
+      "PayloadOffset": 54216,
       "PayloadLength": 15,
       "PayloadDebugContentSnippet": "Nelu\nCharged Up",
       "Inputs": [],
       "Outputs": [
         "Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info"
       ],
-      "DebugActionIndex": 194
+      "DebugActionIndex": 199
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/app.info",
@@ -3010,9 +3080,9 @@
         "Builds/Charged Up_Data/app.info"
       ],
       "ToBuildDependencies": [
-        194
+        199
       ],
-      "DebugActionIndex": 195
+      "DebugActionIndex": 200
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up_Data/Resources/unity default resources",
@@ -3024,7 +3094,7 @@
       "Outputs": [
         "Builds/Charged Up_Data/Resources/unity default resources"
       ],
-      "DebugActionIndex": 196
+      "DebugActionIndex": 201
     },
     {
       "Annotation": "CopyFiles Builds/Charged Up.exe",
@@ -3036,7 +3106,7 @@
       "Outputs": [
         "Builds/Charged Up.exe"
       ],
-      "DebugActionIndex": 197
+      "DebugActionIndex": 202
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
@@ -3048,7 +3118,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll"
       ],
-      "DebugActionIndex": 198
+      "DebugActionIndex": 203
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
@@ -3060,7 +3130,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll"
       ],
-      "DebugActionIndex": 199
+      "DebugActionIndex": 204
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
@@ -3072,7 +3142,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 200
+      "DebugActionIndex": 205
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
@@ -3084,7 +3154,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 201
+      "DebugActionIndex": 206
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/2.0/machine.config",
@@ -3096,7 +3166,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/2.0/machine.config"
       ],
-      "DebugActionIndex": 202
+      "DebugActionIndex": 207
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/2.0/settings.map",
@@ -3108,7 +3178,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/2.0/settings.map"
       ],
-      "DebugActionIndex": 203
+      "DebugActionIndex": 208
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/2.0/web.config",
@@ -3120,7 +3190,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/2.0/web.config"
       ],
-      "DebugActionIndex": 204
+      "DebugActionIndex": 209
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
@@ -3132,7 +3202,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 205
+      "DebugActionIndex": 210
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
@@ -3144,7 +3214,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 206
+      "DebugActionIndex": 211
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.0/machine.config",
@@ -3156,7 +3226,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.0/machine.config"
       ],
-      "DebugActionIndex": 207
+      "DebugActionIndex": 212
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.0/settings.map",
@@ -3168,7 +3238,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.0/settings.map"
       ],
-      "DebugActionIndex": 208
+      "DebugActionIndex": 213
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.0/web.config",
@@ -3180,7 +3250,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.0/web.config"
       ],
-      "DebugActionIndex": 209
+      "DebugActionIndex": 214
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
@@ -3192,7 +3262,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser"
       ],
-      "DebugActionIndex": 210
+      "DebugActionIndex": 215
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
@@ -3204,7 +3274,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx"
       ],
-      "DebugActionIndex": 211
+      "DebugActionIndex": 216
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.5/machine.config",
@@ -3216,7 +3286,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.5/machine.config"
       ],
-      "DebugActionIndex": 212
+      "DebugActionIndex": 217
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.5/settings.map",
@@ -3228,7 +3298,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.5/settings.map"
       ],
-      "DebugActionIndex": 213
+      "DebugActionIndex": 218
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/4.5/web.config",
@@ -3240,7 +3310,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/4.5/web.config"
       ],
-      "DebugActionIndex": 214
+      "DebugActionIndex": 219
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/browscap.ini",
@@ -3252,7 +3322,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/browscap.ini"
       ],
-      "DebugActionIndex": 215
+      "DebugActionIndex": 220
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/config",
@@ -3264,7 +3334,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/config"
       ],
-      "DebugActionIndex": 216
+      "DebugActionIndex": 221
     },
     {
       "Annotation": "CopyFiles Builds/MonoBleedingEdge/etc/mono/mconfig/config.xml",
@@ -3276,7 +3346,7 @@
       "Outputs": [
         "Builds/MonoBleedingEdge/etc/mono/mconfig/config.xml"
       ],
-      "DebugActionIndex": 217
+      "DebugActionIndex": 222
     },
     {
       "Annotation": "CopyFiles Builds/UnityCrashHandler64.exe",
@@ -3288,7 +3358,7 @@
       "Outputs": [
         "Builds/UnityCrashHandler64.exe"
       ],
-      "DebugActionIndex": 218
+      "DebugActionIndex": 223
     },
     {
       "Annotation": "CopyFiles Builds/UnityPlayer.dll",
@@ -3300,7 +3370,7 @@
       "Outputs": [
         "Builds/UnityPlayer.dll"
       ],
-      "DebugActionIndex": 219
+      "DebugActionIndex": 224
     },
     {
       "Annotation": "Player",
@@ -3325,11 +3395,11 @@
         15,
         16,
         17,
+        18,
+        19,
         20,
         21,
         22,
-        23,
-        24,
         25,
         26,
         27,
@@ -3497,12 +3567,12 @@
         189,
         190,
         191,
+        192,
         193,
+        194,
         195,
         196,
-        197,
         198,
-        199,
         200,
         201,
         202,
@@ -3522,10 +3592,15 @@
         216,
         217,
         218,
-        219
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
       ],
       "OverwriteOutputs": false,
-      "DebugActionIndex": 220
+      "DebugActionIndex": 225
     }
   ],
   "FileSignatures": [
@@ -3730,7 +3805,7 @@
   ],
         "NamedNodes": {
           "all_tundra_nodes": 0,
-          "Player": 220
+          "Player": 225
         }
 ,  "DefaultNodes": [
     0

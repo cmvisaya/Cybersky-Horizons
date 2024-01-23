@@ -10,8 +10,7 @@ public class WeaponController : NetworkBehaviour
     public PlayerController pc;
     public GameObject weapon;
 
-    public Transform inactiveSeat;
-    public Transform activeSeat;
+    public Transform inactiveSeat, activeSeat;
     public CameraController cc;
     public float bulletTimeGravity = 1.2f;
 
@@ -71,6 +70,7 @@ public class WeaponController : NetworkBehaviour
                 dryFireSoundPlayed = true;
             }
         }
+        pc.shooting = shooting;
     }
 
     private bool CompareLayer(RaycastHit hit, string layerName) {
@@ -115,6 +115,7 @@ public class WeaponController : NetworkBehaviour
         //Screenshake
         CameraController.Instance.ShakeCameras(shakeIntensity, shakeTime);
 
+        SetSeat(activeSeat);
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
         am.PlayGlobalSoundEffectServerRpc(0, transform.position, shotSoundVolume);
@@ -132,7 +133,7 @@ public class WeaponController : NetworkBehaviour
     }
 
     private void Reload() {
-        am.PlaySoundEffect(reloadSound, 0.5f);
+        am.PlaySoundEffect(reloadSound, 1f);
         Invoke("ReloadFinished", reloadTime);
         reloading = true;
     }
@@ -171,7 +172,7 @@ public class WeaponController : NetworkBehaviour
         AimInput();
 
         if(boulettes != null) {
-            boulettes.text = "" + bulletsLeft + "/" + magazineSize;
+            boulettes.text = "" + (bulletsLeft / bulletsPerTap) + "/" + (magazineSize / bulletsPerTap);
         }
 
     }
@@ -198,7 +199,7 @@ public class WeaponController : NetworkBehaviour
             pc.sprintEnabled = true;
             pc.jumpEnabled = true;
             pc.gravityScale = pc.storedGravityScale;
-            SetSeat(inactiveSeat);
+            if(!shooting && readyToShoot) SetSeat(inactiveSeat);
         }
     }
 

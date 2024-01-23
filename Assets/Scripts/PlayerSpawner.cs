@@ -11,19 +11,28 @@ public class PlayerSpawner : NetworkBehaviour {
 
     [SerializeField] private GameObject[] playerPrefabList;
 
+    private Transform myGo;
+
     public bool playerSpawned = false;
 
     public override void OnNetworkSpawn() {
-    if (IsOwner) {
-        // Only the owner (host or local client) sets the character code
-        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        int charCode = gm.selectedCharacterCode;
-        int teamId = gm.teamId;
-        string displayName = gm.displayName;
-        Debug.Log(charCode + " | " + OwnerClientId);
-        SpawnPlayerServerRpc(charCode, teamId, displayName, OwnerClientId);
+        if (IsOwner) {
+            // Only the owner (host or local client) sets the character code
+            GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+            int charCode = gm.selectedCharacterCode;
+            int teamId = gm.teamId;
+            string displayName = gm.displayName;
+            Debug.Log(charCode + " | " + OwnerClientId);
+            SpawnPlayerServerRpc(charCode, teamId, displayName, OwnerClientId);
+        }
     }
-}
+
+    public override void OnNetworkDespawn() {
+        Cursor.lockState = CursorLockMode.None;
+        if(myGo != null) {
+            myGo.GetComponent<NetworkObject>().Despawn(true);
+        }
+    }
 
     [ServerRpc(RequireOwnership = false)]
     private void SpawnPlayerServerRpc(int charCode, int teamId, string displayName, ulong clientId) {
@@ -32,6 +41,7 @@ public class PlayerSpawner : NetworkBehaviour {
         Debug.Log($"SpawnPlayerServerRpc - CharCode: {charCode}, OwnerClientId: {clientId}");
 
         Transform go = Instantiate(playerPrefabList[charCode]).transform;
+        myGo = go;
         NetworkObject netObj = go.GetComponent<NetworkObject>();
 
         if (netObj != null) {

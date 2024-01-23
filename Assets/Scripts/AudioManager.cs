@@ -6,19 +6,42 @@ using Unity.Netcode;
 public class AudioManager : NetworkBehaviour
 {
     public static AudioManager Instance { get; private set; }
-    private AudioSource source;
+    [SerializeField] private AudioSource source, bgmSource;
 
     public AudioListener al;
     public float volumeMult;
 
     [SerializeField] AudioClip[] globalClips;
 
+    [SerializeField] AudioClip[] standardizedSFX;
+
     private void Awake() {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
-        source = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
+
+    public void PlaySoundEffect(int clipId, float volume) {
+        source.PlayOneShot(standardizedSFX[clipId], volume * volumeMult);
+    }
+
     public void PlaySoundEffect(AudioClip clip, float volume) {
         source.PlayOneShot(clip, volume * volumeMult);
+    }
+
+    public void PlayBGM(AudioClip clip) {
+        PlayBGM(clip, 1f);
+    }
+
+    public void PlayBGM(AudioClip clip, float vol) {
+        bgmSource.clip = clip;
+        bgmSource.volume = vol * volumeMult;
+        bgmSource.Play();
     }
     
     [ServerRpc(RequireOwnership = false)]

@@ -37,6 +37,7 @@ public class CharacterSelectManager : MonoBehaviour
     }
 
     private void SelectCharacter(int id) {
+        AudioManager.Instance.PlaySoundEffect(1, 2f);
         DeactivateAllPrefabs();
         charModelPrefabs[id].SetActive(true);
         charName.text = charNames[id];
@@ -53,6 +54,7 @@ public class CharacterSelectManager : MonoBehaviour
     }
 
     private void LockIn() {
+        AudioManager.Instance.PlaySoundEffect(0, 2f);
         GameManager.Instance.selectedCharacterCode = currCharCode;
         GameManager.Instance.LoadScene(nextSceneCode);
     }
