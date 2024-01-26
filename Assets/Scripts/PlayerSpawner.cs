@@ -7,54 +7,109 @@ using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 
-public class PlayerSpawner : NetworkBehaviour {
-
+public class PlayerSpawner : NetworkBehaviour
+{
     [SerializeField] private GameObject[] playerPrefabList;
 
-    private Transform myGo;
+    private GameObject myGo;
+
+    private int charCode;
+    private int teamId;
+    private string displayName;
 
     public bool playerSpawned = false;
 
-    public override void OnNetworkSpawn() {
-        if (IsOwner) {
-            // Only the owner (host or local client) sets the character code
+    public override void OnNetworkSpawn()
+    {
+        if (IsOwner)
+        {
             GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-            int charCode = gm.selectedCharacterCode;
-            int teamId = gm.teamId;
-            string displayName = gm.displayName;
+            charCode = gm.selectedCharacterCode;
+            teamId = gm.teamId;
+            displayName = gm.displayName;
             Debug.Log(charCode + " | " + OwnerClientId);
             SpawnPlayerServerRpc(charCode, teamId, displayName, OwnerClientId);
+            RefreshNames();
         }
     }
 
-    public override void OnNetworkDespawn() {
+    public override void OnNetworkDespawn()
+    {
         Cursor.lockState = CursorLockMode.None;
-        if(myGo != null) {
+        if (myGo != null)
+        {
             myGo.GetComponent<NetworkObject>().Despawn(true);
         }
     }
 
+    private void Update()
+    {
+        RefreshNames();
+    }
+
+    private void RefreshNames()
+    {
+        Debug.Log("Refreshing for: " + OwnerClientId);
+        if (NetworkManager.Singleton.IsServer)
+        {
+            foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList)
+            {
+                if (myGo != null)
+                {
+                    SetStatsServerRpc(new NetworkObjectReference(myGo));
+                    SetStatsClientRpc(new NetworkObjectReference(myGo));
+                }
+            }
+        }
+    }
+
     [ServerRpc(RequireOwnership = false)]
-    private void SpawnPlayerServerRpc(int charCode, int teamId, string displayName, ulong clientId) {
+    private void SpawnPlayerServerRpc(int charCode, int teamId, string displayName, ulong clientId)
+    {
         if (playerSpawned) return;
 
         Debug.Log($"SpawnPlayerServerRpc - CharCode: {charCode}, OwnerClientId: {clientId}");
 
-        Transform go = Instantiate(playerPrefabList[charCode]).transform;
-        myGo = go;
-        NetworkObject netObj = go.GetComponent<NetworkObject>();
+        myGo = Instantiate(playerPrefabList[charCode]);
+        NetworkObject netObj = myGo.GetComponent<NetworkObject>();
 
-        if (netObj != null) {
+        if (netObj != null)
+        {
             netObj.SpawnWithOwnership(clientId, false);
-            go.parent = transform;
-            go.gameObject.GetComponentInChildren<WeaponController>().teamId = teamId;
-            go.gameObject.GetComponentInChildren<Shootable>().teamId = teamId;
-            go.gameObject.GetComponentInChildren<NameTag>().SetTeam(teamId);
-            go.gameObject.GetComponentInChildren<NameTag>().SetName(displayName);
+            SetStatsClientRpc(new NetworkObjectReference(myGo), teamId, displayName);
+            myGo.transform.parent = transform;
             playerSpawned = true;
             Debug.Log("Player spawned successfully.");
-        } else {
+        }
+        else
+        {
             Debug.LogError("NetworkObject component not found on the player prefab.");
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetStatsServerRpc(NetworkObjectReference player)
+    {
+        Debug.Log("Called from server rpc");
+        if (IsOwner) SetStatsClientRpc(player, teamId, displayName);
+    }
+
+    [ClientRpc]
+    private void SetStatsClientRpc(NetworkObjectReference player)
+    {
+        Debug.Log("Called from client rpc");
+        if (IsOwner) SetStatsClientRpc(player, teamId, displayName);
+    }
+
+    [ClientRpc]
+    private void SetStatsClientRpc(NetworkObjectReference player, int teamId, string newName)
+    {
+        Debug.Log("Spawner SetNameClientRpc: " + newName);
+        GameObject pobj = ((GameObject)player);
+        pobj.name = newName;
+        pobj.GetComponentInChildren<NameTag>().SetName(newName);
+        pobj.GetComponentInChildren<NameTag>().SetTeam(teamId);
+        pobj.GetComponentInChildren<Shootable>().teamId = teamId;
+        pobj.GetComponentInChildren<WeaponController>().teamId = teamId;
     }
 }

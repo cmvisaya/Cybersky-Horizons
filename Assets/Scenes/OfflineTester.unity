@@ -48028,7 +48028,7 @@ MonoBehaviour:
   bchp: {fileID: 1175905173}
   bohp: {fileID: 2026443272}
   secondsLeft: 0
-  secondsPerGame: 20
+  secondsPerGame: 60
   maxHp: 10
   winText: {fileID: 1861518688}
   timerText: {fileID: 860016812}

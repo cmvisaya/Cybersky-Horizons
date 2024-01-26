@@ -149,7 +149,7 @@ public class WeaponController : NetworkBehaviour
         
         //BLUE TEAM FOR TESTING PURPOSES
         //MAKE SURE TO GIVE PLAYER SHOOTABLE COMPONENT A PROPER TEAM ID
-        teamId = 1;
+        //teamId = 1;
         hasControl = true;
     }
 

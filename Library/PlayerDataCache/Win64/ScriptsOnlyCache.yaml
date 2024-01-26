@@ -1657,7 +1657,7 @@ ScriptsOnlyBuild:
     className: CinemachinePipeline
   - hash:
       serializedVersion: 2
-      Hash: 84597de417fd2445898d0c07171a21fc
+      Hash: bbec7bdbb7cd260edda6db55638adbc0
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: NameTag

@@ -135,6 +135,7 @@ public class PlayerController : NetworkBehaviour
         int teamId = GetComponent<WeaponController>().teamId;
         if (teamId == 0) respawnLocation = GameObject.Find("Red Spawn").transform;
         else if (teamId == 1) respawnLocation = GameObject.Find("Blue Spawn").transform;
+        else respawnLocation = GameObject.Find("Stage").transform;
 
         Respawn();
     }
