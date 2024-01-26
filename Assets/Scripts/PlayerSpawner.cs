@@ -49,7 +49,7 @@ public class PlayerSpawner : NetworkBehaviour
 
     private void RefreshNames()
     {
-        Debug.Log("Refreshing for: " + OwnerClientId);
+        //Debug.Log("Refreshing for: " + OwnerClientId);
         if (NetworkManager.Singleton.IsServer)
         {
             foreach (NetworkClient client in NetworkManager.Singleton.ConnectedClientsList)
@@ -90,21 +90,21 @@ public class PlayerSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SetStatsServerRpc(NetworkObjectReference player)
     {
-        Debug.Log("Called from server rpc");
+        //Debug.Log("Called from server rpc");
         if (IsOwner) SetStatsClientRpc(player, teamId, displayName);
     }
 
     [ClientRpc]
     private void SetStatsClientRpc(NetworkObjectReference player)
     {
-        Debug.Log("Called from client rpc");
+        //Debug.Log("Called from client rpc");
         if (IsOwner) SetStatsClientRpc(player, teamId, displayName);
     }
 
     [ClientRpc]
     private void SetStatsClientRpc(NetworkObjectReference player, int teamId, string newName)
     {
-        Debug.Log("Spawner SetNameClientRpc: " + newName);
+        //Debug.Log("Spawner SetNameClientRpc: " + newName);
         GameObject pobj = ((GameObject)player);
         pobj.name = newName;
         pobj.GetComponentInChildren<NameTag>().SetName(newName);

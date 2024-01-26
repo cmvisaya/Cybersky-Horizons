@@ -2173,7 +2173,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: ef9e4659b80a5e381353b788d19f5a50
+      Hash: c29ad90865e1f6c2e64427a96c33b449
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TTRunner

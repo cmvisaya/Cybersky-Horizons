@@ -98,7 +98,7 @@ public class WeaponController : NetworkBehaviour
         if(Physics.Raycast(cam.transform.position, direction, out hit, range, whatIsWall)) {
             hitWall = CompareLayer(hit, "Walls") || CompareLayer(hit, "Default");
             Debug.Log(hit.collider.gameObject.name);
-        } //Change to include everything but collat-able objects
+        } //Must include player
 
         if (!hitWall && hits.Length > 0) {
             foreach (RaycastHit rayHit in hits) {

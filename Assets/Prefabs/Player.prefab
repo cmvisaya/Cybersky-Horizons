@@ -574,7 +574,7 @@ MonoBehaviour:
     m_Bits: 384
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4294967295
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
   shotSoundVolume: 0.5
   shakeIntensity: 2.25
@@ -627,7 +627,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayNameText: {fileID: 5229836651084609545}
-  seat: {fileID: 7417830701905874004}
   redTeamColor: {r: 1, g: 0, b: 0, a: 1}
   blueTeamColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!1 &5878652634407850598

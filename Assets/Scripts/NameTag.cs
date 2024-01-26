@@ -16,7 +16,7 @@ public class NameTag : MonoBehaviour
     public void SetName(string newName)
     {
 
-        Debug.Log(newName);
+        //Debug.Log(newName);
         displayNameText.text = newName;
     }
 

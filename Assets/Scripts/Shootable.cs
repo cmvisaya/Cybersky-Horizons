@@ -23,10 +23,10 @@ public class Shootable : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void TakeDamageServerRpc(int damage, int shooterTeamId) {
+        Debug.Log("Entity with tag " + tag + " took damage. Owner: " + OwnerClientId);
         if (health > 0 && (teamId == -1 || teamId != shooterTeamId)) health -= damage;
         if(health <= 0) {
             string tag = gameObject.GetComponent<Collider>().tag;
-            Debug.Log("Entity with tag " + tag + " took damage. Owner: " + OwnerClientId);
             HandleObjectDeath(tag);
         }
     }

@@ -14,7 +14,8 @@ public class TTRunner : NetworkBehaviour
     private bool[] objectivesDestroyed = new bool[4];
     private int firstDestroyed = -1;
     private bool timerActive = true;
-    [SerializeField] private float secondsLeft, secondsPerGame;
+    [SerializeField] private float secondsPerGame;
+    private NetworkVariable<float> secondsLeft = new NetworkVariable<float>();
     [SerializeField] private int maxHp;
     [SerializeField] private TextMeshProUGUI winText, timerText;
     public Transform redSpawn, blueSpawn;
@@ -25,7 +26,7 @@ public class TTRunner : NetworkBehaviour
             winText.text = "";
             winText.gameObject.SetActive(false);
         }
-        secondsLeft = secondsPerGame + 1;
+        secondsLeft.Value = secondsPerGame + 1;
     }
 
     // Start is called before the first frame update
@@ -42,23 +43,27 @@ public class TTRunner : NetworkBehaviour
     }
 
     private void Update() {
-        redCentral.value = rchp.GetHealth();
-        redOpposite.value = rohp.GetHealth();
-        blueCentral.value = bchp.GetHealth();
-        blueOpposite.value = bohp.GetHealth();
-
+        PropogateHealthClientRpc(rchp.GetHealth(), rohp.GetHealth(), bchp.GetHealth(), bohp.GetHealth());
         HandleTimer();
     }
 
+    [ClientRpc]
+    private void PropogateHealthClientRpc(int rc, int ro, int bc, int bo) {
+        redCentral.value = rc;
+        redOpposite.value = ro;
+        blueCentral.value = bc;
+        blueOpposite.value = bo;
+    }
+
     private void HandleTimer() {
-        if (timerActive && secondsLeft > 0 && timerText.transform.parent.gameObject.activeSelf) {
-            secondsLeft -= Time.deltaTime;
-            int seconds = (int) (secondsLeft % 60);
-            if (seconds < 10) timerText.text = "" + (int) (secondsLeft / 60) + ":0" + (int) (secondsLeft % 60);
-            else timerText.text = "" + (int) (secondsLeft / 60) + ":" + (int) (secondsLeft % 60);
+        if (timerActive && secondsLeft.Value > 0 && timerText.transform.parent.gameObject.activeSelf) {
+            if(IsServer) secondsLeft.Value -= Time.deltaTime;
+            int seconds = (int) (secondsLeft.Value % 60);
+            if (seconds < 10) timerText.text = "" + (int) (secondsLeft.Value / 60) + ":0" + (int) (secondsLeft.Value % 60);
+            else timerText.text = "" + (int) (secondsLeft.Value / 60) + ":" + (int) (secondsLeft.Value % 60);
         }
 
-        if(secondsLeft < 1) {
+        if(secondsLeft.Value < 1) {
             FreezePlayers();
             StartCoroutine(HandleWin());
         }
@@ -86,7 +91,7 @@ public class TTRunner : NetworkBehaviour
     }
 
     public void KillObjective(int id) {
-        Debug.Log("Killed objective: " + id);
+        //Debug.Log("Killed objective: " + id);
         Shootable destroyed = null;
         if(firstDestroyed < 0) {
             firstDestroyed = id;
@@ -109,10 +114,12 @@ public class TTRunner : NetworkBehaviour
         StartCoroutine(HandleWin());
     }
 
-    private void DisplayWinner() {
+    [ClientRpc]
+    private void DisplayWinnerClientRpc(string text) {
         FreezePlayers();
         timerActive = false; 
         winText.gameObject.SetActive(true); 
+        winText.text = text;
     }
 
     private IEnumerator HandleWin() {
@@ -124,14 +131,12 @@ public class TTRunner : NetworkBehaviour
 
             //Do Game Logic Here (rn technically gives blue advantage if they both win at the same time)
             if(blueWon) {
-                DisplayWinner();
-                winText.text = "Blue wins!"; 
+                DisplayWinnerClientRpc("Blue wins!");
                 yield return new WaitForSeconds(endGameWaitTime);
                 EndGameServerRpc();
             }
             else if (redWon) { 
-                DisplayWinner();
-                winText.text = "Red wins!";
+                DisplayWinnerClientRpc("Red wins!");
                 yield return new WaitForSeconds(endGameWaitTime);
                 EndGameServerRpc();
             }
@@ -149,20 +154,17 @@ public class TTRunner : NetworkBehaviour
             blueWon = redDestroyed > blueDestroyed || firstDestroyed == 0 || firstDestroyed == 1;
             redWon = blueDestroyed > redDestroyed || firstDestroyed == 2 || firstDestroyed == 3;
             if(blueWon) { 
-                winText.gameObject.SetActive(true); 
-                winText.text = "Blue wins!"; 
+                DisplayWinnerClientRpc("Blue wins!");
                 yield return new WaitForSeconds(endGameWaitTime); 
                 EndGameServerRpc();
             }
             else if (redWon) { 
-                winText.gameObject.SetActive(true); 
-                winText.text = "Red wins!"; 
+                DisplayWinnerClientRpc("Red wins!");
                 yield return new WaitForSeconds(endGameWaitTime); 
                 EndGameServerRpc();
             }
             else { 
-                winText.gameObject.SetActive(true); 
-                winText.text = "It's a tie!"; 
+                DisplayWinnerClientRpc("It's a tie!");
                 yield return new WaitForSeconds(endGameWaitTime); 
                 EndGameServerRpc();
             }
