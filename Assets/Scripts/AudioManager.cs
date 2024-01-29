@@ -26,12 +26,17 @@ public class AudioManager : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update() {
+        source.volume = volumeMult;
+        bgmSource.volume = volumeMult;
+    }
+
     public void PlaySoundEffect(int clipId, float volume) {
-        source.PlayOneShot(standardizedSFX[clipId], volume * volumeMult);
+        source.PlayOneShot(standardizedSFX[clipId], volume);
     }
 
     public void PlaySoundEffect(AudioClip clip, float volume) {
-        source.PlayOneShot(clip, volume * volumeMult);
+        source.PlayOneShot(clip, volume);
     }
 
     public void PlayBGM(AudioClip clip) {
@@ -49,14 +54,14 @@ public class AudioManager : NetworkBehaviour
         //Debug.Log("SFX run at OwnerId: " + OwnerClientId);
         if(id >= 0 && id < globalClips.Length) {
             //PlaySoundEffectAtLocationServerRpc(id, position, volume);
-            PlaySoundEffectAtLocationClientRpc(id, position, volume * volumeMult);
+            PlaySoundEffectAtLocationClientRpc(id, position, volume);
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void PlaySoundEffectAtLocationServerRpc(int id, Vector3 position, float volume) {
         //Debug.Log("Play at Server");
-        AudioSource.PlayClipAtPoint(globalClips[id], position, volume * volumeMult);
+        AudioSource.PlayClipAtPoint(globalClips[id], position, volume);
     }
 
     [ClientRpc]

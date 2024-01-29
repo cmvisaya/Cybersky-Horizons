@@ -70,4 +70,9 @@ MonoBehaviour:
   - {fileID: 7535104662361938694, guid: 87180a66c0484b94a8709f680fb87ec3, type: 3}
   - {fileID: 7535104662361938694, guid: 3fec68896d34c1e4f8d847f46d811f9b, type: 3}
   - {fileID: 7535104662361938694, guid: 4fd2e30965a2ca94a8076645a476192d, type: 3}
+  - {fileID: 7535104662361938694, guid: 698c8ce9854a0174faddfd599d53d3d9, type: 3}
+  - {fileID: 7535104662361938694, guid: d118d11eead00ce4a9b3ceb7d49c7473, type: 3}
+  - {fileID: 7535104662361938694, guid: d118d11eead00ce4a9b3ceb7d49c7473, type: 3}
+  - {fileID: 7535104662361938694, guid: d118d11eead00ce4a9b3ceb7d49c7473, type: 3}
+  - {fileID: 7535104662361938694, guid: 6e58d7ddccf8a7a4093af49099c6c414, type: 3}
   playerSpawned: 0

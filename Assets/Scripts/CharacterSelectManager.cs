@@ -6,7 +6,7 @@ using TMPro;
 
 public class CharacterSelectManager : MonoBehaviour
 {
-    [SerializeField] private Button lockInBtn;
+    [SerializeField] private Button lockInBtn, backBtn;
     [SerializeField] private Button[] charButtons;
     [SerializeField] private string[] charNames;
     [SerializeField] private GameObject[] charModelPrefabs;
@@ -17,6 +17,9 @@ public class CharacterSelectManager : MonoBehaviour
     private void Awake() {
         lockInBtn.onClick.AddListener(() => {
             LockIn();
+        });
+        backBtn.onClick.AddListener(() => {
+            GameManager.Instance.LoadScene(0);
         });
         charButtons[0].onClick.AddListener(() => {
             SelectCharacter(0);
@@ -29,6 +32,15 @@ public class CharacterSelectManager : MonoBehaviour
         });
         charButtons[3].onClick.AddListener(() => {
             SelectCharacter(3);
+        });
+        charButtons[4].onClick.AddListener(() => {
+            SelectCharacter(4);
+        });
+        charButtons[5].onClick.AddListener(() => {
+            SelectCharacter(5);
+        });
+        charButtons[8].onClick.AddListener(() => {
+            SelectCharacter(8);
         });
     }
 

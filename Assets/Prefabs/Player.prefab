@@ -495,6 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   sprintSpeed: 12
+  slideSpeed: 17
   speed: 0
   bulletTimeSpeedMult: 0.6
   jumpForce: 13
@@ -531,6 +532,8 @@ MonoBehaviour:
   respawnLocation: {fileID: 0}
   debugid: 0
   characterId: 0
+  slideTimer: 0
+  maxSlideTimer: 0.5
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0

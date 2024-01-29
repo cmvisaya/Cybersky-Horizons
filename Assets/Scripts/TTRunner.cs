@@ -13,13 +13,14 @@ public class TTRunner : NetworkBehaviour
     [SerializeField] private Shootable rchp, rohp, bchp, bohp;
     private bool[] objectivesDestroyed = new bool[4];
     private int firstDestroyed = -1;
-    private bool timerActive = true;
+    private bool timerActive = false;
     [SerializeField] private float secondsPerGame;
     private NetworkVariable<float> secondsLeft = new NetworkVariable<float>();
     [SerializeField] private int maxHp;
     [SerializeField] private TextMeshProUGUI winText, timerText;
     public Transform redSpawn, blueSpawn;
     private float endGameWaitTime = 5f;
+    [SerializeField] private GameObject ppc;
 
     private void Awake() {
         if(winText.gameObject.activeSelf) {
@@ -32,6 +33,16 @@ public class TTRunner : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Init();
+    }
+
+    public void Init() {
+        if(winText.gameObject.activeSelf) {
+            winText.text = "";
+            winText.gameObject.SetActive(false);
+        }
+        secondsLeft.Value = secondsPerGame + 1;
+
         redCentral.maxValue = maxHp;
         redOpposite.maxValue = maxHp;
         blueCentral.maxValue = maxHp;
@@ -40,6 +51,8 @@ public class TTRunner : NetworkBehaviour
         rohp.SetHealth(maxHp);
         bchp.SetHealth(maxHp);
         bohp.SetHealth(maxHp);
+
+        timerActive = true;
     }
 
     private void Update() {
@@ -53,6 +66,22 @@ public class TTRunner : NetworkBehaviour
         redOpposite.value = ro;
         blueCentral.value = bc;
         blueOpposite.value = bo;
+    }
+
+    public void ResetTimer() {
+        ResetTimerServerRpc();
+    }
+    
+    [ServerRpc(RequireOwnership = false)]
+    public void ResetTimerServerRpc() {
+        // Debug.Log(TestRelay.Instance.clientsConnected.Value + " | " + TestRelay.Instance.clientsExpected);
+        // if (TestRelay.Instance.clientsConnected.Value == TestRelay.Instance.clientsExpected) {
+        //     UnfreezePlayers();
+        // } else {
+        //     FreezePlayers();
+        // }
+
+        secondsLeft.Value = secondsPerGame + 1;
     }
 
     private void HandleTimer() {
@@ -78,9 +107,18 @@ public class TTRunner : NetworkBehaviour
         }
     }
 
+    private void UnfreezePlayers() {
+        PlayerController[] players = Object.FindObjectsOfType<PlayerController>();
+        foreach(PlayerController player in players) {
+            player.hasControl = true;
+            player.gameObject.GetComponent<WeaponController>().hasControl = true;
+            timerActive = true;
+        }
+    }
+
     private void DespawnAll() {
         PlayerSpawner[] spawners = Object.FindObjectsOfType<PlayerSpawner>();
-        Debug.Log(spawners.Length);
+        //Debug.Log(spawners.Length);
         foreach(PlayerSpawner spawner in spawners) {
             try {
                 spawner.gameObject.GetComponent<NetworkObject>().Despawn(true);
@@ -117,6 +155,7 @@ public class TTRunner : NetworkBehaviour
     [ClientRpc]
     private void DisplayWinnerClientRpc(string text) {
         FreezePlayers();
+        timerText.text = "TIME!";
         timerActive = false; 
         winText.gameObject.SetActive(true); 
         winText.text = text;
@@ -175,14 +214,23 @@ public class TTRunner : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     private void EndGameServerRpc() {
+        //DespawnOnServerRpc();
+        DespawnAll();
+
         NetworkManagerUI.Instance.DeleteLobby();
-        DespawnOnServerRpc();
         TransitionSceneClientRpc();
+        //NetworkManagerUI.Instance.ResetLobbyData();
+        //ReopenLobbyClientRpc();
     }
 
     [ClientRpc]
     private void TransitionSceneClientRpc() {
         NetworkManager.Singleton.SceneManager.LoadScene("OfflineTester", LoadSceneMode.Single);
+    }
+
+    [ClientRpc]
+    private void ReopenLobbyClientRpc() {
+        NetworkManagerUI.Instance.ReturnToLobby();
     }
 
     [ServerRpc(RequireOwnership = false)]

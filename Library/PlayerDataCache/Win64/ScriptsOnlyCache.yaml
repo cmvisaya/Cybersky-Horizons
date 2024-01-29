@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - CharacterSelectManager
     - GameManager
     - GlobalAudioListener
+    - KillWall
     - NameTag
     - NetworkManagerUI
     - NetworkSpawnable
@@ -68,8 +69,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -113,6 +116,7 @@ ScriptsOnlyBuild:
     - Unity.Netcode.NetworkConfig
     - Unity.Netcode.NetworkPrefab
     - Unity.Netcode.NetworkPrefabs
+    - Unity.Netcode.NetworkVariable`1[System.Int32]
     - Unity.Netcode.Transports.UTP.UnityTransport/ConnectionAddressData
     - Unity.Netcode.Transports.UTP.UnityTransport/SimulatorParameters
     Unity.TextMeshPro:
@@ -392,6 +396,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10970}
     - Class: 114
+      Script: {instanceID: 11598}
+    - Class: 114
       Script: {instanceID: 11736}
     - Class: 114
       Script: {instanceID: 11810}
@@ -513,6 +519,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12026}
     - Class: 114
+      Script: {instanceID: 12732}
+    - Class: 114
       Script: {instanceID: 12824}
     - Class: 114
       Script: {instanceID: 13972}
@@ -619,7 +627,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3cda2dae191c7540f2d20b5f869e3360
+      Hash: 0cbaee2761570f513e9ae6b6242ad182
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -1477,7 +1485,7 @@ ScriptsOnlyBuild:
     className: GunAim
   - hash:
       serializedVersion: 2
-      Hash: be3f18d2e57e605533ad19b4b8808de2
+      Hash: 9419e361b1c915cd4416e3b5f5f5829c
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: NetworkManagerUI
@@ -1789,7 +1797,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: e09e98b784b5d05eaa1d9b1f06fb07b4
+      Hash: 6a2be5d26153ed87e31e26b3c0378b47
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerController
@@ -2011,7 +2019,7 @@ ScriptsOnlyBuild:
     className: AmbientOcclusion
   - hash:
       serializedVersion: 2
-      Hash: 80208101f15e0070f1985695e325eb5a
+      Hash: 64e537605c523236302cf0a27dac2eb7
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: CharacterSelectManager
@@ -2173,7 +2181,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: c29ad90865e1f6c2e64427a96c33b449
+      Hash: 8e01ad821297b887af19655cdf0b4444
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TTRunner
@@ -2383,7 +2391,7 @@ ScriptsOnlyBuild:
     className: CinemachineStateDrivenCamera
   - hash:
       serializedVersion: 2
-      Hash: 7d0fc40781da9ed6c800b343447a40d1
+      Hash: f485d1f0466b4e7ca56df9c86c5f04f3
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TestRelay

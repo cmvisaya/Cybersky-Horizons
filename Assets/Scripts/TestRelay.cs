@@ -10,20 +10,25 @@ using Unity.Networking.Transport.Relay;
 using Unity.Netcode.Transports.UTP;
 using UnityEngine;
 
-public class TestRelay : MonoBehaviour
+public class TestRelay : NetworkBehaviour
 {
 
     public static TestRelay Instance;
     
     [SerializeField] private GameObject displayName;
 
+    public NetworkVariable<int> clientsConnected = new NetworkVariable<int>(0, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public int clientsExpected = 0;
+
     private void Awake() {
         Instance = this;
     }
 
-    public async Task<string> CreateRelay() {
+    public async Task<string> CreateRelay(int expectedNum) {
         try {
             if (displayName != null) displayName.SetActive(false);
+
+            clientsExpected = expectedNum;
 
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
 
@@ -36,6 +41,8 @@ public class TestRelay : MonoBehaviour
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
 
             NetworkManager.Singleton.StartHost();
+
+            clientsConnected.Value = clientsConnected.Value + 1;
 
             return joinCode;
 
@@ -57,7 +64,7 @@ public class TestRelay : MonoBehaviour
 
             NetworkManager.Singleton.StartClient();
 
-
+            clientsConnected.Value = clientsConnected.Value + 1;
             
         } catch (RelayServiceException e) {
             Debug.Log(e);

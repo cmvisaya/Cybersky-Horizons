@@ -27,7 +27,7 @@ public class PlayerSpawner : NetworkBehaviour
             charCode = gm.selectedCharacterCode;
             teamId = gm.teamId;
             displayName = gm.displayName;
-            Debug.Log(charCode + " | " + OwnerClientId);
+            //Debug.Log(charCode + " | " + OwnerClientId);
             SpawnPlayerServerRpc(charCode, teamId, displayName, OwnerClientId);
             RefreshNames();
         }
@@ -111,5 +111,7 @@ public class PlayerSpawner : NetworkBehaviour
         pobj.GetComponentInChildren<NameTag>().SetTeam(teamId);
         pobj.GetComponentInChildren<Shootable>().teamId = teamId;
         pobj.GetComponentInChildren<WeaponController>().teamId = teamId;
+        if(!playerSpawned) pobj.GetComponentInChildren<PlayerController>().Respawn(teamId);
+        playerSpawned = true;
     }
 }

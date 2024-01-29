@@ -8,7 +8,7 @@ using Unity.Netcode;
 
 public class PlayerController : NetworkBehaviour
 {
-    public float moveSpeed, sprintSpeed, speed, bulletTimeSpeedMult, jumpForce, gravityScale, storedGravityScale;
+    public float moveSpeed, sprintSpeed, slideSpeed, speed, bulletTimeSpeedMult, jumpForce, gravityScale, storedGravityScale;
     public float accel = 0.5f;
     [HideInInspector] public bool grounded = true;
 
@@ -51,6 +51,11 @@ public class PlayerController : NetworkBehaviour
     public ulong debugid;
 
     public int characterId;
+
+    private Vector3 slideForward;
+    private bool isSliding, isGPound;
+    [SerializeField] private float slideTimer, maxSlideTimer;
+    [SerializeField] private float gpoundCancelTimer, maxGPoundCancelTimer;
 
     private void StartWallRun() {
         if(!isWallRunning) {
@@ -97,6 +102,21 @@ public class PlayerController : NetworkBehaviour
         wallRunOnCD = false;
     }
 
+    private void CheckForSlide() {
+        if (Input.GetKeyDown(KeyCode.C)) { 
+            if(speed > moveSpeed && !isSliding && !isWallRunning && grounded) {
+                InitiateSlide();
+            }
+        }
+    }
+
+    private void InitiateSlide() {
+        cc.ActivateCamera(2);
+        isSliding = true;
+        slideForward = playerModel.transform.forward;
+        slideTimer = maxSlideTimer;
+    }
+
     private void Awake() {
         //if(characterId != GameManager.Instance.selectedCharacterCode) gameObject.SetActive(false);
     }
@@ -118,6 +138,9 @@ public class PlayerController : NetworkBehaviour
         if(prePlayerCam != null) {
             prePlayerCam.SetActive(false);
         }
+
+        GameObject tt = GameObject.Find("TTRunner");
+        if (tt != null) { tt.GetComponent<TTRunner>().ResetTimer(); }
         
         controller = GetComponent<CharacterController>();
         cc.target = lookTarget;
@@ -126,6 +149,7 @@ public class PlayerController : NetworkBehaviour
         cursorLocked = true;
 
         storedGravityScale = gravityScale;
+        maxGPoundCancelTimer = 0.5f;
         cc.ActivateCamera(0);
 
         //respawnLocation = transform.position;
@@ -135,41 +159,59 @@ public class PlayerController : NetworkBehaviour
         int teamId = GetComponent<WeaponController>().teamId;
         if (teamId == 0) respawnLocation = GameObject.Find("Red Spawn").transform;
         else if (teamId == 1) respawnLocation = GameObject.Find("Blue Spawn").transform;
-        else respawnLocation = GameObject.Find("Stage").transform;
+        else respawnLocation = GameObject.Find("NEUTRAL SPAWN KILL THIS MF").transform;
 
-        Respawn();
+        //Respawn();
     }
-
 
     // Update is called once per frame
     void Update()
     {
         if (!IsOwner) return;
 
+        if (GameManager.Instance.pauseMenu.activeSelf) Cursor.lockState = CursorLockMode.None;
+        else Cursor.lockState = CursorLockMode.Locked;
+
         if (hasControl)
         {
             CheckForWall();
+            CheckForSlide();
             //Stick Movement
             float yStore = moveDirection.y;
             float vertInput = Input.GetAxis("Vertical");
             float horizInput = Input.GetAxis("Horizontal");
-            if(!wallRunOnCD) moveDirection = (pivot.forward * vertInput) + (pivot.right * horizInput);
-            if(Mathf.Abs(vertInput) > 0 || Mathf.Abs(horizInput) > 0) {
-                speed += accel * Time.deltaTime;
-                if (Input.GetButton("Sprint") && sprintEnabled)
-                {
-                    if(speed > sprintSpeed) { speed = sprintSpeed; }
+            if (isGPound) {
+                gpoundCancelTimer -= 1f * Time.deltaTime;
+                if (gpoundCancelTimer < 0) {
+                    isGPound = false;
                 }
-                else
-                {
-                    if(speed > moveSpeed) { speed = moveSpeed; }
+            }
+            if(isSliding) {
+                moveDirection = slideForward.normalized * slideSpeed;
+                slideTimer -= 1f * Time.deltaTime;
+                if (slideTimer < 0) {
+                    cc.ActivateCamera(0);
+                    isSliding = false;
                 }
             } else {
-                if(grounded) speed -= accel * 0.1f * Time.deltaTime;
-                if(speed < 0) { speed = 0; }
+                if(!wallRunOnCD) moveDirection = (pivot.forward * vertInput) + (pivot.right * horizInput);
+                if(Mathf.Abs(vertInput) > 0 || Mathf.Abs(horizInput) > 0) {
+                    speed += accel * Time.deltaTime;
+                    if (Input.GetButton("Sprint") && sprintEnabled)
+                    {
+                        if(speed > sprintSpeed) { speed = sprintSpeed; }
+                    }
+                    else
+                    {
+                        if(speed > moveSpeed) { speed = moveSpeed; }
+                    }
+                } else {
+                    if(grounded) speed -= accel * 0.1f * Time.deltaTime;
+                    if(speed < 0) { speed = 0; }
+                }
+                float appliedSpeed = (aiming && !grounded) ? speed * bulletTimeSpeedMult : speed * 1f;
+                moveDirection = moveDirection.normalized * appliedSpeed;
             }
-            float appliedSpeed = (aiming && !grounded) ? speed * bulletTimeSpeedMult : speed * 1f;
-            moveDirection = moveDirection.normalized * appliedSpeed;
             moveDirection.y = yStore;
 
             //Jump/Gravity Control
@@ -180,6 +222,17 @@ public class PlayerController : NetworkBehaviour
                 {
                     // /StopWallRun();
                     moveDirection.y = jumpForce;
+                    isSliding = false;
+                    isGPound = false;
+                } else if (isGPound) {
+                    InitiateSlide();
+                    isGPound = false;
+                }
+            } else {
+                if(Input.GetKeyDown(KeyCode.C)) {
+                    moveDirection.y = -jumpForce;
+                    isGPound = true;
+                    gpoundCancelTimer = maxGPoundCancelTimer;
                 }
             }
 
@@ -225,12 +278,26 @@ public class PlayerController : NetworkBehaviour
         anim.SetBool("aiming", aiming);
         anim.SetBool("shooting", shooting);
         anim.SetBool("isGrounded", grounded);
+        anim.SetBool("isSliding", isSliding);
         anim.SetFloat("Speed", speed);
 
         //MyServerRpc(transform.position);
     }
 
     public void Respawn() {
+        Debug.Log("Respawning... " + OwnerClientId);
+        if (OwnerClientId == 0) {
+            RespawnServerRpc();
+        } else {
+            RespawnClientRpc(OwnerClientId);
+        }
+    }
+
+    public void Respawn(int teamId) {
+        Debug.Log("Respawning... teamId" + OwnerClientId);
+        if (teamId == 0) respawnLocation = GameObject.Find("Red Spawn").transform;
+        else if (teamId == 1) respawnLocation = GameObject.Find("Blue Spawn").transform;
+        else respawnLocation = GameObject.Find("NEUTRAL SPAWN KILL THIS MF").transform;
         if (OwnerClientId == 0) {
             RespawnServerRpc();
         } else {
@@ -240,7 +307,7 @@ public class PlayerController : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void RespawnServerRpc() {
-        if(gameObject.GetComponent<Collider>().tag != "Player") return;
+        if(gameObject.GetComponent<Collider>().tag != "Player" || respawnLocation == null) return;
         controller.enabled = false;
         transform.position = respawnLocation.position;
         playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);

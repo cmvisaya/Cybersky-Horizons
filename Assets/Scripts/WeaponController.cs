@@ -113,7 +113,7 @@ public class WeaponController : NetworkBehaviour
         //Debug.DrawRay(cam.transform.position, direction, Color.green, 5f);
 
         //Screenshake
-        CameraController.Instance.ShakeCameras(shakeIntensity, shakeTime);
+        cc.ShakeCameras(shakeIntensity, shakeTime);
 
         SetSeat(activeSeat);
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
@@ -122,7 +122,7 @@ public class WeaponController : NetworkBehaviour
         bulletsLeft--;
         bulletsShot--;
 
-        Invoke("ResetShot", timeBetweenShooting);
+        if (bulletsShot <= 0) Invoke("ResetShot", timeBetweenShooting);
 
         if (bulletsShot > 0 && bulletsLeft > 0) Invoke("Shoot", timeBetweenShots);
 

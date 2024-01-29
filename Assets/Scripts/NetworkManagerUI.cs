@@ -14,7 +14,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     public static NetworkManagerUI Instance;
     [SerializeField] private Button serverBtn, hostBtn, clientBtn;
-    [SerializeField] private Button joinBtn, refreshBtn, backBtn1, backBtn2, createBtn, initJoinBtn, startBtn, switchTeamBtn;
+    [SerializeField] private Button joinBtn, refreshBtn, backBtn1, backBtn2, backCSBtn, createBtn, initJoinBtn, startBtn, switchTeamBtn;
 
     private string lobbyCode;
 
@@ -26,10 +26,14 @@ public class NetworkManagerUI : MonoBehaviour
 
     [SerializeField] private GameObject[] menus;
     [SerializeField] private GameObject[] playerPrefabs;
+    [SerializeField] private GameObject ppc;
 
     private string KEY_START_GAME;
+    private string teamAdded = " (RED)";
     private int newClientId = 0;
     private Player thisPlayer;
+
+    private bool gameStarted = false;
 
     [SerializeField] private AudioClip battleBGM;
     [SerializeField] private float bgmVol = 0.3f;
@@ -72,6 +76,13 @@ public class NetworkManagerUI : MonoBehaviour
             ActivateMenu(0);
         });
 
+        backCSBtn.onClick.AddListener(() => {
+            if(joinedLobby != null) LeaveLobby();
+            GameManager.Instance.LoadScene(1);
+            NetworkManager.Singleton.Shutdown();
+            Cleanup();
+        });
+
         initJoinBtn.onClick.AddListener(() => {
             ListLobbies();
             ActivateMenu(1);
@@ -95,10 +106,12 @@ public class NetworkManagerUI : MonoBehaviour
             switch (gm.teamId) {
                 case 0:
                     teamText.text = "(Your Team: RED)";
+                    UpdatePlayerTeam(" (RED)");
                     break;
                 case 1:
-                teamText.text = "(Your Team: BLUE)";
-                break;
+                    teamText.text = "(Your Team: BLUE)";
+                    UpdatePlayerTeam(" (BLUE)");
+                    break;
             }
         });
     }
@@ -119,6 +132,8 @@ public class NetworkManagerUI : MonoBehaviour
             Debug.Log(e);
         }
 
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.SetTeam(0);
         ActivateMenu(0);
     }
 
@@ -148,7 +163,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private async void HandleLobbyPollForUpdates() {
         try {
-            if (joinedLobby != null) {
+            if (joinedLobby != null && !gameStarted) {
                 lobbyUpdateTimer -= Time.deltaTime;
                 if (lobbyUpdateTimer < 0f) {
                     float lobbyUpdateTimerMax = 1.1f;
@@ -163,7 +178,8 @@ public class NetworkManagerUI : MonoBehaviour
                             AudioManager.Instance.PlayBGM(battleBGM, bgmVol);
                             TestRelay.Instance.JoinRelay(joinedLobby.Data[KEY_START_GAME].Value);
                         }
-                        joinedLobby = null;
+                        //joinedLobby = null;
+                        gameStarted = true;
 
                         //OnGameStarted?.Invoke(this, EventArgs.Empty);
                     }
@@ -263,6 +279,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     public async void LeaveLobby() {
         try {
+            Debug.Log(joinedLobby.Id);
             await LobbyService.Instance.RemovePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId);
             joinedLobby = null;
         } catch (LobbyServiceException e) {
@@ -280,6 +297,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     public async void DeleteLobby() {
         try {
+            Debug.Log("Am I being called from somewhere?");
             await LobbyService.Instance.DeleteLobbyAsync(hostLobby.Id);
             NetworkManager.Singleton.Shutdown();
             //Cleanup();
@@ -288,7 +306,7 @@ public class NetworkManagerUI : MonoBehaviour
         }
     }
 
-    private void Cleanup()
+    void Cleanup()
     {
         if (NetworkManager.Singleton != null)
         {
@@ -300,6 +318,7 @@ public class NetworkManagerUI : MonoBehaviour
         return new Player {
             Data = new Dictionary<string, PlayerDataObject> {
                 { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, playerName) },
+                { "TeamAdded", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, teamAdded) },
                 { "CharCode", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "" + GameManager.Instance.selectedCharacterCode) }
             }
         };
@@ -325,11 +344,20 @@ public class NetworkManagerUI : MonoBehaviour
         if (joinedLobby != null) {
             string playerList = "";
             foreach (Player player in joinedLobby.Players) {
-                playerList += player.Data["PlayerName"].Value + "\n";
+                playerList += player.Data["PlayerName"].Value + player.Data["TeamAdded"].Value + "\n";
             }
             il1.text = "Waiting for other players... (" + joinedLobby.Players.Count + "/" + joinedLobby.MaxPlayers + ")\n" + joinedLobby.Name + " (" + joinedLobby.LobbyCode + ")";
-            il2.text = "Player\n\n" + playerList;
+            il2.text = "Players:\n\n" + playerList;
         }
+    }
+
+    private void UpdatePlayerTeam(string newPlayerTeam) {
+        teamAdded = newPlayerTeam;
+        LobbyService.Instance.UpdatePlayerAsync(joinedLobby.Id, AuthenticationService.Instance.PlayerId, new UpdatePlayerOptions {
+            Data = new Dictionary<string, PlayerDataObject> {
+                { "TeamAdded", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, teamAdded) }
+            }
+        });
     }
 
     public void ReadLobbyCode(string s) {
@@ -349,7 +377,7 @@ public class NetworkManagerUI : MonoBehaviour
                 ActivateMenu(3);
                 Debug.Log("Start Game");
 
-                string relayCode = await TestRelay.Instance.CreateRelay();
+                string relayCode = await TestRelay.Instance.CreateRelay(joinedLobby.Players.Count);
 
                 Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions {
                     Data = new Dictionary<string, DataObject> {
@@ -360,6 +388,7 @@ public class NetworkManagerUI : MonoBehaviour
                 joinedLobby = lobby;
 
                 AudioManager.Instance.PlayBGM(battleBGM, bgmVol);
+                //GameObject.Find("TTRunner").GetComponent<TTRunner>().Init(); //UNCOMMENT THIS LINE FOR SUPPOSED REJOIN LOBBY
                 //PrintPlayers();
 
                 /*GameObject[] spawnables = GameObject.FindGameObjectsWithTag("Enemy");
@@ -370,6 +399,33 @@ public class NetworkManagerUI : MonoBehaviour
             } catch (LobbyServiceException e) {
                 Debug.Log(e);
             }
+        }
+    }
+
+    public async void ResetLobbyData() {
+        try {
+            if(IsLobbyHost()) {
+                Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions {
+                    Data = new Dictionary<string, DataObject> {
+                        { KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, "0") }
+                    }
+                });
+            }
+            gameStarted = false;
+            ppc.SetActive(true);
+        } catch (LobbyServiceException e) {
+            Debug.Log(e);
+        }
+    }
+
+    public async void ReturnToLobby() {
+        try {
+            //NetworkManager.Singleton.Shutdown();
+            ActivateMenu(2);
+            gameStarted = false;
+            ppc.SetActive(true);
+        } catch (LobbyServiceException e) {
+            Debug.Log(e);
         }
     }
 }

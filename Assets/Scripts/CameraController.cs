@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController Instance { get; private set; }
+    //public static CameraController Instance { get; private set; }
     public Transform target;
     public Vector3 offset;
     public bool useOffsetValues;
@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
     private float shakeTimer;
 
     private void Awake() {
-        Instance = this;
+        //Instance = this;
         vcams = new CinemachineVirtualCamera[cams.Length];
         for (int i = 0; i < cams.Length; i++) {
             vcams[i] = cams[i].GetComponent<CinemachineVirtualCamera>();
