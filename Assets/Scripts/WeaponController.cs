@@ -18,7 +18,7 @@ public class WeaponController : NetworkBehaviour
     public int damage;
     public float timeBetweenShooting, spread, range, reloadTime, timeBetweenShots;
     public int magazineSize, bulletsPerTap, bulletsPerReload;
-    public bool allowButtonHold, allowSightSprinting, hasControl;
+    public bool allowButtonHold, allowSightSprinting, hasControl, displayByShots;
     [SerializeField] int bulletsLeft, bulletsShot;
     [SerializeField] bool shooting, readyToShoot, reloading;
     public Camera cam;
@@ -31,14 +31,13 @@ public class WeaponController : NetworkBehaviour
     public float shotSoundVolume;
     public float shakeIntensity = 2.25f;
     public float shakeTime = 0.1f;
-    public AudioClip reloadSound;
-    public AudioClip dryFireSound;
+    public AudioClip reloadSound, dryFireSound, hitSound;
     private bool dryFireSoundPlayed;
-    public RawImage crosshairs;
+    public RawImage crosshairs, confirmHit;
 
     private AudioManager am;
 
-    public TextMeshProUGUI boulettes;
+    public TextMeshProUGUI boulettes, hudNotif;
 
     public int teamId = -1;
 
@@ -106,7 +105,12 @@ public class WeaponController : NetworkBehaviour
                 Shootable hitComponent = rayHit.collider.GetComponent<Shootable>();
                 bool shouldTakeDamage = rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Objective")
                     || (hitComponent.OwnerClientId != OwnerClientId && rayHit.collider.CompareTag("Player"));
-                if (shouldTakeDamage) hitComponent.TakeDamageServerRpc(damage, teamId);
+                if (shouldTakeDamage) {
+                    am.PlaySoundEffect(hitSound, 2f);
+                    confirmHit.CrossFadeAlpha(0.35f, 0f, false);
+                    confirmHit.CrossFadeAlpha(0f, 0.3f, false);
+                    hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId);
+                }
             }
         }
 
@@ -158,9 +162,13 @@ public class WeaponController : NetworkBehaviour
         //cc = camera.GetComponent<CameraController>();
         //cam = camera.GetComponent<Camera>();
         crosshairs = GameObject.Find("Crosshairs").GetComponent<RawImage>();
+        confirmHit = GameObject.Find("Confirm Hit").GetComponent<RawImage>();
         boulettes = GameObject.Find("Bullets").GetComponent<TextMeshProUGUI>();
+        hudNotif = GameObject.Find("HudNotif").GetComponent<TextMeshProUGUI>();
         am = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         crosshairs.canvasRenderer.SetAlpha(0);
+        confirmHit.canvasRenderer.SetAlpha(0);
+        hudNotif.text = "";
     }
 
     // Update is called once per frame
@@ -172,7 +180,8 @@ public class WeaponController : NetworkBehaviour
         AimInput();
 
         if(boulettes != null) {
-            boulettes.text = "" + (bulletsLeft / bulletsPerTap) + "/" + (magazineSize / bulletsPerTap);
+            if (!displayByShots) boulettes.text = "" + (bulletsLeft / bulletsPerTap) + "/" + (magazineSize / bulletsPerTap);
+            else boulettes.text = "" + bulletsLeft + "/" + magazineSize;
         }
 
     }
@@ -207,5 +216,15 @@ public class WeaponController : NetworkBehaviour
         weapon.transform.parent = seat;
         weapon.transform.localPosition = new Vector3(0f, 0f, 0f);
         weapon.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    public void DisplayHUDNotif(string message) {
+        StartCoroutine(NotifDisplay(message));
+    }
+
+    private IEnumerator NotifDisplay(string message) {
+        hudNotif.text = message;
+        yield return new WaitForSeconds(4f);
+        hudNotif.text = "";
     }
 }

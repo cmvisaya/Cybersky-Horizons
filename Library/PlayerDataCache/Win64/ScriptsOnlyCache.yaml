@@ -69,10 +69,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -428,7 +426,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15386}
     - Class: 114
-      Script: {instanceID: 15682}
+      Script: {instanceID: 15684}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -527,9 +525,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14470}
     - Class: 114
-      Script: {instanceID: 15682}
+      Script: {instanceID: 15684}
     - Class: 114
-      Script: {instanceID: 15822}
+      Script: {instanceID: 15824}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1191,7 +1189,7 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: 92482555cf3ee83e5444a2e2317759c3
+      Hash: f5295e0dfc096e1f5fe3b181e98acecb
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WeaponController
@@ -2409,7 +2407,7 @@ ScriptsOnlyBuild:
     className: BoneMapping
   - hash:
       serializedVersion: 2
-      Hash: b96842e1142026fe14173fd0a3bf9af3
+      Hash: 5c8210f48c72bc346cb220a2bb9f5415
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Shootable
