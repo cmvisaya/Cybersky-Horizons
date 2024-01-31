@@ -1189,7 +1189,7 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: f5295e0dfc096e1f5fe3b181e98acecb
+      Hash: 6e6b045f9160558dcc535ed350b50695
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WeaponController

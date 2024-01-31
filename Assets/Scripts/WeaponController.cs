@@ -28,7 +28,7 @@ public class WeaponController : NetworkBehaviour
     public LayerMask whatIsEnemy;
     public LayerMask whatIsWall;
     public AudioClip shotSound;
-    public float shotSoundVolume;
+    public float shotSoundVolume, hitSoundVolume;
     public float shakeIntensity = 2.25f;
     public float shakeTime = 0.1f;
     public AudioClip reloadSound, dryFireSound, hitSound;
@@ -40,6 +40,8 @@ public class WeaponController : NetworkBehaviour
     public TextMeshProUGUI boulettes, hudNotif;
 
     public int teamId = -1;
+
+    public int kills, deaths = 0;
 
     public void LoadBullets() {
         LoadBullets(bulletsPerReload);
@@ -106,10 +108,10 @@ public class WeaponController : NetworkBehaviour
                 bool shouldTakeDamage = rayHit.collider.CompareTag("Enemy") || rayHit.collider.CompareTag("Objective")
                     || (hitComponent.OwnerClientId != OwnerClientId && rayHit.collider.CompareTag("Player"));
                 if (shouldTakeDamage) {
-                    am.PlaySoundEffect(hitSound, 2f);
+                    am.PlaySoundEffect(hitSound, hitSoundVolume);
                     confirmHit.CrossFadeAlpha(0.35f, 0f, false);
                     confirmHit.CrossFadeAlpha(0f, 0.3f, false);
-                    hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId);
+                    hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId, transform.parent.gameObject.name);
                 }
             }
         }

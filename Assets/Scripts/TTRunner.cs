@@ -21,6 +21,7 @@ public class TTRunner : NetworkBehaviour
     public Transform redSpawn, blueSpawn;
     private float endGameWaitTime = 5f;
     [SerializeField] private GameObject ppc;
+    private string kdText;
 
     private void Awake() {
         if(winText.gameObject.activeSelf) {
@@ -94,6 +95,7 @@ public class TTRunner : NetworkBehaviour
 
         if(secondsLeft.Value < 1) {
             FreezePlayers();
+            SetKDText();
             StartCoroutine(HandleWin());
         }
     }
@@ -113,6 +115,14 @@ public class TTRunner : NetworkBehaviour
             player.hasControl = true;
             player.gameObject.GetComponent<WeaponController>().hasControl = true;
             timerActive = true;
+        }
+    }
+
+    private void SetKDText() {
+        WeaponController[] players = Object.FindObjectsOfType<WeaponController>();
+        foreach(WeaponController player in players) {
+            string playerLine = player.transform.parent.gameObject.name + ": " + player.kills + "/" + player.deaths + "\n";
+            kdText += playerLine;
         }
     }
 
@@ -158,7 +168,7 @@ public class TTRunner : NetworkBehaviour
         timerText.text = "TIME!";
         timerActive = false; 
         winText.gameObject.SetActive(true); 
-        winText.text = text;
+        winText.text = text + "\n\n" + kdText;
     }
 
     private IEnumerator HandleWin() {

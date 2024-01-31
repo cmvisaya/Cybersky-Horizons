@@ -652,8 +652,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 0
+  health: 200
+  maxHealth: 200
   objectiveId: 0
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
@@ -731,7 +731,7 @@ MonoBehaviour:
   activeSeat: {fileID: 6259101081602410017}
   cc: {fileID: 4452130474815388830}
   bulletTimeGravity: 0.2
-  damage: 140
+  damage: 200
   timeBetweenShooting: 0.5
   spread: 0
   range: 65
@@ -759,7 +759,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
-  shotSoundVolume: 0.5
+  shotSoundVolume: 1
+  hitSoundVolume: 8
   shakeIntensity: 2.25
   shakeTime: 0.1
   reloadSound: {fileID: 8300000, guid: d4ec65d2be6efbc4ebc261f0b3bd12d4, type: 3}
@@ -770,6 +771,8 @@ MonoBehaviour:
   boulettes: {fileID: 0}
   hudNotif: {fileID: 0}
   teamId: -1
+  kills: 0
+  deaths: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0
