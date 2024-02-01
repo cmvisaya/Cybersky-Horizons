@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject pauseMenu;
-    [SerializeField] private Button quitBtn;
+    [SerializeField] private Button quitBtn, closeBtn, confirmBtn;
     [SerializeField] private Slider volumeSlider;
     public int selectedCharacterCode, teamId, numTeams;
     public string displayName;
@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
 
         quitBtn.onClick.AddListener(() => {
             Application.Quit();
+        });
+        closeBtn.onClick.AddListener(() => {
+            TogglePauseMenu();
+        });
+        confirmBtn.onClick.AddListener(() => {
+            TogglePauseMenu();
         });
 
         pauseMenu.SetActive(false);

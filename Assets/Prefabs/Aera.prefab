@@ -448,6 +448,8 @@ MonoBehaviour:
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 1441872846282799592}
+  kills: 0
+  deaths: 0
 --- !u!114 &7500108496099324830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +552,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
   shotSoundVolume: 0.4
-  hitSoundVolume: 4
+  hitSoundVolume: 2
   shakeIntensity: 2.25
   shakeTime: 0.1
   reloadSound: {fileID: 8300000, guid: d4ec65d2be6efbc4ebc261f0b3bd12d4, type: 3}
@@ -561,8 +563,6 @@ MonoBehaviour:
   boulettes: {fileID: 0}
   hudNotif: {fileID: 0}
   teamId: -1
-  kills: 0
-  deaths: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0

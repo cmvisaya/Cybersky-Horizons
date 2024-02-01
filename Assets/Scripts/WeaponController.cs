@@ -41,7 +41,7 @@ public class WeaponController : NetworkBehaviour
 
     public int teamId = -1;
 
-    public int kills, deaths = 0;
+    //public int kills, deaths = 0;
 
     public void LoadBullets() {
         LoadBullets(bulletsPerReload);

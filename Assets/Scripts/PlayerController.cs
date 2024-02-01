@@ -286,6 +286,7 @@ public class PlayerController : NetworkBehaviour
 
     public void Respawn() {
         Debug.Log("Respawning... " + OwnerClientId);
+        GetComponent<Shootable>().IncrementDeathsServerRpc();
         if (OwnerClientId == 0) {
             RespawnServerRpc();
         } else {

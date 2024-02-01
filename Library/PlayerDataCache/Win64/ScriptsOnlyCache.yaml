@@ -69,8 +69,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -625,7 +627,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 0cbaee2761570f513e9ae6b6242ad182
+      Hash: 874e79eff3f331ef427d5e4faa6456bf
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -1189,7 +1191,7 @@ ScriptsOnlyBuild:
     className: CinemachineClearShot
   - hash:
       serializedVersion: 2
-      Hash: 6e6b045f9160558dcc535ed350b50695
+      Hash: 8c95d7ce721610b7c5de41ad1f58838e
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: WeaponController
@@ -2407,7 +2409,7 @@ ScriptsOnlyBuild:
     className: BoneMapping
   - hash:
       serializedVersion: 2
-      Hash: 5c8210f48c72bc346cb220a2bb9f5415
+      Hash: 6ce9e3125e2d4751d739b7c32a41be29
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Shootable
@@ -2482,5 +2484,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/CharacterSelect.unity
   - Assets/Scenes/OfflineTester.unity
-  playerPath: C:/Users/micro/OneDrive/Documents/Game Development/Unity Projects/ThirdPersonShooter/Builds/Charged
-    Up.exe
+  playerPath: C:/Users/micro/OneDrive/Documents/Game Development/Unity Projects/ThirdPersonShooter/Builds/Cybersky
+    Horizons.exe

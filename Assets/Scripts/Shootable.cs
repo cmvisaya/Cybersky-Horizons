@@ -11,6 +11,7 @@ public class Shootable : NetworkBehaviour
     public AudioClip killSound;
     public RawImage vignette;
     private bool invuln = false;
+    public int kills, deaths = 0;
 
     private void Start() {
         health = maxHealth;
@@ -75,7 +76,7 @@ public class Shootable : NetworkBehaviour
     private void HandleObjectDeath(string tag, ulong clientWhoShot, string shooterName) {
         switch (tag) {
             case "Player":
-                FeedbackToShooterClientRpc(clientWhoShot, "Killed " + transform.parent.gameObject.name);
+                FeedbackToShooterClientRpc(clientWhoShot, "Killed " + transform.parent.gameObject.name, true);
                 DemonstrateKilledByClientRpc("Killed by " + shooterName);
                 gameObject.GetComponent<PlayerController>().Respawn();
                 UpdateVignetteClientRpc(maxHealth);
@@ -86,18 +87,30 @@ public class Shootable : NetworkBehaviour
                 //Destroy(gameObject);
                 break;
             case "Objective":
-                FeedbackToShooterClientRpc(clientWhoShot, "Destroyed Objective!");
+                FeedbackToShooterClientRpc(clientWhoShot, "Destroyed Objective!", false);
                 GameObject.Find("TTRunner").GetComponent<TTRunner>().KillObjective(objectiveId);
                 break;
         }
     }
 
     [ClientRpc]
-    private void FeedbackToShooterClientRpc(ulong clientWhoShot, string message) {
+    private void FeedbackToShooterClientRpc(ulong clientWhoShot, string message, bool addKill) {
         if(clientWhoShot == NetworkManager.Singleton.LocalClientId) {
             PlaySound(clientWhoShot);
-            DemonstrateKill(clientWhoShot, message);
+            DemonstrateKill(clientWhoShot, message, addKill);
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void IncrementKillsServerRpc() {
+        kills++;
+        Debug.Log("KILLS: " + kills);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void IncrementDeathsServerRpc() {
+        deaths++;
+        Debug.Log("DEATHS: " + deaths);
     }
 
     private void PlaySound(ulong clientWhoShot) {
@@ -105,17 +118,18 @@ public class Shootable : NetworkBehaviour
         GameObject.Find("AudioManager").GetComponent<AudioManager>().PlaySoundEffect(killSound, 5f);
     }
 
-    public void DemonstrateKill(ulong clientWhoShot, string message) {
+    public void DemonstrateKill(ulong clientWhoShot, string message, bool addKill) {
         Debug.Log(OwnerClientId + " | " + clientWhoShot);
         GameObject.Find("Controller").GetComponent<WeaponController>().DisplayHUDNotif(message);
-        GameObject.Find("Controller").GetComponent<WeaponController>().kills++;
+        if (addKill) GameObject.Find("Controller").GetComponent<Shootable>().IncrementKillsServerRpc();
+        //GameObject.Find("Controller").GetComponent<WeaponController>().kills++;
     }
 
     [ClientRpc]
     private void DemonstrateKilledByClientRpc(string message) {
         if (IsOwner) {
             GameObject.Find("Controller").GetComponent<WeaponController>().DisplayHUDNotif(message);
-            GameObject.Find("Controller").GetComponent<WeaponController>().deaths++;
+            //GameObject.Find("Controller").GetComponent<WeaponController>().deaths++;
         }
     }
 }

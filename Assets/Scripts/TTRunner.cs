@@ -95,7 +95,6 @@ public class TTRunner : NetworkBehaviour
 
         if(secondsLeft.Value < 1) {
             FreezePlayers();
-            SetKDText();
             StartCoroutine(HandleWin());
         }
     }
@@ -118,12 +117,22 @@ public class TTRunner : NetworkBehaviour
         }
     }
 
-    private void SetKDText() {
+    [ServerRpc(RequireOwnership = false)]
+    private void SetKDTextServerRpc(string text) {
         WeaponController[] players = Object.FindObjectsOfType<WeaponController>();
+        kdText = "";
         foreach(WeaponController player in players) {
-            string playerLine = player.transform.parent.gameObject.name + ": " + player.kills + "/" + player.deaths + "\n";
+            Shootable myShootable = player.GetComponent<Shootable>();
+            string playerLine = player.transform.parent.gameObject.name + ": " + myShootable.kills + "/" + myShootable.deaths + "\n";
             kdText += playerLine;
         }
+        SetKDTextClientRpc(text + "\n\n" + kdText);
+    }
+
+    [ClientRpc]
+    private void SetKDTextClientRpc(string text) {
+        winText.gameObject.SetActive(true); 
+        winText.text = text;
     }
 
     private void DespawnAll() {
@@ -165,10 +174,9 @@ public class TTRunner : NetworkBehaviour
     [ClientRpc]
     private void DisplayWinnerClientRpc(string text) {
         FreezePlayers();
+        SetKDTextServerRpc(text);
         timerText.text = "TIME!";
-        timerActive = false; 
-        winText.gameObject.SetActive(true); 
-        winText.text = text + "\n\n" + kdText;
+        timerActive = false;
     }
 
     private IEnumerator HandleWin() {
