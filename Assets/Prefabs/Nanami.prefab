@@ -549,7 +549,7 @@ MonoBehaviour:
     m_Bits: 384
   whatIsWall:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 503
   shotSound: {fileID: 8300000, guid: 4010ce9aa35196040a1ba1519d19bc43, type: 3}
   shotSoundVolume: 0.8
   hitSoundVolume: 3
@@ -563,6 +563,13 @@ MonoBehaviour:
   boulettes: {fileID: 0}
   hudNotif: {fileID: 0}
   teamId: -1
+  bullet: {fileID: 0}
+  subBullet: {fileID: 0}
+  shootForce: 0
+  upwardForce: 0
+  subShooting: 0
+  subEnabled: 0
+  allowSubButtonHold: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0

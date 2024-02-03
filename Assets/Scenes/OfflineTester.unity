@@ -84223,6 +84223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   quitBtn: {fileID: 0}
+  closeBtn: {fileID: 0}
+  confirmBtn: {fileID: 0}
   volumeSlider: {fileID: 0}
   selectedCharacterCode: 0
   teamId: 0

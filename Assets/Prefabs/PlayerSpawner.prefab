@@ -75,4 +75,5 @@ MonoBehaviour:
   - {fileID: 7535104662361938694, guid: 75980487369b28147b73916b1aaefa01, type: 3}
   - {fileID: 7535104662361938694, guid: fdd291f7f54b0a446aa035cd8074d805, type: 3}
   - {fileID: 7535104662361938694, guid: 6e58d7ddccf8a7a4093af49099c6c414, type: 3}
+  - {fileID: 7535104662361938694, guid: b57d7f0274deea546af0841ad0c86103, type: 3}
   playerSpawned: 0

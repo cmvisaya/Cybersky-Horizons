@@ -57,6 +57,11 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private float slideTimer, maxSlideTimer;
     [SerializeField] private float gpoundCancelTimer, maxGPoundCancelTimer;
 
+    public Camera cam;
+    public bool eTeleportEnabled = false;
+    public float tpRange;
+    public LayerMask whatIsGrabbable;
+
     private void StartWallRun() {
         if(!isWallRunning) {
             cc.ActivateCamera(2);
@@ -106,6 +111,17 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.C)) { 
             if(speed > moveSpeed && !isSliding && !isWallRunning && grounded) {
                 InitiateSlide();
+            }
+        }
+    }
+
+    private void CheckForTeleport() {
+        if (Input.GetKeyDown(KeyCode.E) && wc.GetBullets() > 0) {
+            RaycastHit hit;
+            Vector3 direction = cam.transform.forward;
+            if (Physics.Raycast(cam.transform.position, direction, out hit, wc.GetBullets() * tpRange, whatIsGrabbable)) {
+                Teleport(hit.point);
+                wc.ResetBullets();
             }
         }
     }
@@ -176,6 +192,7 @@ public class PlayerController : NetworkBehaviour
         {
             CheckForWall();
             CheckForSlide();
+            if (eTeleportEnabled) CheckForTeleport();
             //Stick Movement
             float yStore = moveDirection.y;
             float vertInput = Input.GetAxis("Vertical");
@@ -314,6 +331,22 @@ public class PlayerController : NetworkBehaviour
         playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         pivot.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         controller.enabled = true;
+        gameObject.GetComponent<WeaponController>().ResetBullets();
+    }
+
+    [ClientRpc]
+    public void TeleportClientRpc(Vector3 tpLoc, ulong clientId) {
+        if(IsOwner && clientId == OwnerClientId) {
+            Teleport(tpLoc);
+        }
+    }
+
+    public void Teleport(Vector3 tpLoc) {
+        controller.enabled = false;
+        Vector3 movVector = tpLoc - transform.position;
+        float movMag = movVector.magnitude - 2f;
+        transform.position += movVector.normalized * movMag;
+        controller.enabled = true;
     }
 
     [ClientRpc]
@@ -324,6 +357,7 @@ public class PlayerController : NetworkBehaviour
         playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         pivot.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         controller.enabled = true;
+        gameObject.GetComponent<WeaponController>().ResetBullets();
     }
 
     // [ServerRpc]
