@@ -18,7 +18,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private string lobbyCode;
 
-    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn, teamText;
+    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn, teamText, dispNameNotif;
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartbeatTimer, lobbyUpdateTimer;
@@ -59,7 +59,6 @@ public class NetworkManagerUI : MonoBehaviour
 
         joinBtn.onClick.AddListener(() => {
             JoinLobbyByCode(lobbyCode);
-            ActivateMenu(2);
             AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
@@ -69,11 +68,14 @@ public class NetworkManagerUI : MonoBehaviour
 
         backBtn1.onClick.AddListener(() => {
             ActivateMenu(0);
+            dispNameNotif.text = "Enter Display Name";
         });
 
         backBtn2.onClick.AddListener(() => {
             LeaveLobby();
             ActivateMenu(0);
+            dispNameNotif.text = "Enter Display Name";
+
         });
 
         backCSBtn.onClick.AddListener(() => {
@@ -84,8 +86,12 @@ public class NetworkManagerUI : MonoBehaviour
         });
 
         initJoinBtn.onClick.AddListener(() => {
-            ListLobbies();
-            ActivateMenu(1);
+            if (playerName.Length > 0) {
+                ListLobbies();
+                ActivateMenu(1);
+            } else {
+                dispNameNotif.text = "Invalid Display Name!";
+            }
             AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
 
@@ -213,10 +219,12 @@ public class NetworkManagerUI : MonoBehaviour
                 Debug.Log("Created Lobby! " + lobby.Name + " " + lobby.MaxPlayers + " " + lobby.Id + " " + lobby.LobbyCode);
                 il1.text = "Waiting for other players... (" + lobby.Players.Count + "/" + lobby.MaxPlayers + ")\n" + lobby.Name + " (" + lobby.LobbyCode + ")";
                 //PrintPlayers();
+                dispNameNotif.text = "Enter Display Name";
                 ActivateMenu(2);
             }
             else {
                 Debug.Log("Invalid username");
+                dispNameNotif.text = "Invalid Display Name!";
             }
         } catch (LobbyServiceException e) {
             Debug.Log(e);
@@ -261,8 +269,11 @@ public class NetworkManagerUI : MonoBehaviour
                 joinedLobby = lobby;
                 Debug.Log("Joined Lobby with code " + lobbyCode);
                 il1.text = "Waiting for other players... (" + lobby.Players.Count + "/" + lobby.MaxPlayers + ")\n" + lobby.Name + " (" + lobby.LobbyCode + ")";
+                dispNameNotif.text = "Enter Display Name";
+                ActivateMenu(2);
             } else {
                 Debug.Log("Invalid username");
+                dispNameNotif.text = "Invalid Display Name!";
             }
         } catch (LobbyServiceException e) {
             Debug.Log(e);
