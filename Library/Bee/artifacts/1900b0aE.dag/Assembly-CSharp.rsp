@@ -423,6 +423,7 @@
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/CharacterSelectData.cs"
 "Assets/Scripts/CharacterSelectManager.cs"
+"Assets/Scripts/CharSelectStats.cs"
 "Assets/Scripts/CustomBullet.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GlobalAudioListener.cs"

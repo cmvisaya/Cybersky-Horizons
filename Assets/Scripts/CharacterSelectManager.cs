@@ -6,12 +6,14 @@ using TMPro;
 
 public class CharacterSelectManager : MonoBehaviour
 {
-    [SerializeField] private Button lockInBtn, backBtn;
+    [SerializeField] private Button lockInBtn, backBtn, infoBtn;
     [SerializeField] private Button[] charButtons;
     [SerializeField] private string[] charNames;
     [SerializeField] private GameObject[] charModelPrefabs;
     [SerializeField] private int currCharCode, nextSceneCode;
     public TextMeshProUGUI charName;
+    [SerializeField] private Slider speed, damage, range, fireRate, magSize;
+    [SerializeField] private TextMeshProUGUI className, infoName;
     public GameObject infoTooltip;
 
     private void Awake() {
@@ -20,6 +22,10 @@ public class CharacterSelectManager : MonoBehaviour
         });
         backBtn.onClick.AddListener(() => {
             GameManager.Instance.LoadScene(0);
+        });
+        infoBtn.onClick.AddListener(() => {
+            infoTooltip.SetActive(!infoTooltip.activeSelf);
+            infoName.text = infoTooltip.activeSelf ? "Hide Stats" : "Show Stats";
         });
         charButtons[0].onClick.AddListener(() => {
             SelectCharacter(0);
@@ -62,8 +68,19 @@ public class CharacterSelectManager : MonoBehaviour
         DeactivateAllPrefabs();
         charModelPrefabs[id].SetActive(true);
         charName.text = charNames[id];
-        infoTooltip.SetActive(true);
+        //infoTooltip.SetActive(true);
         currCharCode = id;
+        SetInfoStats(id);
+    }
+
+    private void SetInfoStats(int id) {
+        CharSelectStats stats = charModelPrefabs[id].GetComponent<CharSelectStats>();
+        className.text = "Class: " + stats.className;
+        speed.value = stats.speed;
+        damage.value = stats.damage;
+        range.value = stats.range;
+        fireRate.value = stats.fireRate;
+        magSize.value = stats.magSize;
     }
 
     private void DeactivateAllPrefabs() {
@@ -71,7 +88,7 @@ public class CharacterSelectManager : MonoBehaviour
             charModel.SetActive(false);
         }
         charName.text = "";
-        infoTooltip.SetActive(false);
+        //infoTooltip.SetActive(false);
     }
 
     private void LockIn() {

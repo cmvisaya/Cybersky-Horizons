@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AudioManager
     - CameraController
+    - CharSelectStats
     - CharacterSelectManager
     - CustomBullet
     - GameManager
@@ -31,6 +32,8 @@ ScriptsOnlyBuild:
     - UniHumanoid.HumanPoseClip
     UniHumanoid.dll:
     - UniHumanoid.AvatarDescription
+    UniVRM.Editor.dll:
+    - VRM.VRMMetaObjectEditor
     Unity.Multiplayer.Samples.Utilities.ClientAuthority.dll:
     - Unity.Multiplayer.Samples.Utilities.ClientAuthority.ClientNetworkAnimator
     - Unity.Multiplayer.Samples.Utilities.ClientAuthority.ClientNetworkTransform
@@ -72,8 +75,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -256,6 +261,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12498}
     - Class: 114
+      Script: {instanceID: 12736}
+    - Class: 114
       Script: {instanceID: 12828}
     - Class: 114
       Script: {instanceID: 12994}
@@ -263,6 +270,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13976}
     - Class: 114
       Script: {instanceID: 14434}
+    - Class: 114
+      Script: {instanceID: 49586}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2032,7 +2041,7 @@ ScriptsOnlyBuild:
     className: AmbientOcclusion
   - hash:
       serializedVersion: 2
-      Hash: 64e537605c523236302cf0a27dac2eb7
+      Hash: aca8d1307373acff61a37daeb0917517
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: CharacterSelectManager
@@ -2492,6 +2501,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 31e0480312cd35069d0d48586039761d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: CharSelectStats
   platform: 19
   scenePathNames:
   - Assets/Scenes/TitleScreen.unity
