@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject pauseMenu;
     [SerializeField] private Button quitBtn, closeBtn, confirmBtn;
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider volumeSlider, sfxSlider, bgmSlider;
     public int selectedCharacterCode, teamId, numTeams;
     public string displayName;
     public Dictionary<int, int> charCodes = new Dictionary<int, int>(); //First int is network client id
@@ -46,7 +46,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pauseMenu.activeSelf) { AudioManager.Instance.volumeMult = volumeSlider.value; Cursor.lockState = CursorLockMode.None; }
+        if(pauseMenu.activeSelf) { 
+            AudioManager.Instance.volumeMult = volumeSlider.value;
+            AudioManager.Instance.sfxMult = sfxSlider.value;
+            AudioManager.Instance.bgmMult = bgmSlider.value;
+            Cursor.lockState = CursorLockMode.None;
+        }
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseMenu();
     }
 

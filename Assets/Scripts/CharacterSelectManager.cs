@@ -25,6 +25,7 @@ public class CharacterSelectManager : MonoBehaviour
         });
         infoBtn.onClick.AddListener(() => {
             infoTooltip.SetActive(!infoTooltip.activeSelf);
+            AudioManager.Instance.PlaySoundEffect(1, 2f);
             infoName.text = infoTooltip.activeSelf ? "Hide Stats" : "Show Stats";
         });
         charButtons[0].onClick.AddListener(() => {

@@ -200,7 +200,7 @@ public class PlayerController : NetworkBehaviour
             if (isGPound) {
                 gpoundCancelTimer -= 1f * Time.deltaTime;
                 if (gpoundCancelTimer < 0) {
-                    isGPound = false;
+                    //isGPound = false;
                 }
             }
             if(isSliding) {
@@ -241,7 +241,7 @@ public class PlayerController : NetworkBehaviour
                     moveDirection.y = jumpForce;
                     isSliding = false;
                     isGPound = false;
-                } else if (isGPound) {
+                } else if (isGPound && Input.GetKey(KeyCode.C)) {
                     InitiateSlide();
                     isGPound = false;
                 }

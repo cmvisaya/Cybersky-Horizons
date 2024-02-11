@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - GameManager
     - GlobalAudioListener
     - KillWall
+    - ModeSelectManager
     - NameTag
     - NetworkManagerUI
     - NetworkSpawnable
@@ -273,6 +274,77 @@ ScriptsOnlyBuild:
     - Class: 128
       Script: {instanceID: 0}
     - Class: 137
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/ModeSelect.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1782}
+    - Class: 114
+      Script: {instanceID: 1834}
+    - Class: 114
+      Script: {instanceID: 2638}
+    - Class: 114
+      Script: {instanceID: 3502}
+    - Class: 114
+      Script: {instanceID: 6580}
+    - Class: 114
+      Script: {instanceID: 9728}
+    - Class: 114
+      Script: {instanceID: 10050}
+    - Class: 114
+      Script: {instanceID: 10252}
+    - Class: 114
+      Script: {instanceID: 11990}
+    - Class: 114
+      Script: {instanceID: 12738}
+    - Class: 114
+      Script: {instanceID: 12830}
+    - Class: 114
+      Script: {instanceID: 13978}
+    - Class: 114
+      Script: {instanceID: 14476}
+    - Class: 114
+      Script: {instanceID: 15690}
+    - Class: 114
+      Script: {instanceID: 55576}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -639,7 +711,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 874e79eff3f331ef427d5e4faa6456bf
+      Hash: 11c2c26f827b8953ee1117f313f3968b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -2451,7 +2523,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseUpMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 500ab019050a312dc41977924ade8cb4
+      Hash: 2b741407f997c1bee2c807bcea625dea
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: AudioManager
@@ -2503,10 +2575,17 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 94ecd3e57a625d81e10bd3a25228fb9d
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ModeSelectManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/CharacterSelect.unity
   - Assets/Scenes/OfflineTester.unity
-  playerPath: C:/Users/micro/OneDrive/Documents/Game Development/Unity Projects/ThirdPersonShooter/Builds/Cybersky
+  - Assets/Scenes/ModeSelect.unity
+  playerPath: C:/Users/micro/OneDrive/Documents/GitHub/ThirdPersonShooter/Builds/Cybersky
     Horizons.exe

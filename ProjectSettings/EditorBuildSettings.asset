@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfflineTester.unity
     guid: 67c67fc172f33ad4f86823ed52315827
+  - enabled: 1
+    path: Assets/Scenes/ModeSelect.unity
+    guid: d6d6a925c6eba734aaa228da5bf16083
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/DialogueTester.unity
+    guid: 1906717bbc3fbfb46b273ce26dc1d64e
   m_configObjects: {}

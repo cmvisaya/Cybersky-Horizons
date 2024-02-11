@@ -9,7 +9,7 @@ public class AudioManager : NetworkBehaviour
     [SerializeField] private AudioSource source, bgmSource;
 
     public AudioListener al;
-    public float volumeMult;
+    public float volumeMult, sfxMult, bgmMult;
 
     [SerializeField] AudioClip[] globalClips;
 
@@ -27,8 +27,8 @@ public class AudioManager : NetworkBehaviour
     }
 
     private void Update() {
-        source.volume = volumeMult;
-        bgmSource.volume = volumeMult;
+        source.volume = volumeMult * sfxMult;
+        bgmSource.volume = volumeMult * bgmMult;
     }
 
     public void PlaySoundEffect(int clipId, float volume) {
@@ -67,6 +67,6 @@ public class AudioManager : NetworkBehaviour
     [ClientRpc]
     private void PlaySoundEffectAtLocationClientRpc(int id, Vector3 position, float volume) {
         //Debug.Log("Play at Client");
-        AudioSource.PlayClipAtPoint(globalClips[id], position, volume * volumeMult);
+        AudioSource.PlayClipAtPoint(globalClips[id], position, volume * volumeMult * sfxMult);
     }
 }

@@ -363,6 +363,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GlobalAudioListener.cs"
 "Assets/Scripts/KillWall.cs"
+"Assets/Scripts/ModeSelectManager.cs"
 "Assets/Scripts/NameTag.cs"
 "Assets/Scripts/NetworkManagerUI.cs"
 "Assets/Scripts/NetworkSpawnable.cs"
