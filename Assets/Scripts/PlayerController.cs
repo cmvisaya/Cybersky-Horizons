@@ -96,8 +96,8 @@ public class PlayerController : NetworkBehaviour
         onLeftWall = Physics.Raycast(pivot.transform.position, -pivot.transform.right, out leftWallHit, 0.75f, whatIsWall);
         onRightWall = Physics.Raycast(pivot.transform.position, pivot.transform.right, out rightWallHit, 0.75f, whatIsWall);
         //Debug.Log(!isWallRunning + " | " + !wallRunOnCD + " | " + !grounded);
-        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.5f) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
-        if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f) && isWallRunning) StopWallRun();
+        if (((onRightWall || onLeftWall) && speed >= sprintSpeed * 0.5f && Input.GetAxis("Vertical") > 0) && !isWallRunning && !wallRunOnCD && !grounded) StartWallRun();
+        if (((!onRightWall && !onLeftWall) || speed < sprintSpeed * 0.9f || Input.GetAxis("Vertical") < 0) && isWallRunning) StopWallRun();
     }
 
     private IEnumerator DelayCameraClipthrough() {

@@ -11,10 +11,12 @@ public class DialogueManager : MonoBehaviour
     public RawImage characterIcon;
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
+    public Button continueBtn;
  
     private Queue<DialogueLine> lines;
 
     private bool inTyping = false;
+    private bool stoleControl = false;
     private string currentLineText;
 
     private int endEventId;
@@ -27,8 +29,18 @@ public class DialogueManager : MonoBehaviour
  
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
+        continueBtn.onClick.AddListener(() => {
+            DisplayNextDialogueLine();
+        });
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
  
         lines = new Queue<DialogueLine>();
         typingSpeed = 1 / typingSpeed;
@@ -37,6 +49,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         endEventId = dialogue.endEventId;
+        stoleControl = dialogue.stealsControl;
 
         isDialogueActive = true;
  
@@ -91,6 +104,11 @@ public class DialogueManager : MonoBehaviour
  
     void EndDialogue()
     {
+        if (stoleControl) {
+            GameObject player = GameObject.Find("Player");
+            player.GetComponentInChildren<OfflinePlayerController>().hasControl = true;
+            player.GetComponentInChildren<OfflineWeaponController>().hasControl = true;
+        }
         isDialogueActive = false;
         animator.Play("hide");
         StartCoroutine(EnactEndEvent());
@@ -99,7 +117,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator EnactEndEvent() {
         switch (endEventId) {
             case 1:
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(0.5f);
                 GameManager.Instance.LoadScene(4);
                 break;
         }

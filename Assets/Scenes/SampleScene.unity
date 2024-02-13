@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3599053369141858334, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -42.2
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 4424191665281265887, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: m_LocalPosition.x
@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7535104662361938694, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: m_Name
-      value: FioreOffline
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7724059565118052363, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -229,7 +229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791687548105537683, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: field of view
-      value: 90
+      value: 60.000004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1788,6 +1788,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132308195}
   m_CullTransparentMesh: 1
+--- !u!1 &1159842094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159842096}
+  - component: {fileID: 1159842095}
+  m_Layer: 0
+  m_Name: DialogueEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1159842095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159842094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396041cabefc13a4bbafa52c2ec26bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    endEventId: 0
+    delayTime: 0
+    stealsControl: 1
+    dialogueLines:
+    - character:
+        name: Aera
+        icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
+      line: Alright, Fiore. You know the drill.
+    - character:
+        name: Aera
+        icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
+      line: Make it to the end of the obstacle course as quickly as possible.
+    - character:
+        name: Aera
+        icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
+      line: Timer starts when you cross the start line.
+    - character:
+        name: Aera
+        icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
+      line: Good luck.
+--- !u!4 &1159842096
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159842094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 346.61694, y: 200.72345, z: 3.0548444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1184370332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,3 +3010,4 @@ SceneRoots:
   - {fileID: 2142239802}
   - {fileID: 631611189}
   - {fileID: 63092581}
+  - {fileID: 1159842096}

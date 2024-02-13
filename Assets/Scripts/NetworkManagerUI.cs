@@ -135,9 +135,10 @@ public class NetworkManagerUI : MonoBehaviour
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
         } catch (AuthenticationException e) {
+            GameManager.Instance.LoadScene(3);
             Debug.Log(e);
         }
-
+        
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.SetTeam(0);
         ActivateMenu(0);

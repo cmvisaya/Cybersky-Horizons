@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
  
 [System.Serializable]
@@ -20,6 +21,8 @@ public class DialogueLine
 public class Dialogue
 {
     public int endEventId;
+    public float delayTime;
+    public bool stealsControl;
     public List<DialogueLine> dialogueLines = new List<DialogueLine>();
 }
  
@@ -29,11 +32,21 @@ public class DialogueEvent : MonoBehaviour
  
     public void TriggerDialogue()
     {
+        if (dialogue.stealsControl) {
+            GameObject player = GameObject.Find("Player");
+            player.GetComponentInChildren<OfflinePlayerController>().hasControl = false;
+            player.GetComponentInChildren<OfflineWeaponController>().hasControl = false;
+        }
         DialogueManager.Instance.StartDialogue(dialogue);
     }
  
     private void Start() //Debug for now
     {
+        StartCoroutine(StartWithDelayTime(dialogue.delayTime));
+    }
+
+    private IEnumerator StartWithDelayTime(float dt) {
+        yield return new WaitForSeconds(dt);
         TriggerDialogue();
     }
 }
