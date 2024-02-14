@@ -427,6 +427,7 @@
 "Assets/Scripts/CustomBullet.cs"
 "Assets/Scripts/Dialogue/DialogueEvent.cs"
 "Assets/Scripts/Dialogue/DialogueManager.cs"
+"Assets/Scripts/Dialogue/DialogueRunner.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/GlobalAudioListener.cs"
 "Assets/Scripts/KillWall.cs"

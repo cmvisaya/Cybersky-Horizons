@@ -16,7 +16,7 @@ public class OfflineShootable : MonoBehaviour
     }
 
     private void Update() {
-        //if (vignette != null) vignette.CrossFadeAlpha(1.0f - ((float) health / maxHealth), 0, false);
+        if (vignette != null) vignette.CrossFadeAlpha(1.0f - ((float) health / maxHealth), 0, false);
     }
 
     public void SetHealth(int newHealth) {
@@ -60,6 +60,7 @@ public class OfflineShootable : MonoBehaviour
                 break;
             case "Enemy":
                 Destroy(gameObject);
+                PlaySound();
                 break;
         }
     }

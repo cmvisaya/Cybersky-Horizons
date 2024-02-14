@@ -15,6 +15,14 @@ public class DialogueLine
     public DialogueCharacter character;
     [TextArea(3, 10)]
     public string line;
+    public Choice choice;
+}
+
+[System.Serializable]
+public class Choice
+{
+    public List<string> responses = new List<string>();
+    public List<DialogueEvent> branches = new List<DialogueEvent>();
 }
  
 [System.Serializable]
@@ -42,10 +50,10 @@ public class DialogueEvent : MonoBehaviour
  
     private void Start() //Debug for now
     {
-        StartCoroutine(StartWithDelayTime(dialogue.delayTime));
+        //StartCoroutine(StartWithDelayTime(dialogue.delayTime));
     }
 
-    private IEnumerator StartWithDelayTime(float dt) {
+    public IEnumerator StartWithDelayTime(float dt) {
         yield return new WaitForSeconds(dt);
         TriggerDialogue();
     }

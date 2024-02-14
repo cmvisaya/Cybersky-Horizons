@@ -66,10 +66,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\NetworkManagerUI.cs" />
     <Compile Include="Assets\Scripts\TestRelay.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\NetworkSpawnable.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
     <Compile Include="Assets\Scripts\CustomBullet.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueEvent.cs" />
     <Compile Include="Assets\Scripts\PlayBGM.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\GunAim.cs" />
@@ -78,10 +80,12 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CharacterSelectManager.cs" />
     <Compile Include="Assets\Scripts\KillWall.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\DialogueRunner.cs" />
     <Compile Include="Assets\Scripts\Shootable.cs" />
     <Compile Include="Assets\Scripts\TitleScreenManager.cs" />
     <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\Scripts\OfflineVariants\OfflineWeaponController.cs" />
     <Compile Include="Assets\Scripts\TTRunner.cs" />
     <Compile Include="Assets\Scripts\TestLobby.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
@@ -90,9 +94,12 @@
     <Compile Include="Assets\UnityTechnologies\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\GlobalAudioListener.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\Scripts\OfflineVariants\OfflineShootable.cs" />
     <Compile Include="Assets\Scripts\CharSelectStats.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
+    <Compile Include="Assets\Scripts\OfflineVariants\OfflinePlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ModeSelectManager.cs" />
     <Compile Include="Assets\Scripts\CharacterSelectData.cs" />
   </ItemGroup>
   <ItemGroup>

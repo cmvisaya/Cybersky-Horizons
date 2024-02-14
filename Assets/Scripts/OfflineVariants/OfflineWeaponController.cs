@@ -173,7 +173,7 @@ public class OfflineWeaponController : MonoBehaviour
         SetSeat(activeSeat);
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
-        am.PlayGlobalSoundEffectServerRpc(0, transform.position, shotSoundVolume);
+        am.PlaySoundEffect(shotSound, shotSoundVolume);
         bulletsLeft--;
         bulletsShot--;
 

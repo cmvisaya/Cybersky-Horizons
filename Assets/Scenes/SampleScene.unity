@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.6100001
       objectReference: {fileID: 0}
+    - target: {fileID: 2301973840533006475, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
+      propertyPath: whatIsEnemy.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2625248115648880115, guid: 3748af8394d2c114d8d84bb2086c9199, type: 3}
       propertyPath: respawnLocation
       value: 
@@ -356,17 +360,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 190583696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &289198197
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,17 +589,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 331989214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &454313359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,17 +1320,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 787486675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &872569369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,18 +1818,30 @@ MonoBehaviour:
         name: Aera
         icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
       line: Alright, Fiore. You know the drill.
+      choice:
+        responses: []
+        branches: []
     - character:
         name: Aera
         icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
       line: Make it to the end of the obstacle course as quickly as possible.
+      choice:
+        responses: []
+        branches: []
     - character:
         name: Aera
         icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
       line: Timer starts when you cross the start line.
+      choice:
+        responses: []
+        branches: []
     - character:
         name: Aera
         icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
       line: Good luck.
+      choice:
+        responses: []
+        branches: []
 --- !u!4 &1159842096
 Transform:
   m_ObjectHideFlags: 0
@@ -2133,6 +2137,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1278599778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278599780}
+  - component: {fileID: 1278599779}
+  m_Layer: 0
+  m_Name: DialogueRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1278599779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278599778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31d732d02e607874b9af8112f14663ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEvent: {fileID: 1159842095}
+  delayTime: 0
+--- !u!4 &1278599780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278599778}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1389226293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,17 +2300,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1389226293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &1531057300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,17 +2634,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621074689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &1820925973
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,17 +2758,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1820925973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &1958182990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,17 +2987,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087840406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab78a7ee969d6794aaa9b3054373cd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cf5dee9e2caf74ea7285d511820a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxHealth: 0
-  objectiveId: 0
-  teamId: -1
-  killSound: {fileID: 0}
+  maxHealth: 100
+  killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 0}
-  kills: 0
-  deaths: 0
 --- !u!1 &2142239801
 GameObject:
   m_ObjectHideFlags: 0
@@ -3011,3 +3045,4 @@ SceneRoots:
   - {fileID: 631611189}
   - {fileID: 63092581}
   - {fileID: 1159842096}
+  - {fileID: 1278599780}
