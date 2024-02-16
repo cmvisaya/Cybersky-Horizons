@@ -42,8 +42,10 @@ public class DialogueEvent : MonoBehaviour
     {
         if (dialogue.stealsControl) {
             GameObject player = GameObject.Find("Player");
-            player.GetComponentInChildren<OfflinePlayerController>().hasControl = false;
-            player.GetComponentInChildren<OfflineWeaponController>().hasControl = false;
+            if (player != null) {
+                player.GetComponentInChildren<OfflinePlayerController>().hasControl = false;
+                player.GetComponentInChildren<OfflineWeaponController>().hasControl = false;
+            }
         }
         DialogueManager.Instance.StartDialogue(dialogue);
     }

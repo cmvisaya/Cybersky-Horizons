@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\NetworkManagerUI.cs" />
+    <Compile Include="Assets\Scripts\Dialogue\TouchDialogue.cs" />
     <Compile Include="Assets\Scripts\TestRelay.cs" />
     <Compile Include="Assets\Scripts\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\NetworkSpawnable.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\PlayBGM.cs" />
     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\GunAim.cs" />
+    <Compile Include="Assets\Scripts\KillRequirement.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
@@ -89,11 +91,13 @@
     <Compile Include="Assets\Scripts\TTRunner.cs" />
     <Compile Include="Assets\Scripts\TestLobby.cs" />
     <Compile Include="Assets\Scripts\WeaponController.cs" />
+    <Compile Include="Assets\Scripts\OfflineVariants\OfflineKillWall.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\NameTag.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\GlobalAudioListener.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\Scripts\Billboarding.cs" />
     <Compile Include="Assets\Scripts\OfflineVariants\OfflineShootable.cs" />
     <Compile Include="Assets\Scripts\CharSelectStats.cs" />
     <Compile Include="Assets\UnityTechnologies\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
@@ -111,12 +115,14 @@
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_vertex.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_geometry_uv.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\GLTF\IO\Resources\UniGLTF\NormalMapExporter.shader" />
+    <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_depthnormals_fragment.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\ClassicSpace\Classic Space Skybox Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_lighting_mtoon.hlsl" />
+    <None Include="Assets\Fantasy Skybox FREE\ReleaseNotes.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_shadowcaster_vertex.hlsl" />
     <None Include="Assets\UniVRM\VRMShaders\VRM10\MToon10\Resources\VRM10\vrmc_materials_mtoon_forward_vertex.hlsl" />

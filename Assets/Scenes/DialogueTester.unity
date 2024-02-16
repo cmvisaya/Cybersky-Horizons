@@ -218,7 +218,7 @@ MonoBehaviour:
   dialogue:
     endEventId: 0
     delayTime: 2
-    stealsControl: 0
+    stealsControl: 1
     dialogueLines:
     - character:
         name: Aera
@@ -274,7 +274,7 @@ MonoBehaviour:
   dialogue:
     endEventId: 1
     delayTime: 0
-    stealsControl: 0
+    stealsControl: 1
     dialogueLines:
     - character:
         name: Fiore
@@ -304,6 +304,13 @@ MonoBehaviour:
       choice:
         responses: []
         branches: []
+    - character:
+        name: Fiore
+        icon: {fileID: 2800000, guid: f7fb6acb97474904282b435a4c647456, type: 3}
+      line: Establishing <i>Ascension Link</i> now.
+      choice:
+        responses: []
+        branches: []
 --- !u!114 &193980950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,12 +326,19 @@ MonoBehaviour:
   dialogue:
     endEventId: 1
     delayTime: 0
-    stealsControl: 0
+    stealsControl: 1
     dialogueLines:
     - character:
         name: Fiore
         icon: {fileID: 2800000, guid: f7fb6acb97474904282b435a4c647456, type: 3}
       line: Ready when you are.
+      choice:
+        responses: []
+        branches: []
+    - character:
+        name: Fiore
+        icon: {fileID: 2800000, guid: f7fb6acb97474904282b435a4c647456, type: 3}
+      line: Establishing <i>Ascension Link</i> now.
       choice:
         responses: []
         branches: []
@@ -1117,6 +1131,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707798976}
   m_CullTransparentMesh: 1
+--- !u!1 &817313787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 817313789}
+  - component: {fileID: 817313788}
+  m_Layer: 0
+  m_Name: PlayBGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &817313788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817313787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bbdd5a2e8acd44fb684fd670e9b19b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  track: {fileID: 8300000, guid: 914aa3e069ec8164383dc0e75f2c4d68, type: 3}
+  volume: 2
+--- !u!4 &817313789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817313787}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 626.1943, y: 313.85184, z: 168.5813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929611655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1216,7 @@ MonoBehaviour:
   isDialogueActive: 0
   typingSpeed: 20
   animator: {fileID: 1041317088}
+  typeSound: {fileID: 8300000, guid: 22ac850004e41684e90581f9eaf3e4ac, type: 3}
 --- !u!4 &929611657
 Transform:
   m_ObjectHideFlags: 0
@@ -2239,3 +2300,4 @@ SceneRoots:
   - {fileID: 193980947}
   - {fileID: 1077433666}
   - {fileID: 1595324966}
+  - {fileID: 817313789}

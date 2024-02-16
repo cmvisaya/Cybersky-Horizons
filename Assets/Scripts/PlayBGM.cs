@@ -10,6 +10,6 @@ public class PlayBGM : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        AudioManager.Instance.PlayBGM(track, volume);
+        if(!AudioManager.Instance.BGMPlaying()) AudioManager.Instance.PlayBGM(track, volume);
     }
 }

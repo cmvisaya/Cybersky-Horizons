@@ -3075,6 +3075,10 @@ MonoBehaviour:
   standardizedSFX:
   - {fileID: 8300000, guid: 8ddefb34a9e87ea4d96e984172c687b0, type: 3}
   - {fileID: 8300000, guid: 84115534e7826684ba248fdb2483cbbc, type: 3}
+  - {fileID: 8300000, guid: 01d0b6733e2953545809fdedf518a83f, type: 3}
+  - {fileID: 8300000, guid: 383ea59bfe524bf4ab0e6556560f8460, type: 3}
+  - {fileID: 8300000, guid: c4bb28b7e2a77af4c9b6de57e2229f8b, type: 3}
+  - {fileID: 8300000, guid: 3165eececc1fddf44a623ce171a3309a, type: 3}
 --- !u!114 &1750631444
 MonoBehaviour:
   m_ObjectHideFlags: 0

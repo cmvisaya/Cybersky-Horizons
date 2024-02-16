@@ -31,6 +31,10 @@ public class AudioManager : NetworkBehaviour
         bgmSource.volume = volumeMult * bgmMult;
     }
 
+    public void StopSFX() {
+        source.Stop();
+    }
+
     public void PlaySoundEffect(int clipId, float volume) {
         source.PlayOneShot(standardizedSFX[clipId], volume);
     }
@@ -47,6 +51,14 @@ public class AudioManager : NetworkBehaviour
         bgmSource.clip = clip;
         bgmSource.volume = vol * volumeMult;
         bgmSource.Play();
+    }
+
+    public bool BGMPlaying() {
+        return bgmSource.isPlaying;
+    }
+
+    public void StopBGM() {
+        bgmSource.Stop();
     }
     
     [ServerRpc(RequireOwnership = false)]

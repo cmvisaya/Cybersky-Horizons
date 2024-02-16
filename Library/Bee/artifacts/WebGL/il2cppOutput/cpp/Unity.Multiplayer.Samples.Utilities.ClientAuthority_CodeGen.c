@@ -1,0 +1,80 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m8EC04D2CD498173CA44F044C20107B3C8C6E48A5 (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m0ADF3B9D43CA053AC5F9F7F7E18077C7E60A0472 (void);
+extern void ClientNetworkAnimator_OnIsServerAuthoritative_m50C5C50AC7CFB7DDA09B77992DE21E8DBC49BC8E (void);
+extern void ClientNetworkAnimator__ctor_m06D50AE610902D924E01AC7C5FF2DDBDA52DA0F5 (void);
+extern void ClientNetworkAnimator___initializeVariables_m9448DAACA430CDA5C836275172270FD136DE6246 (void);
+extern void ClientNetworkAnimator___initializeRpcs_mC1A2499F9D7240E1C51071C2AA37088B429408E6 (void);
+extern void ClientNetworkAnimator___getTypeName_m4DCCEB5CD5D7E6F266D0953F09C59DCCAA84ABC4 (void);
+extern void ClientNetworkTransform_OnIsServerAuthoritative_m2C6F7F63DF4E8EC1932545560E38048594F285A5 (void);
+extern void ClientNetworkTransform__ctor_mB364D1FB726EB9BCE72EBABC48CEAEEA32DA88C8 (void);
+extern void ClientNetworkTransform___initializeVariables_mC1CDEDC529E865D31CF7D9E6BF6062158151E562 (void);
+extern void ClientNetworkTransform___initializeRpcs_m1EF567DFC86EE27CF566C88F5B95D181C2B34A6A (void);
+extern void ClientNetworkTransform___getTypeName_mC4B48460F00668C0E437FD43E623A2DDD696DE09 (void);
+extern void NetworkVariableSerializationHelper_InitializeSerialization_m2BDC800DF5D1057E7806C7B02578D2C91E1E228B (void);
+static Il2CppMethodPointer s_methodPointers[13] = 
+{
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_m8EC04D2CD498173CA44F044C20107B3C8C6E48A5,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m0ADF3B9D43CA053AC5F9F7F7E18077C7E60A0472,
+	ClientNetworkAnimator_OnIsServerAuthoritative_m50C5C50AC7CFB7DDA09B77992DE21E8DBC49BC8E,
+	ClientNetworkAnimator__ctor_m06D50AE610902D924E01AC7C5FF2DDBDA52DA0F5,
+	ClientNetworkAnimator___initializeVariables_m9448DAACA430CDA5C836275172270FD136DE6246,
+	ClientNetworkAnimator___initializeRpcs_mC1A2499F9D7240E1C51071C2AA37088B429408E6,
+	ClientNetworkAnimator___getTypeName_m4DCCEB5CD5D7E6F266D0953F09C59DCCAA84ABC4,
+	ClientNetworkTransform_OnIsServerAuthoritative_m2C6F7F63DF4E8EC1932545560E38048594F285A5,
+	ClientNetworkTransform__ctor_mB364D1FB726EB9BCE72EBABC48CEAEEA32DA88C8,
+	ClientNetworkTransform___initializeVariables_mC1CDEDC529E865D31CF7D9E6BF6062158151E562,
+	ClientNetworkTransform___initializeRpcs_m1EF567DFC86EE27CF566C88F5B95D181C2B34A6A,
+	ClientNetworkTransform___getTypeName_mC4B48460F00668C0E437FD43E623A2DDD696DE09,
+	NetworkVariableSerializationHelper_InitializeSerialization_m2BDC800DF5D1057E7806C7B02578D2C91E1E228B,
+};
+static const int32_t s_InvokerIndices[13] = 
+{
+	14619,
+	10145,
+	9840,
+	10145,
+	10145,
+	10145,
+	9984,
+	9840,
+	10145,
+	10145,
+	10145,
+	9984,
+	14594,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Unity_Multiplayer_Samples_Utilities_ClientAuthority_CodeGenModule;
+const Il2CppCodeGenModule g_Unity_Multiplayer_Samples_Utilities_ClientAuthority_CodeGenModule = 
+{
+	"Unity.Multiplayer.Samples.Utilities.ClientAuthority.dll",
+	13,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

@@ -287,9 +287,10 @@ public class OfflineWeaponController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
-        ShotInput();
-        AimInput();
+        if(hasControl) {
+            ShotInput();
+            AimInput();
+        }
 
         if(boulettes != null) {
             if (!displayByShots) boulettes.text = "" + (bulletsLeft / bulletsPerTap) + "/" + (magazineSize / bulletsPerTap);
@@ -305,6 +306,7 @@ public class OfflineWeaponController : MonoBehaviour
                 pc.moveDirection.y *= 0.2f;
                 cc.ActivateCamera(1);
                 crosshairs.CrossFadeAlpha(1.0f, 0.1f, false);
+                if (pc.grounded == false) am.PlaySoundEffect(5, 1f);
             }
             pc.aiming = true;
             if (!allowSightSprinting) pc.sprintEnabled = false;

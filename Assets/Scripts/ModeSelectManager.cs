@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ModeSelectManager : MonoBehaviour
 {
-    [SerializeField] private Button onlineBtn;
-    [SerializeField] private Button localBtn;
+    [SerializeField] private Button onlineBtn, localBtn, backBtn;
     [SerializeField] private int onlineSceneCode, localSceneCode;
 
     private void Awake() {
@@ -16,7 +15,11 @@ public class ModeSelectManager : MonoBehaviour
         });
         localBtn.onClick.AddListener(() => { 
             GameManager.Instance.LoadScene(localSceneCode);
+            AudioManager.Instance.StopBGM();
             AudioManager.Instance.PlaySoundEffect(0, 2f);
+        });
+        backBtn.onClick.AddListener(() => { 
+            GameManager.Instance.LoadScene(0);
         });
     }
 }

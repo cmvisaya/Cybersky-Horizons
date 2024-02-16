@@ -19,9 +19,7 @@ public class DialogueManager : MonoBehaviour
     private Queue<DialogueLine> lines;
     private List<DialogueEvent> branches;
 
-    private bool inTyping = false;
-    private bool inChoice = false;
-    private bool stoleControl = false;
+    private bool inTyping, inChoice, stoleControl, skipRichTag = false;
 
     private DialogueLine currentLine;
     private string currentLineText;
@@ -33,6 +31,7 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
  
     public Animator animator;
+    public AudioClip typeSound;
  
     private void Awake()
     {
@@ -70,8 +69,10 @@ public class DialogueManager : MonoBehaviour
         choiceBoxes.SetActive(false);
 
         isDialogueActive = true;
+
+        if (stoleControl) Cursor.lockState = CursorLockMode.None;
  
-        animator.Play("show");
+        if(dialogue.dialogueLines.Count > 0) animator.Play("show");
  
         lines.Clear();
  
@@ -113,14 +114,33 @@ public class DialogueManager : MonoBehaviour
  
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
+        float waitTime = typingSpeed;
         inTyping = true;
         dialogueArea.text = "";
         foreach (char letter in dialogueLine.line.ToCharArray())
         {
+            if(skipRichTag) {
+                waitTime = typingSpeed;
+                skipRichTag = false;
+            }
+
+            if(letter == '<') {
+                waitTime = 0f;
+            }
+            else if(letter == '>') {
+                skipRichTag = true;
+            }
+
             dialogueArea.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            AudioManager.Instance.PlaySoundEffect(typeSound, 1.5f);
+            yield return new WaitForSeconds(waitTime);
+            //AudioManager.Instance.StopSFX();
         }
         inTyping = false;
+        if(!stoleControl) {
+            yield return new WaitForSeconds(2f);
+            DisplayNextDialogueLine();
+        }
         HandleChoice(dialogueLine);
     }
 
@@ -140,8 +160,10 @@ public class DialogueManager : MonoBehaviour
     {
         if (stoleControl) {
             GameObject player = GameObject.Find("Player");
-            player.GetComponentInChildren<OfflinePlayerController>().hasControl = true;
-            player.GetComponentInChildren<OfflineWeaponController>().hasControl = true;
+            if (player != null) {
+                player.GetComponentInChildren<OfflinePlayerController>().hasControl = true;
+                player.GetComponentInChildren<OfflineWeaponController>().hasControl = true;
+            }
         }
         isDialogueActive = false;
         animator.Play("hide");
@@ -153,6 +175,14 @@ public class DialogueManager : MonoBehaviour
             case 1:
                 yield return new WaitForSeconds(0.5f);
                 GameManager.Instance.LoadScene(4);
+                break;
+            case 2:
+                GameObject.Find("Player").GetComponentInChildren<OfflineWeaponController>().ResetBullets();
+                GameObject.Find("Player").GetComponentInChildren<OfflinePlayerController>().respawnLocation = GameObject.Find("ObstacleRespawn").transform;
+                break;
+            case 3:
+                yield return new WaitForSeconds(0.5f);
+                GameManager.Instance.LoadScene(6);
                 break;
         }
 

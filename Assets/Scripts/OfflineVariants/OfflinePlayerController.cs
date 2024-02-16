@@ -43,7 +43,7 @@ public class OfflinePlayerController : MonoBehaviour
     [SerializeField] private float wallrunTilt;
     public OfflineWeaponController wc;
 
-    [SerializeField] private Transform respawnLocation;
+    public Transform respawnLocation;
 
     //Debug vars
     private bool cursorLocked;
@@ -126,6 +126,7 @@ public class OfflinePlayerController : MonoBehaviour
 
     private void InitiateSlide() {
         cc.ActivateCamera(2);
+        AudioManager.Instance.PlaySoundEffect(4, 0.8f);
         isSliding = true;
         slideForward = playerModel.transform.forward;
         slideTimer = maxSlideTimer;
@@ -177,18 +178,12 @@ public class OfflinePlayerController : MonoBehaviour
     {
         if (GameManager.Instance.pauseMenu.activeSelf) {
             Cursor.lockState = CursorLockMode.None;
-        }
-        else if (DialogueManager.Instance.isDialogueActive) {
-            Cursor.lockState = CursorLockMode.None;
-            hasControl = false;
-            wc.hasControl = false;
-        }
-        else {
-            Cursor.lockState = CursorLockMode.Locked;
+            return;
         }
 
         if (hasControl)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             CheckForWall();
             CheckForSlide();
             if (eTeleportEnabled) CheckForTeleport();
@@ -238,6 +233,7 @@ public class OfflinePlayerController : MonoBehaviour
                 {
                     // /StopWallRun();
                     moveDirection.y = jumpForce;
+                    AudioManager.Instance.PlaySoundEffect(2, 2f);
                     isSliding = false;
                     isGPound = false;
                 } else if (isGPound && Input.GetKey(KeyCode.C)) {
@@ -245,14 +241,16 @@ public class OfflinePlayerController : MonoBehaviour
                     isGPound = false;
                 }
             } else {
-                if(Input.GetKeyDown(KeyCode.C)) {
-                    moveDirection.y = -jumpForce;
+                if(Input.GetKeyDown(KeyCode.C) && !grounded && !isGPound) {
+                    AudioManager.Instance.PlaySoundEffect(3, 2f);
+                    moveDirection.y = Mathf.Min(-jumpForce, moveDirection.y - jumpForce);
                     isGPound = true;
                     gpoundCancelTimer = maxGPoundCancelTimer;
                 }
             }
 
             if (isWallRunning && Input.GetButtonDown("Jump")) {
+                AudioManager.Instance.PlaySoundEffect(2, 2f);
                 moveDirection = (orientation.forward + wallNormal) * jumpForce * 10f;
                 moveDirection.y = jumpForce * 0.8f;
                 StopWallRun();
@@ -307,7 +305,7 @@ public class OfflinePlayerController : MonoBehaviour
         playerModel.transform.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         pivot.rotation = Quaternion.Euler(0f, respawnLocation.localEulerAngles.y, 0f);
         controller.enabled = true;
-        gameObject.GetComponent<WeaponController>().ResetBullets();
+        gameObject.GetComponent<OfflineWeaponController>().ResetBullets();
     }
 
     public void Teleport(Vector3 tpLoc) {
