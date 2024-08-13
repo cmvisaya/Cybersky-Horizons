@@ -10,6 +10,7 @@ public class Shootable : NetworkBehaviour
     public int teamId = -1;
     public AudioClip killSound;
     public RawImage vignette;
+    public GameObject hitArrow, uiParent, pivot;
     private bool invuln = false;
     public int kills, deaths = 0;
 
@@ -20,6 +21,10 @@ public class Shootable : NetworkBehaviour
 
     private void Update() {
         //if (vignette != null) vignette.CrossFadeAlpha(1.0f - ((float) health / maxHealth), 0, false);
+        if(Input.GetKeyDown(KeyCode.Q) && hitArrow != null) { 
+            GameObject myArrow = Instantiate(hitArrow, uiParent.transform);
+            myArrow.GetComponent<Hitarrow>().Init(new Vector3(0,0,0), transform.position, pivot);
+        }
     }
 
     public void SetHealth(int newHealth) {
@@ -39,14 +44,16 @@ public class Shootable : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     public void TakeDamageServerRpc(int damage) {
-        TakeDamageServerRpc(damage, -1, 1000000000, "");
+        TakeDamageServerRpc(damage, -1, 1000000000, "", new Vector3(0,0,0));
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void TakeDamageServerRpc(int damage, int shooterTeamId, ulong clientWhoShot, string shooterName) {
+    public void TakeDamageServerRpc(int damage, int shooterTeamId, ulong clientWhoShot, string shooterName, Vector3 shooterPosition) {
         Debug.Log("Entity with tag " + tag + " took damage. Owner: " + OwnerClientId + " | Shooter: " + clientWhoShot + " " + shooterName);
         if (health > 0 && (teamId == -1 || teamId != shooterTeamId) && !invuln) health -= damage;
         UpdateVignetteClientRpc(health);
+        UpdateHitArrowClientRpc(shooterPosition);
+        
         if(health <= 0) {
             string tag = gameObject.GetComponent<Collider>().tag;
             StartCoroutine(GrantInvuln(3f));
@@ -70,6 +77,14 @@ public class Shootable : NetworkBehaviour
     [ClientRpc]
     private void UpdateVignetteClientRpc(int passHealth) {
         if (IsOwner && vignette != null) vignette.CrossFadeAlpha(1.0f - ((float) passHealth / maxHealth), 0, false);
+    }
+
+    [ClientRpc]
+    private void UpdateHitArrowClientRpc(Vector3 shooterPosition) {
+        if (IsOwner && hitArrow != null) {
+            GameObject myArrow = Instantiate(hitArrow, uiParent.transform);
+            myArrow.GetComponent<Hitarrow>().Init(shooterPosition, transform.position, pivot);
+        }
     }
 
     //CREATE NEW TAG FOR OBJECTIVE

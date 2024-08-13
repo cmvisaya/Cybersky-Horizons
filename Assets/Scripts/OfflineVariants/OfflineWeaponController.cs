@@ -55,6 +55,7 @@ public class OfflineWeaponController : MonoBehaviour
     }
 
     public void ResetBullets() {
+        readyToShoot = true;
         bulletsLeft = 0;
     }
 
@@ -287,6 +288,10 @@ public class OfflineWeaponController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (GameManager.Instance.pauseMenu.activeSelf || GameManager.Instance.inLevelClear) {
+            return;
+        }
+
         if(hasControl) {
             ShotInput();
             AimInput();

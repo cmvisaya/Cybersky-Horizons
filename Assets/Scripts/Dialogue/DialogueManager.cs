@@ -35,9 +35,9 @@ public class DialogueManager : MonoBehaviour
  
     private void Awake()
     {
-        continueBtn.onClick.AddListener(() => {
-            DisplayNextDialogueLine();
-        });
+        // continueBtn.onClick.AddListener(() => {
+        //     DisplayNextDialogueLine();
+        // });
 
         choiceBtn1.onClick.AddListener(() => {
             RunChoice(0);
@@ -59,6 +59,12 @@ public class DialogueManager : MonoBehaviour
         lines = new Queue<DialogueLine>();
         typingSpeed = 1 / typingSpeed;
         choiceBoxes.SetActive(false);
+    }
+
+    private void Update() {
+        if(Input.GetButtonDown("Fire1") && isDialogueActive) {
+            DisplayNextDialogueLine();
+        }
     }
  
     public void StartDialogue(Dialogue dialogue)
@@ -174,15 +180,21 @@ public class DialogueManager : MonoBehaviour
         switch (endEventId) {
             case 1:
                 yield return new WaitForSeconds(0.5f);
-                GameManager.Instance.LoadScene(4);
+                GameManager.Instance.LoadScene(4, GameManager.GameState.IN_ONLINE_MATCH);
                 break;
             case 2:
                 GameObject.Find("Player").GetComponentInChildren<OfflineWeaponController>().ResetBullets();
                 GameObject.Find("Player").GetComponentInChildren<OfflinePlayerController>().respawnLocation = GameObject.Find("ObstacleRespawn").transform;
+                GameManager.Instance.spLevelElapsedTime = 0f;
+                GameManager.Instance.inSpLevel = true;
+                GameManager.Instance.levelDifficulty = 2.0f;
                 break;
             case 3:
                 yield return new WaitForSeconds(0.5f);
-                GameManager.Instance.LoadScene(6);
+                LevelClear lccomp = GameObject.Find("LevelClear").GetComponent<LevelClear>();
+                lccomp.level.dfCollected = 100;
+                lccomp.ClearLevel();
+                //GameManager.Instance.LoadScene(6, GameManager.GameState.IN_SELECTION_MENU);
                 break;
         }
 

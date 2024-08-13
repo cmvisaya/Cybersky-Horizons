@@ -60,6 +60,7 @@ public class OfflineShootable : MonoBehaviour
                 break;
             case "Enemy":
                 Destroy(gameObject);
+                GameManager.Instance.latestSinglePlayerKills++;
                 PlaySound();
                 break;
         }

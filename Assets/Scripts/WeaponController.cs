@@ -55,6 +55,9 @@ public class WeaponController : NetworkBehaviour
     }
 
     public void ResetBullets() {
+        CancelInvoke();
+        readyToShoot = true;
+        shooting = false;
         bulletsLeft = 0;
     }
 
@@ -131,7 +134,7 @@ public class WeaponController : NetworkBehaviour
                         am.PlaySoundEffect(hitSound, hitSoundVolume);
                         confirmHit.CrossFadeAlpha(0.35f, 0f, false);
                         confirmHit.CrossFadeAlpha(0f, 0.3f, false);
-                        hitComponent.TakeDamageServerRpc(damage/2, teamId, OwnerClientId, transform.parent.gameObject.name);
+                        hitComponent.TakeDamageServerRpc(damage/2, teamId, OwnerClientId, transform.parent.gameObject.name, transform.position);
                     }
                 }
             }
@@ -159,7 +162,7 @@ public class WeaponController : NetworkBehaviour
                         am.PlaySoundEffect(hitSound, hitSoundVolume);
                         confirmHit.CrossFadeAlpha(0.35f, 0f, false);
                         confirmHit.CrossFadeAlpha(0f, 0.3f, false);
-                        hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId, transform.parent.gameObject.name);
+                        hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId, transform.parent.gameObject.name, transform.position);
                     }
                 }
             }
@@ -223,7 +226,7 @@ public class WeaponController : NetworkBehaviour
                         am.PlaySoundEffect(hitSound, hitSoundVolume);
                         confirmHit.CrossFadeAlpha(0.35f, 0f, false);
                         confirmHit.CrossFadeAlpha(0f, 0.3f, false);
-                        hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId, transform.parent.gameObject.name);
+                        hitComponent.TakeDamageServerRpc(damage, teamId, OwnerClientId, transform.parent.gameObject.name, transform.position);
                     }
                 }
             }

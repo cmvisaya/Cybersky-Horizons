@@ -586,6 +586,9 @@ MonoBehaviour:
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 8279754303979627007}
+  hitArrow: {fileID: 6158899751694530983, guid: 10b6158e66645bf4e8704c2f80675da7, type: 3}
+  uiParent: {fileID: 988787059650342030}
+  pivot: {fileID: 6526775917497788643}
   kills: 0
   deaths: 0
 --- !u!114 &7500108496099324830

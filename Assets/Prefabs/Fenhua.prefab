@@ -586,6 +586,9 @@ MonoBehaviour:
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 6437756391442563311}
+  hitArrow: {fileID: 6158899751694530983, guid: 10b6158e66645bf4e8704c2f80675da7, type: 3}
+  uiParent: {fileID: 3642722329482601853}
+  pivot: {fileID: 6526775917497788643}
   kills: 0
   deaths: 0
 --- !u!114 &7500108496099324830
@@ -643,6 +646,12 @@ MonoBehaviour:
   maxSlideTimer: 0.5
   gpoundCancelTimer: 0
   maxGPoundCancelTimer: 0
+  cam: {fileID: 0}
+  eTeleportEnabled: 0
+  tpRange: 0
+  whatIsGrabbable:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +670,7 @@ MonoBehaviour:
   activeSeat: {fileID: 6259101081602410017}
   cc: {fileID: 4452130474815388830}
   bulletTimeGravity: 0.2
-  damage: 23
+  damage: 19
   timeBetweenShooting: 0.08
   spread: 0.02
   range: 65
@@ -669,7 +678,7 @@ MonoBehaviour:
   timeBetweenShots: 0.33
   magazineSize: 50
   bulletsPerTap: 1
-  bulletsPerReload: 11
+  bulletsPerReload: 7
   allowButtonHold: 1
   allowSightSprinting: 1
   hasControl: 0
@@ -708,6 +717,8 @@ MonoBehaviour:
   subShooting: 0
   subEnabled: 0
   allowSubButtonHold: 0
+  kills: 0
+  isMelee: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0

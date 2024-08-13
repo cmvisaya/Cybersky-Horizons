@@ -448,6 +448,9 @@ MonoBehaviour:
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 4684347380767812573}
+  hitArrow: {fileID: 6158899751694530983, guid: 10b6158e66645bf4e8704c2f80675da7, type: 3}
+  uiParent: {fileID: 5974477441077882147}
+  pivot: {fileID: 6526775917497788643}
   kills: 0
   deaths: 0
 --- !u!114 &7500108496099324830
@@ -505,6 +508,12 @@ MonoBehaviour:
   maxSlideTimer: 0.5
   gpoundCancelTimer: 0
   maxGPoundCancelTimer: 0
+  cam: {fileID: 0}
+  eTeleportEnabled: 0
+  tpRange: 0
+  whatIsGrabbable:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,6 +579,8 @@ MonoBehaviour:
   subShooting: 0
   subEnabled: 0
   allowSubButtonHold: 0
+  kills: 0
+  isMelee: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,8 +1247,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8960092063885703209}
-  - {fileID: 5768182230251042398}
   - {fileID: 7021284576710693050}
+  - {fileID: 5768182230251042398}
   - {fileID: 3685785926675590620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

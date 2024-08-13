@@ -44,7 +44,7 @@ public class PlayerSpawner : NetworkBehaviour
 
     private void Update()
     {
-        RefreshNames();
+        //RefreshNames();
     }
 
     private void RefreshNames()
@@ -66,7 +66,7 @@ public class PlayerSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SpawnPlayerServerRpc(int charCode, int teamId, string displayName, ulong clientId)
     {
-        if (playerSpawned) return;
+        //if (playerSpawned) return;
 
         Debug.Log($"SpawnPlayerServerRpc - CharCode: {charCode}, OwnerClientId: {clientId}");
 

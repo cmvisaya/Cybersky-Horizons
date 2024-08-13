@@ -115,7 +115,7 @@ public class CustomBullet : NetworkBehaviour
                     am.PlaySoundEffect(hitSound, hitSoundVolume);
                     confirmHit.CrossFadeAlpha(0.35f, 0f, false);
                     confirmHit.CrossFadeAlpha(0f, 0.3f, false);
-                    hitComponent.TakeDamageServerRpc(explosionDamage, teamId, shooterClient, shooterName);
+                    hitComponent.TakeDamageServerRpc(explosionDamage, teamId, shooterClient, shooterName, new Vector3(0,0,0));
                 }
             }
         }

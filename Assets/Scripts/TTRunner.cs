@@ -16,12 +16,13 @@ public class TTRunner : NetworkBehaviour
     private bool timerActive = false;
     [SerializeField] private float secondsPerGame;
     private NetworkVariable<float> secondsLeft = new NetworkVariable<float>();
-    [SerializeField] private int maxHp;
+    public NetworkVariable<int> maxHp = new NetworkVariable<int>();
     [SerializeField] private TextMeshProUGUI winText, timerText;
     public Transform redSpawn, blueSpawn;
     private float endGameWaitTime = 5f;
     [SerializeField] private GameObject ppc;
     private string kdText;
+    [SerializeField] AudioClip previousBgm;
 
     private void Awake() {
         if(winText.gameObject.activeSelf) {
@@ -29,6 +30,7 @@ public class TTRunner : NetworkBehaviour
             winText.gameObject.SetActive(false);
         }
         secondsLeft.Value = secondsPerGame + 1;
+        maxHp.Value = 1350;
     }
 
     // Start is called before the first frame update
@@ -44,14 +46,16 @@ public class TTRunner : NetworkBehaviour
         }
         secondsLeft.Value = secondsPerGame + 1;
 
-        redCentral.maxValue = maxHp;
-        redOpposite.maxValue = maxHp;
-        blueCentral.maxValue = maxHp;
-        blueOpposite.maxValue = maxHp;
-        rchp.SetHealth(maxHp);
-        rohp.SetHealth(maxHp);
-        bchp.SetHealth(maxHp);
-        bohp.SetHealth(maxHp);
+        redCentral.maxValue = maxHp.Value;
+        redOpposite.maxValue = maxHp.Value;
+        blueCentral.maxValue = maxHp.Value;
+        blueOpposite.maxValue = maxHp.Value;
+        rchp.SetHealth(maxHp.Value);
+        rohp.SetHealth(maxHp.Value);
+        bchp.SetHealth(maxHp.Value);
+        bohp.SetHealth(maxHp.Value);
+
+        Debug.Log("HAEHRHJKAHJK: " + maxHp.Value);
 
         timerActive = true;
     }
@@ -243,6 +247,7 @@ public class TTRunner : NetworkBehaviour
 
     [ClientRpc]
     private void TransitionSceneClientRpc() {
+        AudioManager.Instance.PlayBGM(previousBgm, 0.2f);
         NetworkManager.Singleton.SceneManager.LoadScene("OfflineTester", LoadSceneMode.Single);
     }
 
@@ -258,6 +263,7 @@ public class TTRunner : NetworkBehaviour
 
     [ServerRpc(RequireOwnership = false)]
     private void TransitionSceneServerRpc() {
+        AudioManager.Instance.PlayBGM(previousBgm, 0.2f);
         NetworkManager.Singleton.SceneManager.LoadScene("OfflineTester", LoadSceneMode.Single);
     }
 }

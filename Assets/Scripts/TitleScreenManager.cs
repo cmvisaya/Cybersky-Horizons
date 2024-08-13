@@ -10,7 +10,7 @@ public class TitleScreenManager : MonoBehaviour
 
     private void Awake() {
         startBtn.onClick.AddListener(() => {
-            GameManager.Instance.LoadScene(nextSceneCode);
+            GameManager.Instance.LoadScene(nextSceneCode, GameManager.GameState.IN_SELECTION_MENU);
             AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
     }

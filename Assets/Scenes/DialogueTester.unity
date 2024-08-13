@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    endEventId: 0
+    endEventId: 1
     delayTime: 2
     stealsControl: 1
     dialogueLines:
@@ -246,16 +246,19 @@ MonoBehaviour:
         icon: {fileID: 2800000, guid: 5d913c556d1050544814c8955e2954ea, type: 3}
       line: Good. Let's get to it then, shall we?
       choice:
-        responses:
-        - Ready.
-        - I'm not so sure...
-        branches:
-        - {fileID: 193980950}
-        - {fileID: 193980949}
+        responses: []
+        branches: []
     - character:
         name: Fiore
         icon: {fileID: 2800000, guid: f7fb6acb97474904282b435a4c647456, type: 3}
       line: Ready when you are.
+      choice:
+        responses: []
+        branches: []
+    - character:
+        name: Fiore
+        icon: {fileID: 2800000, guid: f7fb6acb97474904282b435a4c647456, type: 3}
+      line: Establishing <i>Ascension Link</i> now.
       choice:
         responses: []
         branches: []
@@ -360,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &331499141
 RectTransform:
   m_ObjectHideFlags: 0

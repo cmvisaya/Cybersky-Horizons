@@ -21,7 +21,7 @@ public class CharacterSelectManager : MonoBehaviour
             LockIn();
         });
         backBtn.onClick.AddListener(() => {
-            GameManager.Instance.LoadScene(0);
+            GameManager.Instance.LoadScene(3);
         });
         infoBtn.onClick.AddListener(() => {
             infoTooltip.SetActive(!infoTooltip.activeSelf);
@@ -95,6 +95,6 @@ public class CharacterSelectManager : MonoBehaviour
     private void LockIn() {
         AudioManager.Instance.PlaySoundEffect(0, 2f);
         GameManager.Instance.selectedCharacterCode = currCharCode;
-        GameManager.Instance.LoadScene(nextSceneCode);
+        GameManager.Instance.LoadScene(nextSceneCode, GameManager.GameState.IN_ONLINE_MATCH);
     }
 }

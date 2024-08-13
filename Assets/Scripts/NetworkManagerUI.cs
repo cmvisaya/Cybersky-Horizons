@@ -18,7 +18,7 @@ public class NetworkManagerUI : MonoBehaviour
 
     private string lobbyCode;
 
-    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn, teamText, dispNameNotif;
+    public TextMeshProUGUI lt1, lt2, il1, il2, playerUn, teamText, dispNameNotif, towerHealth;
     private Lobby hostLobby;
     private Lobby joinedLobby;
     private float heartbeatTimer, lobbyUpdateTimer;
@@ -80,7 +80,7 @@ public class NetworkManagerUI : MonoBehaviour
 
         backCSBtn.onClick.AddListener(() => {
             if(joinedLobby != null) LeaveLobby();
-            GameManager.Instance.LoadScene(1);
+            GameManager.Instance.LoadScene(1, GameManager.GameState.IN_SELECTION_MENU);
             NetworkManager.Singleton.Shutdown();
             Cleanup();
         });
@@ -127,15 +127,22 @@ public class NetworkManagerUI : MonoBehaviour
             playerName = "";
             KEY_START_GAME = "StartGame";
 
-            await UnityServices.InitializeAsync();
+            if(GameObject.Find("AuthenticatedGameObject") == null)
+            {
 
-            AuthenticationService.Instance.SignedIn += () => {
-                Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
-            };
+                await UnityServices.InitializeAsync();
 
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                AuthenticationService.Instance.SignedIn += () => {
+                    Debug.Log("Signed in " + AuthenticationService.Instance.PlayerId);
+                };
+
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+                GameObject AuthenticatedGameObject = new GameObject("AuthenticatedGameObject");
+                DontDestroyOnLoad(AuthenticatedGameObject);
+            }
         } catch (AuthenticationException e) {
-            GameManager.Instance.LoadScene(3);
+            GameManager.Instance.LoadScene(3, GameManager.GameState.IN_SELECTION_MENU);
             Debug.Log(e);
         }
         
@@ -358,6 +365,7 @@ public class NetworkManagerUI : MonoBehaviour
             foreach (Player player in joinedLobby.Players) {
                 playerList += player.Data["PlayerName"].Value + player.Data["TeamAdded"].Value + "\n";
             }
+            towerHealth.text = "Tower Health: " + GameObject.Find("TTRunner").GetComponent<TTRunner>().maxHp.Value;
             il1.text = "Waiting for other players... (" + joinedLobby.Players.Count + "/" + joinedLobby.MaxPlayers + ")\n" + joinedLobby.Name + " (" + joinedLobby.LobbyCode + ")";
             il2.text = "Players:\n\n" + playerList;
         }
@@ -382,6 +390,18 @@ public class NetworkManagerUI : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<GameManager>().displayName = s;
     }
 
+    public void ReadTowerHealth(string s) {
+        towerHealth.text = "Tower Health: " + s;
+        int towerHp;
+
+        bool success = int.TryParse(s, out towerHp);
+        if(success) {
+            GameObject.Find("TTRunner").GetComponent<TTRunner>().maxHp.Value = towerHp;
+        } else {
+            GameObject.Find("TTRunner").GetComponent<TTRunner>().maxHp.Value = 1350;
+        }
+    }
+
     public async void StartGame() {
         if (IsLobbyHost()) {
             try {
@@ -400,7 +420,7 @@ public class NetworkManagerUI : MonoBehaviour
                 joinedLobby = lobby;
 
                 AudioManager.Instance.PlayBGM(battleBGM, bgmVol);
-                //GameObject.Find("TTRunner").GetComponent<TTRunner>().Init(); //UNCOMMENT THIS LINE FOR SUPPOSED REJOIN LOBBY
+                GameObject.Find("TTRunner").GetComponent<TTRunner>().Init(); //UNCOMMENT THIS LINE FOR SUPPOSED REJOIN LOBBY
                 //PrintPlayers();
 
                 /*GameObject[] spawnables = GameObject.FindGameObjectsWithTag("Enemy");

@@ -658,6 +658,9 @@ MonoBehaviour:
   teamId: -1
   killSound: {fileID: 8300000, guid: 2c7aee1820e4b3a4b8e8ce143d071bb9, type: 3}
   vignette: {fileID: 7500219987266821463}
+  hitArrow: {fileID: 6158899751694530983, guid: 10b6158e66645bf4e8704c2f80675da7, type: 3}
+  uiParent: {fileID: 3245853800572590238}
+  pivot: {fileID: 6526775917497788643}
   kills: 0
   deaths: 0
 --- !u!114 &7500108496099324830
@@ -715,6 +718,12 @@ MonoBehaviour:
   maxSlideTimer: 0.5
   gpoundCancelTimer: 0
   maxGPoundCancelTimer: 0
+  cam: {fileID: 0}
+  eTeleportEnabled: 0
+  tpRange: 0
+  whatIsGrabbable:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &5562254263423252350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,6 +789,8 @@ MonoBehaviour:
   subShooting: 0
   subEnabled: 0
   allowSubButtonHold: 0
+  kills: 0
+  isMelee: 0
 --- !u!114 &3804388754140737510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,7 +897,7 @@ Transform:
   m_GameObject: {fileID: 6019215020512131460}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -4.656613e-10, w: 1}
-  m_LocalPosition: {x: 0.9119997, y: 1.61, z: -42.2}
+  m_LocalPosition: {x: 0.5349997, y: 1.0600001, z: -40.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,7 +936,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 20
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

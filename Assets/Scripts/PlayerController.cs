@@ -127,6 +127,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     private void InitiateSlide() {
+        AudioManager.Instance.PlaySoundEffect(4, 1f);
         cc.ActivateCamera(2);
         isSliding = true;
         slideForward = playerModel.transform.forward;
@@ -239,6 +240,7 @@ public class PlayerController : NetworkBehaviour
                 {
                     // /StopWallRun();
                     moveDirection.y = jumpForce;
+                    AudioManager.Instance.PlaySoundEffect(2, 2f);
                     isSliding = false;
                     isGPound = false;
                 } else if (isGPound && Input.GetKey(KeyCode.C)) {
@@ -246,14 +248,16 @@ public class PlayerController : NetworkBehaviour
                     isGPound = false;
                 }
             } else {
-                if(Input.GetKeyDown(KeyCode.C)) {
+                if(Input.GetKeyDown(KeyCode.C) && !grounded && !isGPound) {
                     moveDirection.y = -jumpForce;
+                    AudioManager.Instance.PlaySoundEffect(3, 2f);
                     isGPound = true;
                     gpoundCancelTimer = maxGPoundCancelTimer;
                 }
             }
 
             if (isWallRunning && Input.GetButtonDown("Jump")) {
+                AudioManager.Instance.PlaySoundEffect(2, 2f);
                 moveDirection = (orientation.forward + wallNormal) * jumpForce * 10f;
                 moveDirection.y = jumpForce * 0.8f;
                 StopWallRun();

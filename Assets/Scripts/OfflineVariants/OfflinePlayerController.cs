@@ -126,7 +126,7 @@ public class OfflinePlayerController : MonoBehaviour
 
     private void InitiateSlide() {
         cc.ActivateCamera(2);
-        AudioManager.Instance.PlaySoundEffect(4, 0.8f);
+        AudioManager.Instance.PlaySoundEffect(4, 1f);
         isSliding = true;
         slideForward = playerModel.transform.forward;
         slideTimer = maxSlideTimer;
@@ -176,7 +176,7 @@ public class OfflinePlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.pauseMenu.activeSelf) {
+        if (GameManager.Instance.pauseMenu.activeSelf || GameManager.Instance.inLevelClear) {
             Cursor.lockState = CursorLockMode.None;
             return;
         }

@@ -14,12 +14,12 @@ public class ModeSelectManager : MonoBehaviour
             AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
         localBtn.onClick.AddListener(() => { 
-            GameManager.Instance.LoadScene(localSceneCode);
+            GameManager.Instance.LoadScene(localSceneCode, GameManager.GameState.IN_ONLINE_MATCH);
             AudioManager.Instance.StopBGM();
             AudioManager.Instance.PlaySoundEffect(0, 2f);
         });
         backBtn.onClick.AddListener(() => { 
-            GameManager.Instance.LoadScene(0);
+            GameManager.Instance.LoadScene(0, GameManager.GameState.TITLESCREEN);
         });
     }
 }

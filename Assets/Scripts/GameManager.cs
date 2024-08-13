@@ -14,6 +14,21 @@ public class GameManager : MonoBehaviour
     public int selectedCharacterCode, teamId, numTeams;
     public string displayName;
     public Dictionary<int, int> charCodes = new Dictionary<int, int>(); //First int is network client id
+    public enum GameState {
+        TITLESCREEN, //Exits game
+        IN_SELECTION_MENU, //Go back to title (gates can be marked as in_selection_menu)
+        IN_ONLINE_MATCH, //Disable the quit button (do this for being in lobby as well)
+        IN_SINGLEPLAYER_LEVEL, //Go back to Gates
+    }
+
+    public float levelDifficulty = 0.0f;
+    public int latestSinglePlayerKills = 0;
+    public float spLevelElapsedTime = 0f;
+    public bool inSpLevel, inLevelClear;
+
+    public int totalDf = 0;
+
+    public GameState currentState = GameState.TITLESCREEN;
 
     private void Awake()
     {
@@ -31,7 +46,7 @@ public class GameManager : MonoBehaviour
         teamId = 0;
 
         quitBtn.onClick.AddListener(() => {
-            Application.Quit();
+            HandleQuitButton();
         });
         closeBtn.onClick.AddListener(() => {
             TogglePauseMenu();
@@ -46,17 +61,49 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pauseMenu.activeSelf) { 
+        if(pauseMenu.activeSelf) {
+            //Handle quit button text/activation
+            if(currentState != GameState.IN_ONLINE_MATCH) {
+                quitBtn.gameObject.SetActive(true);
+                TextMeshProUGUI btn = quitBtn.GetComponentInChildren<TextMeshProUGUI>();
+                switch (currentState) {
+                    case GameState.TITLESCREEN:
+                        btn.text = "Close Game";
+                        break;
+                    case GameState.IN_SELECTION_MENU:
+                        btn.text = "Return to Title Screen";
+                        break;
+                    case GameState.IN_SINGLEPLAYER_LEVEL:
+                        btn.text = "Return to <i>The Gates</i>";
+                        break;
+                }
+            } else {
+                quitBtn.gameObject.SetActive(false);
+            }
+            //Handle Volume Sliders
             AudioManager.Instance.volumeMult = volumeSlider.value;
             AudioManager.Instance.sfxMult = sfxSlider.value;
             AudioManager.Instance.bgmMult = bgmSlider.value;
             Cursor.lockState = CursorLockMode.None;
         }
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseMenu();
+
+        if (inSpLevel) {
+            spLevelElapsedTime += Time.deltaTime;
+        }
+
+        if (inLevelClear) {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void TogglePauseMenu() {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+    }
+
+    public void LoadScene(int id, GameState state) {
+        currentState = state;
+        LoadScene(id);
     }
 
     public void LoadScene(int id) {
@@ -69,5 +116,19 @@ public class GameManager : MonoBehaviour
 
     public void ChangeTeam() {
         teamId = (teamId + 1) % numTeams;
+    }
+
+    public void HandleQuitButton() {
+        switch (currentState) {
+            case GameState.TITLESCREEN:
+                Application.Quit();
+                break;
+            case GameState.IN_SELECTION_MENU:
+                LoadScene(0, GameState.TITLESCREEN);
+                break;
+            case GameState.IN_SINGLEPLAYER_LEVEL:
+                LoadScene(6, GameState.IN_SELECTION_MENU);
+                break;
+        }
     }
 }
