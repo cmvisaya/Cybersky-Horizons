@@ -18,7 +18,7 @@
 ## Installation
 
 To get started with **Cybersky Horizons**, follow these steps:
- - Cybersky Horizons will be made available for download on itch.io for free soon
+ - Cybersky Horizons will be made available for download on [itch.io](https://lotusgamedev.itch.io) for free soon
 
 ## Project Statement
 **Cybersky Horizons** is a passion-project started in early 2024 by myself that spanned approximately 2 and a half months in development. It was my first attempt at an online multiplayer experience, and I think I did the game justice from an implementation standpoint with the vertical-slice that I had developed.
