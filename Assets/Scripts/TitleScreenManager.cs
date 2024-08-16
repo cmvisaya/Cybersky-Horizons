@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script that is attached to the TitleScreenManager in the Title Screen scene.
+ * Adds functionality to UI buttons for redirecting to next scene when pressed.
+ */
+
 public class TitleScreenManager : MonoBehaviour
 {
     [SerializeField] private Button startBtn;

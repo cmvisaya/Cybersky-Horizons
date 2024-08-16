@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using Unity.Netcode;
 using TMPro;
 
+/*
+ * Script that is attached to Players in singleplayer mode
+ * Contains the same functionality as the online variant without the server-client interactions
+ */
+
 public class OfflineWeaponController : MonoBehaviour
 {
     public OfflinePlayerController pc;

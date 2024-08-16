@@ -6,41 +6,45 @@ using UnityEngine.SceneManagement;
 using Unity.Netcode;
 using TMPro;
 
+/*
+ * Script attached to the TTRunner game object.
+ * Manages game logic, objective tracking, timer, and win conditions.
+ */
 public class TTRunner : NetworkBehaviour
 {
-
-    [SerializeField] private Slider redCentral, redOpposite, blueCentral, blueOpposite;
-    [SerializeField] private Shootable rchp, rohp, bchp, bohp;
-    private bool[] objectivesDestroyed = new bool[4];
-    private int firstDestroyed = -1;
-    private bool timerActive = false;
-    [SerializeField] private float secondsPerGame;
-    private NetworkVariable<float> secondsLeft = new NetworkVariable<float>();
-    public NetworkVariable<int> maxHp = new NetworkVariable<int>();
-    [SerializeField] private TextMeshProUGUI winText, timerText;
-    public Transform redSpawn, blueSpawn;
-    private float endGameWaitTime = 5f;
-    [SerializeField] private GameObject ppc;
-    private string kdText;
-    [SerializeField] AudioClip previousBgm;
+    [SerializeField] private Slider redCentral, redOpposite, blueCentral, blueOpposite; // Sliders for tracking objective health
+    [SerializeField] private Shootable rchp, rohp, bchp, bohp; // References to Shootable components for objectives
+    private bool[] objectivesDestroyed = new bool[4]; // Tracks which objectives have been destroyed
+    private int firstDestroyed = -1; // Tracks the ID of the first destroyed objective
+    private bool timerActive = false; // Flag to manage timer state
+    [SerializeField] private float secondsPerGame; // Total game duration in seconds
+    private NetworkVariable<float> secondsLeft = new NetworkVariable<float>(); // Time remaining in the game
+    public NetworkVariable<int> maxHp = new NetworkVariable<int>(); // Maximum health value for objectives
+    [SerializeField] private TextMeshProUGUI winText, timerText; // UI elements for displaying win messages and timer
+    public Transform redSpawn, blueSpawn; // Spawn points for teams
+    private float endGameWaitTime = 5f; // Time to wait before transitioning scenes after game end
+    [SerializeField] private GameObject ppc; // Placeholder for player prefab (if used)
+    private string kdText; // Text to display kills and deaths
+    [SerializeField] AudioClip previousBgm; // Background music to play during scene transition
 
     private void Awake() {
-        if(winText.gameObject.activeSelf) {
+        if (winText.gameObject.activeSelf) {
             winText.text = "";
             winText.gameObject.SetActive(false);
         }
-        secondsLeft.Value = secondsPerGame + 1;
-        maxHp.Value = 1350;
+        secondsLeft.Value = secondsPerGame + 1; // Initialize the timer
+        maxHp.Value = 1350; // Set default maximum health
     }
 
-    // Start is called before the first frame update
+    // Initialize game state and UI elements
     void Start()
     {
         Init();
     }
 
+    // Reset game state and initialize UI elements
     public void Init() {
-        if(winText.gameObject.activeSelf) {
+        if (winText.gameObject.activeSelf) {
             winText.text = "";
             winText.gameObject.SetActive(false);
         }
@@ -55,7 +59,7 @@ public class TTRunner : NetworkBehaviour
         bchp.SetHealth(maxHp.Value);
         bohp.SetHealth(maxHp.Value);
 
-        Debug.Log("HAEHRHJKAHJK: " + maxHp.Value);
+        Debug.Log("Max HP: " + maxHp.Value);
 
         timerActive = true;
     }
@@ -65,6 +69,7 @@ public class TTRunner : NetworkBehaviour
         HandleTimer();
     }
 
+    // ClientRPC to update health sliders for all clients
     [ClientRpc]
     private void PropogateHealthClientRpc(int rc, int ro, int bc, int bo) {
         redCentral.value = rc;
@@ -73,59 +78,56 @@ public class TTRunner : NetworkBehaviour
         blueOpposite.value = bo;
     }
 
+    // Reset the game timer on the server
     public void ResetTimer() {
         ResetTimerServerRpc();
     }
     
     [ServerRpc(RequireOwnership = false)]
     public void ResetTimerServerRpc() {
-        // Debug.Log(TestRelay.Instance.clientsConnected.Value + " | " + TestRelay.Instance.clientsExpected);
-        // if (TestRelay.Instance.clientsConnected.Value == TestRelay.Instance.clientsExpected) {
-        //     UnfreezePlayers();
-        // } else {
-        //     FreezePlayers();
-        // }
-
         secondsLeft.Value = secondsPerGame + 1;
     }
 
     private void HandleTimer() {
         if (timerActive && secondsLeft.Value > 0 && timerText.transform.parent.gameObject.activeSelf) {
-            if(IsServer) secondsLeft.Value -= Time.deltaTime;
+            if (IsServer) secondsLeft.Value -= Time.deltaTime;
             int seconds = (int) (secondsLeft.Value % 60);
             if (seconds < 10) timerText.text = "" + (int) (secondsLeft.Value / 60) + ":0" + (int) (secondsLeft.Value % 60);
             else timerText.text = "" + (int) (secondsLeft.Value / 60) + ":" + (int) (secondsLeft.Value % 60);
         }
 
-        if(secondsLeft.Value < 1) {
+        if (secondsLeft.Value < 1) {
             FreezePlayers();
             StartCoroutine(HandleWin());
         }
     }
 
+    // Freeze all players' controls
     private void FreezePlayers() {
         PlayerController[] players = Object.FindObjectsOfType<PlayerController>();
-        foreach(PlayerController player in players) {
+        foreach (PlayerController player in players) {
             player.hasControl = false;
             player.gameObject.GetComponent<WeaponController>().hasControl = false;
             timerActive = false;
         }
     }
 
+    // Unfreeze all players' controls
     private void UnfreezePlayers() {
         PlayerController[] players = Object.FindObjectsOfType<PlayerController>();
-        foreach(PlayerController player in players) {
+        foreach (PlayerController player in players) {
             player.hasControl = true;
             player.gameObject.GetComponent<WeaponController>().hasControl = true;
             timerActive = true;
         }
     }
 
+    // ServerRPC to update the kills/deaths text
     [ServerRpc(RequireOwnership = false)]
     private void SetKDTextServerRpc(string text) {
         WeaponController[] players = Object.FindObjectsOfType<WeaponController>();
         kdText = "";
-        foreach(WeaponController player in players) {
+        foreach (WeaponController player in players) {
             Shootable myShootable = player.GetComponent<Shootable>();
             string playerLine = player.transform.parent.gameObject.name + ": " + myShootable.kills + "/" + myShootable.deaths + "\n";
             kdText += playerLine;
@@ -133,16 +135,17 @@ public class TTRunner : NetworkBehaviour
         SetKDTextClientRpc(text + "\n\n" + kdText);
     }
 
+    // ClientRPC to display the kills/deaths text
     [ClientRpc]
     private void SetKDTextClientRpc(string text) {
         winText.gameObject.SetActive(true); 
         winText.text = text;
     }
 
+    // Despawn all game objects with a NetworkObject component
     private void DespawnAll() {
         PlayerSpawner[] spawners = Object.FindObjectsOfType<PlayerSpawner>();
-        //Debug.Log(spawners.Length);
-        foreach(PlayerSpawner spawner in spawners) {
+        foreach (PlayerSpawner spawner in spawners) {
             try {
                 spawner.gameObject.GetComponent<NetworkObject>().Despawn(true);
             } catch (SpawnStateException e) {
@@ -151,13 +154,13 @@ public class TTRunner : NetworkBehaviour
         }
     }
 
+    // Handle objective destruction and game win logic
     public void KillObjective(int id) {
-        //Debug.Log("Killed objective: " + id);
         Shootable destroyed = null;
-        if(firstDestroyed < 0) {
+        if (firstDestroyed < 0) {
             firstDestroyed = id;
         }
-        switch(id) {
+        switch (id) {
             case 0:
                 destroyed = rchp;
                 break;
@@ -175,6 +178,7 @@ public class TTRunner : NetworkBehaviour
         StartCoroutine(HandleWin());
     }
 
+    // ClientRPC to display the winner and handle end of game
     [ClientRpc]
     private void DisplayWinnerClientRpc(string text) {
         FreezePlayers();
@@ -183,15 +187,15 @@ public class TTRunner : NetworkBehaviour
         timerActive = false;
     }
 
+    // Handle the end of the game, determining the winner and transitioning scenes
     private IEnumerator HandleWin() {
         bool blueWon;
         bool redWon;
-        if(timerActive) {
+        if (timerActive) {
             blueWon = objectivesDestroyed[0] && objectivesDestroyed[1];
             redWon = objectivesDestroyed[2] && objectivesDestroyed[3];
 
-            //Do Game Logic Here (rn technically gives blue advantage if they both win at the same time)
-            if(blueWon) {
+            if (blueWon) {
                 DisplayWinnerClientRpc("Blue wins!");
                 yield return new WaitForSeconds(endGameWaitTime);
                 EndGameServerRpc();
@@ -201,20 +205,18 @@ public class TTRunner : NetworkBehaviour
                 yield return new WaitForSeconds(endGameWaitTime);
                 EndGameServerRpc();
             }
-
-            //if(destroyed != null) destroyed.gameObject.GetComponent<NetworkSpawnable>().Kill();
         } else {
             int redDestroyed = 0;
             int blueDestroyed = 0;
-            for(int i = 0; i < 2; i++) {
-                if(objectivesDestroyed[i]) redDestroyed++;
+            for (int i = 0; i < 2; i++) {
+                if (objectivesDestroyed[i]) redDestroyed++;
             }
-            for(int i = 2; i < 4; i++) {
-                if(objectivesDestroyed[i]) blueDestroyed++;
+            for (int i = 2; i < 4; i++) {
+                if (objectivesDestroyed[i]) blueDestroyed++;
             }
             blueWon = redDestroyed > blueDestroyed || firstDestroyed == 0 || firstDestroyed == 1;
             redWon = blueDestroyed > redDestroyed || firstDestroyed == 2 || firstDestroyed == 3;
-            if(blueWon) { 
+            if (blueWon) { 
                 DisplayWinnerClientRpc("Blue wins!");
                 yield return new WaitForSeconds(endGameWaitTime); 
                 EndGameServerRpc();
@@ -234,17 +236,16 @@ public class TTRunner : NetworkBehaviour
         yield return new WaitForSeconds(0f);
     }
 
+    // ServerRPC to end the game, despawning all objects and transitioning scenes
     [ServerRpc(RequireOwnership = false)]
     private void EndGameServerRpc() {
-        //DespawnOnServerRpc();
         DespawnAll();
 
         NetworkManagerUI.Instance.DeleteLobby();
         TransitionSceneClientRpc();
-        //NetworkManagerUI.Instance.ResetLobbyData();
-        //ReopenLobbyClientRpc();
     }
 
+    // ClientRPC to transition to a new scene
     [ClientRpc]
     private void TransitionSceneClientRpc() {
         AudioManager.Instance.PlayBGM(previousBgm, 0.2f);

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * Script that is attached to all objects that can be shot in singleplayer mode
+ * Contains the same functionality as the online variant without the server-client interactions
+ */
+
 public class OfflineShootable : MonoBehaviour
 {
     [SerializeField] private int health, maxHealth;

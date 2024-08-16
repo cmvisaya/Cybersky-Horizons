@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using Unity.Netcode;
 
+/*
+ * Script that is attached to Players in singleplayer mode
+ * Contains the same functionality as the online variant without the server-client interactions
+ */
 
 public class OfflinePlayerController : MonoBehaviour
 {
