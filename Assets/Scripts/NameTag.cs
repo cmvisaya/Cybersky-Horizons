@@ -5,6 +5,11 @@ using UnityEngine;
 using Unity.Netcode;
 using TMPro;
 
+/*
+ * Script that is attached to Nametag gameobjects which are children of player prefabs
+ * Handles initialization of name display tag above players heads in multiplayer
+ */
+
 public class NameTag : MonoBehaviour
 {
     public TMP_Text displayNameText; // Reference to the TextMeshPro text component

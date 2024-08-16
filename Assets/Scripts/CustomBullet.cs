@@ -2,6 +2,12 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 
+
+/*
+ * UNUSED: Attempt at making more flexible, customizeable, object-based bullets instead of simple hit-detection.
+ * Dropped because it was proving very difficult to get these working over the network.
+ */
+
 public class CustomBullet : NetworkBehaviour
 {
     public Rigidbody rb;

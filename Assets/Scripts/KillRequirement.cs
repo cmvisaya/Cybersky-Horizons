@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Script that is attached to kill requirement gameobjects in singleplayer.
+ * Attach instances of enemies in required kills array such that an event is run when all of them are killed.
+ */
+
 public class KillRequirement : MonoBehaviour
 {
 

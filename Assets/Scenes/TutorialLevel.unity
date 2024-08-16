@@ -11535,7 +11535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 359d7a4839d4a5c40ba947857499babc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useStaticBillboard: 1
+  useStaticBillboard: 0
 --- !u!1 &2075048339
 GameObject:
   m_ObjectHideFlags: 0
